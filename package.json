@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
-    "@whiskeysockets/baileys": "npm:davexbaileys@2.5.21",
+    "@whiskeysockets/baileys": "^7.0.0-rc.9",
     "archiver": "^7.0.1",
     "awesome-phonenumber": "^7.8.0",
     "axios": "^1.13.5",
