@@ -1,9 +1,9 @@
 {
-  "name": "DAVE-X",
-  "description": "DAVE X WhatsApp Bot",
-  "logo": "https://h.uguu.se/GiYWpWoC.jpg",
+  "name": "ANDREW-X",
+  "description": "ANDREW X WhatsApp Bot",
+  "logo": "https://files.catbox.moe/cightq.jpeg",
   "keywords": ["whatsapp-bot"],
-  "repository": "https://github.com/Davex-254/DAVE-X",
+  "repository": "https://github.com/Andrew-233/ANDREW-ULTRAX",
   "stack": "container",
   "addons": [
     {
@@ -15,7 +15,7 @@
   },
   "env": {
     "SESSION_ID": {
-      "description": "Must begin with 'DAVE-X:~'.",
+      "description": "Must begin with 'ANDREW-AI:~'.",
       "value": "",
       "required": true
     }
