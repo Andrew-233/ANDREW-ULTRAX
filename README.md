@@ -3,7 +3,7 @@
 ‎</p>
 ‎
 ‎<p align="center">
-‎  <a href="https://pairing-site-andrew-x-930031511bce.herokuapp.com/">
+‎  <a href="https://andrewxpair.onrender.com/pair">
 ‎    <img src="https://img.shields.io/badge/Pair_Site-Get_Code-purple?style=for-the-badge&logo=whatsapp" alt="Pair Site" width="200">
 ‎  </a>
 ‎
