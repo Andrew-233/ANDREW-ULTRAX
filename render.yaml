@@ -1,6 +1,6 @@
 services:
   - type: worker
-    name: dave-x-bot
+    name: andrew-x-bot
     env: node
     plan: free
     buildCommand: npm install
