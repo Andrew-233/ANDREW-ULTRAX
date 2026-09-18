@@ -9,7 +9,7 @@ const settings = {
   author: 'Andrew Tech',
   botName: "ANDREW-ULTRAX",
   botOwner: 'Andrew Tech', // Your name
-  ownerNumber: process.env.OWNER_NUMBER || '255637518095', //Set your number here without + symbol, just add country code & number without any space
+  ownerNumber: process.env.OWNER_NUMBER || '233592098519', //Set your number here without + symbol, just add country code & number without any space
   giphyApiKey: 'qnl7ssQChTdPjsKta2Ax2LMaGXz303tq',
   commandMode: "public",
   maxStoreMessages: 20, 
