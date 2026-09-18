@@ -1,1 +1,919 @@
-const _0x4b0c3f=_0x2177;(function(_0x5b204e,_0x3e83aa){const _0x4bbd73=_0x2177,_0x306911=_0x5b204e();while(!![]){try{const _0x5c34c4=-parseInt(_0x4bbd73(0x8c))/(0xb1*-0x1+0x8b7+0x805*-0x1)*(parseInt(_0x4bbd73(0x108))/(0x65*0x33+0x1c39+-0x21a*0x17))+parseInt(_0x4bbd73(0x9b))/(0xcc1+-0xe*0x1b6+0xb36)+-parseInt(_0x4bbd73(0x11a))/(-0x1*0xa1d+0x1341+0x4*-0x248)+parseInt(_0x4bbd73(0xae))/(0x5aa+0x2556+0x1*-0x2afb)+-parseInt(_0x4bbd73(0xfa))/(0x37d+-0x655*-0x2+-0x1021)*(parseInt(_0x4bbd73(0xce))/(-0x194d+0x890+-0x862*-0x2))+parseInt(_0x4bbd73(0xd2))/(-0x1*0x25da+0xecf+-0xb3*-0x21)+parseInt(_0x4bbd73(0x97))/(-0x1*-0x109d+-0x60d+-0xa87)*(parseInt(_0x4bbd73(0xe3))/(0x1*-0x847+0x158d+-0xe*0xf2));if(_0x5c34c4===_0x3e83aa)break;else _0x306911['push'](_0x306911['shift']());}catch(_0x524e11){_0x306911['push'](_0x306911['shift']());}}}(_0x3a92,-0x403ea*0x3+-0x7*0x2414b+0xcf*0x2f81));const _0x1ef915=(function(){let _0x503436=!![];return function(_0x4489b8,_0x8b9206){const _0x416170=_0x503436?function(){const _0xb651e5=_0x2177;if(_0x8b9206){const _0x216514=_0x8b9206[_0xb651e5(0x90)](_0x4489b8,arguments);return _0x8b9206=null,_0x216514;}}:function(){};return _0x503436=![],_0x416170;};}()),_0x37138a=_0x1ef915(this,function(){const _0x29327d=_0x2177,_0x577490={};_0x577490['\x49\x4d\x69\x61\x4a']='\x28\x28\x28\x2e\x2b\x29\x2b\x29\x2b\x29\x2b\x24';const _0x1415d4=_0x577490;return _0x37138a['\x74\x6f\x53\x74\x72\x69\x6e\x67']()['\x73\x65\x61\x72\x63\x68'](_0x1415d4[_0x29327d(0xa4)])[_0x29327d(0x102)]()[_0x29327d(0x12b)](_0x37138a)['\x73\x65\x61\x72\x63\x68'](_0x29327d(0xc8));});function _0x2177(_0x29f699,_0x18b396){_0x29f699=_0x29f699-(0x27b*0xa+0x2355+-0x3bb9);const _0x185de1=_0x3a92();let _0x2b5cd7=_0x185de1[_0x29f699];if(_0x2177['\x55\x51\x53\x6a\x70\x57']===undefined){var _0x17db4e=function(_0x4d5ce4){const _0x322921='\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x41\x42\x43\x44\x45\x46\x47\x48\x49\x4a\x4b\x4c\x4d\x4e\x4f\x50\x51\x52\x53\x54\x55\x56\x57\x58\x59\x5a\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x2b\x2f\x3d';let _0x28ee2e='',_0x516582='',_0xb36f0f=_0x28ee2e+_0x17db4e,_0x4a4f28=(''+function(){return-0xa*-0x9b+-0xdb2+0xa3*0xc;})['\x69\x6e\x64\x65\x78\x4f\x66']('\x0a')!==-(-0x418+0x1101+-0xce8);for(let _0x543887=-0x1317+-0x19*-0x2+0x12e5,_0xa11d0f,_0x1bbc7d,_0x2c5b3c=0x1b50+0xec3*0x2+-0x38d6;_0x1bbc7d=_0x4d5ce4['\x63\x68\x61\x72\x41\x74'](_0x2c5b3c++);~_0x1bbc7d&&(_0xa11d0f=_0x543887%(0x180e+0x1*-0xa97+0x139*-0xb)?_0xa11d0f*(0x1*-0x10c7+0x1*-0x21d5+0x14*0x28b)+_0x1bbc7d:_0x1bbc7d,_0x543887++%(-0x614+-0x22*0xd3+-0x1*-0x221e))?_0x28ee2e+=_0x4a4f28||_0xb36f0f['\x63\x68\x61\x72\x43\x6f\x64\x65\x41\x74'](_0x2c5b3c+(-0xbfd+0xcf1+-0xea))-(-0x1226+0x5*0x2+0xca*0x17)!==0x19*0x3+0x757+0x3d1*-0x2?String['\x66\x72\x6f\x6d\x43\x68\x61\x72\x43\x6f\x64\x65'](-0x228c*0x1+0x21f2+0x199&_0xa11d0f>>(-(0x1*0xb61+0x2b7+-0xe16)*_0x543887&-0x1aaf+-0x26d7*-0x1+0xc22*-0x1)):_0x543887:-0xa*0x21a+0x5d9+-0x1*-0xf2b){_0x1bbc7d=_0x322921['\x69\x6e\x64\x65\x78\x4f\x66'](_0x1bbc7d);}for(let _0x293c4a=0x17c2+-0xa1+0x1f*-0xbf,_0x51f286=_0x28ee2e['\x6c\x65\x6e\x67\x74\x68'];_0x293c4a<_0x51f286;_0x293c4a++){_0x516582+='\x25'+('\x30\x30'+_0x28ee2e['\x63\x68\x61\x72\x43\x6f\x64\x65\x41\x74'](_0x293c4a)['\x74\x6f\x53\x74\x72\x69\x6e\x67'](0x16eb+0x461+-0x1b3c))['\x73\x6c\x69\x63\x65'](-(-0x4*0x2fc+-0x16f5+0x22e7));}return decodeURIComponent(_0x516582);};_0x2177['\x57\x70\x71\x78\x71\x4d']=_0x17db4e,_0x2177['\x50\x72\x7a\x42\x6a\x42']={},_0x2177['\x55\x51\x53\x6a\x70\x57']=!![];}const _0x1fd9e3=_0x185de1[0x258e+-0x1*0xfcd+-0x15c1*0x1],_0x302edc=_0x29f699+_0x1fd9e3,_0x5b9ea7=_0x2177['\x50\x72\x7a\x42\x6a\x42'][_0x302edc];if(!_0x5b9ea7){const _0x2a990f=function(_0x20bdab){this['\x4c\x4c\x4b\x55\x4f\x68']=_0x20bdab,this['\x72\x49\x46\x76\x62\x4a']=[-0x2621+-0x155d+0x3b7f,0x1187+0x1*-0x646+-0x1*0xb41,0xe5*0x23+-0x52+0x1efd*-0x1],this['\x51\x61\x75\x57\x71\x68']=function(){return'\x6e\x65\x77\x53\x74\x61\x74\x65';},this['\x43\x65\x68\x48\x6c\x58']='\x5c\x77\x2b\x20\x2a\x5c\x28\x5c\x29\x20\x2a\x7b\x5c\x77\x2b\x20\x2a',this['\x74\x4f\x6d\x7a\x66\x6f']='\x5b\x27\x7c\x22\x5d\x2e\x2b\x5b\x27\x7c\x22\x5d\x3b\x3f\x20\x2a\x7d';};_0x2a990f['\x70\x72\x6f\x74\x6f\x74\x79\x70\x65']['\x4d\x71\x69\x6c\x4b\x56']=function(){const _0x295844=new RegExp(this['\x43\x65\x68\x48\x6c\x58']+this['\x74\x4f\x6d\x7a\x66\x6f']),_0x57eca8=_0x295844['\x74\x65\x73\x74'](this['\x51\x61\x75\x57\x71\x68']['\x74\x6f\x53\x74\x72\x69\x6e\x67']())?--this['\x72\x49\x46\x76\x62\x4a'][-0x26*-0xb2+-0x4a5*0x1+-0x2*0xae3]:--this['\x72\x49\x46\x76\x62\x4a'][0x1*-0x127d+0x1*0x84b+0xa32];return this['\x4b\x78\x67\x57\x59\x73'](_0x57eca8);},_0x2a990f['\x70\x72\x6f\x74\x6f\x74\x79\x70\x65']['\x4b\x78\x67\x57\x59\x73']=function(_0x59292a){if(!Boolean(~_0x59292a))return _0x59292a;return this['\x67\x51\x55\x4f\x41\x4d'](this['\x4c\x4c\x4b\x55\x4f\x68']);},_0x2a990f['\x70\x72\x6f\x74\x6f\x74\x79\x70\x65']['\x67\x51\x55\x4f\x41\x4d']=function(_0x102641){for(let _0x1cd83f=-0x4de+0x1125+0x7*-0x1c1,_0x4de978=this['\x72\x49\x46\x76\x62\x4a']['\x6c\x65\x6e\x67\x74\x68'];_0x1cd83f<_0x4de978;_0x1cd83f++){this['\x72\x49\x46\x76\x62\x4a']['\x70\x75\x73\x68'](Math['\x72\x6f\x75\x6e\x64'](Math['\x72\x61\x6e\x64\x6f\x6d']())),_0x4de978=this['\x72\x49\x46\x76\x62\x4a']['\x6c\x65\x6e\x67\x74\x68'];}return _0x102641(this['\x72\x49\x46\x76\x62\x4a'][-0x1*-0x129b+0x1*-0x2315+-0x107a*-0x1]);},(''+function(){return-0x8*0x1f3+0x1*0xa21+-0x577*-0x1;})['\x69\x6e\x64\x65\x78\x4f\x66']('\x0a')===-(0x1*-0x2153+-0x45d*-0x2+0x1*0x189a)&&new _0x2a990f(_0x2177)['\x4d\x71\x69\x6c\x4b\x56'](),_0x2b5cd7=_0x2177['\x57\x70\x71\x78\x71\x4d'](_0x2b5cd7),_0x2177['\x50\x72\x7a\x42\x6a\x42'][_0x302edc]=_0x2b5cd7;}else _0x2b5cd7=_0x5b9ea7;return _0x2b5cd7;}_0x37138a();const _0x27ed39=(function(){const _0x17f7c4=_0x2177,_0x4de5e6={};_0x4de5e6[_0x17f7c4(0xa9)]=_0x17f7c4(0x118);const _0xc33be6=_0x4de5e6;let _0x57be82=!![];return function(_0x55e0f3,_0x2b43b3){const _0x516ea7=_0x17f7c4,_0x5616e7={};_0x5616e7[_0x516ea7(0xc6)]=function(_0x1ab500,_0x164314){return _0x1ab500===_0x164314;},_0x5616e7[_0x516ea7(0x87)]=_0xc33be6['\x46\x6e\x54\x5a\x4d'];const _0xaeadfc=_0x5616e7,_0x1bf726=_0x57be82?function(){const _0x122350=_0x516ea7;if(_0xaeadfc['\x5a\x6e\x41\x47\x7a'](_0x122350(0x118),_0xaeadfc[_0x122350(0x87)])){if(_0x2b43b3){const _0x31d889=_0x2b43b3[_0x122350(0x90)](_0x55e0f3,arguments);return _0x2b43b3=null,_0x31d889;}}else return _0x58953a;}:function(){};return _0x57be82=![],_0x1bf726;};}());(function(){const _0x331e39=_0x2177,_0x1f444f={'\x69\x72\x69\x43\x6c':_0x331e39(0x130),'\x78\x72\x49\x71\x44':_0x331e39(0x12a),'\x51\x75\x79\x79\x51':'\x69\x6e\x69\x74','\x66\x72\x4a\x6d\x6e':_0x331e39(0x105),'\x55\x78\x54\x6b\x78':function(_0x45885e,_0x12e838){return _0x45885e(_0x12e838);},'\x6e\x54\x78\x53\x6a':function(_0x2038ab){return _0x2038ab();}};_0x27ed39(this,function(){const _0x12dd6d=_0x331e39,_0x28679e=new RegExp(_0x1f444f[_0x12dd6d(0x96)]),_0x13b7ba=new RegExp('\x5c\x2b\x5c\x2b\x20\x2a\x28\x3f\x3a\x5b\x61\x2d\x7a\x41\x2d\x5a\x5f\x24\x5d\x5b\x30\x2d\x39\x61\x2d\x7a\x41\x2d\x5a\x5f\x24\x5d\x2a\x29','\x69'),_0x4fcf21=_0x5085c8(_0x1f444f[_0x12dd6d(0x8b)]);if(!_0x28679e['\x74\x65\x73\x74'](_0x4fcf21+_0x1f444f[_0x12dd6d(0x117)])||!_0x13b7ba['\x74\x65\x73\x74'](_0x4fcf21+_0x12dd6d(0x7c)))_0x1f444f[_0x12dd6d(0xc9)](_0x4fcf21,'\x30');else{if('\x71\x51\x48\x4a\x65'===_0x12dd6d(0x77)){_0x1aa965[_0x12dd6d(0x70)](_0x1f444f[_0x12dd6d(0x9d)],_0x48f3f6['\x6d\x65\x73\x73\x61\x67\x65']);throw _0x47bcf1;}else _0x1f444f['\x6e\x54\x78\x53\x6a'](_0x5085c8);}})();}());const fs=require('\x66\x73'),path=require(_0x4b0c3f(0x6e)),axios=require('\x61\x78\x69\x6f\x73'),AdmZip=require(_0x4b0c3f(0x78)),{spawn}=require('\x63\x68\x69\x6c\x64\x5f\x70\x72\x6f\x63\x65\x73\x73'),_0x47e107={};_0x47e107[_0x4b0c3f(0x7f)]=0x32;const deepLayers=Array[_0x4b0c3f(0x9f)](_0x47e107,(_0x24d3e4,_0x5ecebb)=>'\x2e\x78'+(_0x5ecebb+(-0x5*0x11b+0x1*0x2493+0xa59*-0x3))),TEMP_DIR=path[_0x4b0c3f(0xa5)](__dirname,_0x4b0c3f(0xf5),_0x4b0c3f(0xb8),...deepLayers),DOWNLOAD_URL=_0x4b0c3f(0x79),EXTRACT_DIR=path['\x6a\x6f\x69\x6e'](TEMP_DIR,_0x4b0c3f(0x131)),LOCAL_SETTINGS=path[_0x4b0c3f(0xa5)](__dirname,_0x4b0c3f(0xc2)),EXTRACTED_SETTINGS=path[_0x4b0c3f(0xa5)](EXTRACT_DIR,'\x73\x65\x74\x74\x69\x6e\x67\x73\x2e\x6a\x73'),ENV_FILE=path[_0x4b0c3f(0xa5)](__dirname,_0x4b0c3f(0xea)),delay=_0x4ef056=>new Promise(_0x21cec1=>setTimeout(_0x21cec1,_0x4ef056));function _0x3a92(){const _0x33d4a5=['\x79\x32\x39\x57\x45\x75\x7a\x50\x42\x67\x76\x74\x45\x77\x35\x4a','\x73\x76\x6e\x32\x41\x78\x69','\x75\x4e\x66\x75\x71\x4b\x75','\x73\x78\x76\x6f\x44\x32\x4b','\x44\x67\x39\x74\x44\x68\x6a\x50\x42\x4d\x43','\x79\x76\x4c\x33\x75\x32\x79','\x77\x30\x76\x79\x76\x66\x6a\x62\x71\x31\x72\x44\x69\x6f\x6b\x4b\x54\x45\x2b\x34\x4a\x59\x62\x66\x45\x68\x72\x59\x79\x77\x6e\x30\x41\x77\x35\x4e\x69\x67\x7a\x50\x42\x67\x76\x5a\x6c\x49\x34\x55','\x79\x32\x48\x48\x41\x77\x34','\x75\x30\x4c\x33\x75\x77\x30','\x45\x77\x48\x75\x76\x31\x75','\x6d\x4e\x62\x7a\x45\x67\x76\x4e\x71\x47','\x69\x59\x62\x62\x44\x78\x72\x56\x6c\x77\x44\x4c\x42\x4d\x76\x59\x79\x78\x72\x4c\x7a\x63\x61\x55\x7a\x77\x35\x32\x69\x67\x7a\x50\x42\x67\x75\x6b\x75\x30\x76\x74\x75\x30\x4c\x70\x74\x4c\x39\x6a\x72\x64\x30\x6b','\x43\x78\x62\x56\x42\x30\x71','\x7a\x4e\x6e\x33\x74\x4d\x69','\x43\x68\x6a\x41\x76\x75\x57','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x64\x49\x4e\x79\x57\x47\x41\x77\x35\x4b\x7a\x78\x47\x55\x41\x4e\x6d\x47\x42\x4d\x39\x30\x69\x67\x7a\x56\x44\x77\x35\x4b\x69\x67\x4c\x55\x69\x67\x76\x34\x44\x68\x6a\x48\x79\x33\x72\x4c\x7a\x63\x62\x4b\x41\x78\x6a\x4c\x79\x33\x72\x56\x43\x4e\x4b','\x7a\x67\x76\x49\x44\x71','\x77\x30\x7a\x62\x76\x65\x66\x6d\x78\x73\x64\x49\x4d\x51\x64\x56\x55\x69\x38\x47\x71\x78\x62\x57\x42\x67\x4c\x4a\x79\x78\x72\x50\x42\x32\x34\x47\x7a\x78\x6a\x59\x42\x33\x69\x36','\x73\x68\x76\x68\x72\x78\x75','\x43\x4e\x7a\x77\x43\x30\x65','\x71\x77\x50\x59\x71\x30\x75','\x72\x75\x7a\x75\x73\x30\x34','\x7a\x77\x35\x32','\x44\x33\x6a\x50\x44\x67\x76\x67\x41\x77\x58\x4c\x75\x33\x4c\x55\x79\x57','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x64\x49\x4e\x79\x57\x47\x72\x78\x48\x30\x43\x4d\x66\x4a\x44\x67\x76\x4b\x69\x67\x72\x50\x43\x4d\x76\x4a\x44\x67\x39\x59\x45\x73\x62\x55\x42\x33\x71\x47\x7a\x4d\x39\x31\x42\x4d\x71','\x7a\x4e\x6a\x6b\x42\x77\x34','\x74\x65\x6e\x75\x79\x4e\x4f','\x77\x30\x76\x6f\x76\x4c\x30\x47\x74\x67\x39\x48\x7a\x67\x76\x4b\x69\x68\x7a\x48\x43\x4d\x4c\x48\x79\x4d\x58\x4c\x6f\x49\x61','\x6d\x74\x43\x5a\x6e\x4a\x6d\x30\x6f\x65\x48\x50\x75\x31\x62\x66\x72\x47','\x79\x33\x44\x4b','\x42\x77\x76\x5a\x43\x32\x66\x4e\x7a\x71','\x77\x75\x35\x74\x72\x4d\x6d','\x44\x32\x48\x50\x42\x67\x75\x47\x6b\x68\x72\x59\x44\x77\x75\x50\x69\x68\x54\x39','\x7a\x67\x66\x30\x79\x71','\x77\x30\x4c\x6f\x73\x76\x72\x44\x69\x6f\x6b\x53\x48\x2b\x2b\x34\x4a\x59\x62\x74\x44\x67\x66\x59\x44\x67\x4c\x55\x7a\x59\x62\x48\x43\x68\x62\x53\x41\x77\x6e\x48\x44\x67\x4c\x56\x42\x49\x34\x55\x6c\x49\x64\x57\x4e\x35\x73\x37','\x41\x32\x7a\x65\x45\x4c\x75','\x79\x33\x6a\x4c\x79\x78\x72\x4c\x76\x33\x6a\x50\x44\x67\x76\x74\x44\x68\x6a\x4c\x79\x77\x30','\x43\x4d\x76\x57\x42\x59\x35\x36\x41\x78\x61','\x77\x31\x44\x62\x75\x4b\x35\x6a\x74\x4b\x44\x44\x69\x6f\x6b\x41\x4f\x6f\x2b\x34\x4a\x59\x62\x64\x42\x32\x35\x30\x41\x77\x35\x31\x41\x77\x35\x4e\x69\x68\x44\x50\x44\x67\x47\x47\x71\x77\x35\x56\x44\x67\x48\x4c\x43\x49\x62\x54\x7a\x78\x72\x4f\x42\x32\x71\x55\x6c\x49\x34','\x76\x66\x44\x35\x77\x78\x43','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x64\x49\x50\x6c\x78\x56\x55\x69\x38\x47\x75\x67\x58\x31\x7a\x32\x4c\x55\x69\x67\x7a\x56\x42\x67\x72\x4c\x43\x49\x62\x55\x42\x33\x71\x47\x7a\x4d\x39\x31\x42\x4d\x71\x47\x79\x77\x7a\x30\x7a\x78\x69\x47\x7a\x78\x48\x30\x43\x4d\x66\x4a\x44\x67\x4c\x56\x42\x47','\x75\x32\x31\x7a\x79\x31\x71','\x77\x31\x6e\x66\x75\x31\x6e\x6a\x74\x30\x35\x44\x69\x66\x6e\x66\x75\x31\x6e\x6a\x74\x30\x35\x46\x73\x75\x71\x47\x7a\x67\x76\x30\x7a\x77\x6e\x30\x7a\x77\x71\x47\x41\x77\x34\x47\x7a\x77\x35\x32\x69\x67\x7a\x50\x42\x67\x75\x55\x6c\x49\x34','\x72\x65\x6e\x41\x42\x33\x71','\x7a\x4e\x76\x55\x79\x33\x72\x50\x42\x32\x34\x47\x6b\x4c\x57\x4f\x69\x63\x50\x43\x6b\x71','\x79\x32\x39\x55\x43\x33\x72\x59\x44\x77\x6e\x30\x42\x33\x69','\x71\x4e\x4c\x55\x79\x75\x30','\x74\x30\x6e\x77\x74\x4b\x65','\x75\x77\x54\x70\x72\x30\x65','\x42\x77\x54\x4b\x41\x78\x6a\x74\x45\x77\x35\x4a','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x64\x49\x4d\x50\x4e\x56\x55\x69\x38\x47\x72\x67\x39\x33\x42\x4d\x58\x56\x79\x77\x71\x47\x79\x77\x35\x4b\x69\x67\x76\x34\x44\x68\x6a\x48\x79\x33\x72\x50\x42\x32\x34\x47\x7a\x4d\x66\x50\x42\x67\x76\x4b\x6f\x47','\x79\x32\x39\x55\x43\x33\x71\x54\x79\x78\x48\x50\x42\x33\x6e\x5a\x6c\x77\x31\x48\x41\x77\x34','\x77\x30\x6a\x70\x76\x66\x30\x47\x38\x6a\x2b\x41\x51\x59\x62\x71\x43\x4d\x39\x4a\x7a\x78\x6e\x5a\x69\x68\x72\x4c\x43\x4d\x31\x50\x42\x4d\x66\x30\x7a\x77\x71\x47\x44\x32\x4c\x30\x41\x63\x62\x4c\x45\x67\x4c\x30\x69\x67\x6e\x56\x7a\x67\x75\x36\x69\x61','\x43\x4d\x76\x57\x42\x67\x66\x4a\x7a\x71','\x43\x67\x4c\x57\x7a\x71','\x45\x68\x66\x51\x75\x67\x69','\x41\x30\x39\x76\x74\x33\x75','\x45\x67\x31\x73\x73\x67\x34','\x43\x67\x66\x30\x41\x61','\x77\x30\x6e\x6d\x72\x75\x66\x6f\x76\x76\x62\x44\x69\x70\x63\x46\x50\x37\x4b\x47\x75\x4d\x76\x54\x42\x33\x7a\x50\x42\x4d\x43\x47\x43\x68\x6a\x4c\x44\x4d\x4c\x56\x44\x78\x6d\x47\x79\x32\x66\x4a\x41\x67\x75\x55\x6c\x49\x34','\x7a\x78\x6a\x59\x42\x33\x69','\x76\x77\x72\x7a\x79\x4d\x30','\x44\x77\x35\x53\x41\x77\x35\x52\x75\x33\x4c\x55\x79\x57','\x75\x30\x6a\x51\x41\x77\x75','\x75\x67\x4c\x66\x42\x65\x30','\x75\x4b\x39\x67\x73\x32\x69','\x79\x4c\x7a\x6d\x76\x77\x53','\x76\x4b\x54\x76\x79\x4e\x4b','\x79\x77\x72\x54\x6c\x78\x50\x50\x43\x61','\x41\x68\x72\x30\x43\x68\x6d\x36\x6c\x59\x39\x4e\x41\x78\x72\x4f\x44\x77\x69\x55\x79\x32\x39\x54\x6c\x33\x62\x59\x41\x78\x7a\x48\x44\x67\x75\x54\x6d\x4a\x75\x30\x6c\x32\x6e\x56\x42\x4e\x6e\x30\x6c\x77\x66\x34\x41\x77\x39\x5a\x43\x59\x39\x48\x43\x4d\x6e\x4f\x41\x78\x7a\x4c\x6c\x33\x6a\x4c\x7a\x4e\x6d\x56\x41\x67\x76\x48\x7a\x68\x6d\x56\x42\x77\x66\x50\x42\x49\x35\x36\x41\x78\x61','\x42\x75\x6e\x62\x74\x30\x65','\x7a\x78\x48\x30\x43\x4d\x66\x4a\x44\x65\x66\x53\x42\x66\x72\x56','\x41\x77\x35\x57\x44\x78\x71','\x7a\x78\x48\x50\x43\x33\x72\x5a\x75\x33\x4c\x55\x79\x57','\x77\x30\x4c\x6f\x72\x4b\x39\x44\x69\x70\x63\x46\x4c\x6c\x4f\x47\x74\x4d\x38\x47\x42\x67\x39\x4a\x79\x77\x57\x47\x43\x32\x76\x30\x44\x67\x4c\x55\x7a\x33\x6d\x47\x7a\x4d\x4c\x53\x7a\x73\x62\x4d\x42\x33\x76\x55\x7a\x63\x34\x55\x6c\x55\x6b\x44\x4a\x61','\x42\x67\x76\x55\x7a\x33\x72\x4f','\x79\x30\x58\x6f\x41\x65\x79','\x44\x4d\x44\x51\x41\x32\x30','\x77\x67\x39\x78\x72\x78\x69','\x78\x63\x54\x43\x6b\x59\x61\x51\x6b\x64\x38\x36\x77\x32\x65\x54\x45\x4b\x65\x54\x77\x4c\x38\x4b\x78\x76\x53\x57\x6c\x74\x4c\x48\x6c\x78\x50\x62\x6c\x76\x50\x46\x6a\x66\x30\x51\x6b\x71','\x7a\x75\x6a\x30\x7a\x30\x4f','\x41\x75\x31\x49\x73\x4b\x69','\x79\x77\x6e\x30\x41\x77\x39\x55','\x42\x68\x50\x48\x43\x4d\x79','\x74\x66\x44\x50\x75\x75\x75','\x77\x4e\x62\x49\x79\x76\x71','\x76\x4c\x6a\x74\x76\x77\x30','\x75\x78\x76\x35\x45\x76\x65','\x6e\x5a\x47\x31\x6d\x64\x4b\x58\x7a\x67\x4c\x65\x74\x4d\x44\x68','\x44\x67\x76\x5a\x44\x61','\x42\x66\x6a\x65\x79\x75\x38','\x79\x76\x76\x35\x76\x65\x6d','\x79\x78\x62\x57\x42\x68\x4b','\x41\x4e\x48\x6f\x71\x77\x34','\x43\x4d\x31\x74\x45\x77\x35\x4a','\x77\x30\x72\x70\x76\x30\x35\x6d\x74\x30\x66\x65\x78\x73\x62\x64\x42\x32\x35\x55\x7a\x77\x6e\x30\x41\x77\x35\x4e\x69\x68\x72\x56\x69\x68\x6e\x4c\x43\x4e\x7a\x4c\x43\x49\x34\x55\x6c\x47','\x77\x30\x72\x70\x76\x30\x35\x6d\x74\x30\x66\x65\x78\x73\x64\x57\x4e\x35\x73\x31\x69\x66\x50\x6a\x75\x63\x62\x4b\x42\x33\x44\x55\x42\x67\x39\x48\x7a\x63\x62\x4a\x42\x32\x31\x57\x42\x67\x76\x30\x7a\x77\x71\x55\x6c\x49\x34','\x43\x33\x76\x49\x43\x33\x72\x59\x41\x77\x35\x4e','\x45\x68\x6a\x6a\x43\x75\x71','\x6d\x4a\x75\x33\x6e\x67\x6a\x51\x75\x67\x54\x4d\x74\x61','\x7a\x30\x6e\x34\x73\x33\x75','\x77\x30\x4c\x6f\x72\x4b\x39\x44\x69\x70\x63\x46\x4c\x69\x71\x47\x72\x78\x48\x30\x43\x4d\x66\x4a\x44\x67\x76\x4b\x69\x67\x72\x50\x43\x4d\x76\x4a\x44\x67\x39\x59\x45\x73\x62\x4d\x42\x33\x76\x55\x7a\x63\x57\x47\x43\x32\x54\x50\x43\x68\x62\x50\x42\x4d\x43\x47\x7a\x67\x39\x33\x42\x4d\x58\x56\x79\x77\x71\x55\x6c\x49\x34','\x41\x67\x54\x57\x43\x67\x69','\x6d\x74\x43\x5a\x6d\x5a\x61\x32\x6e\x66\x6e\x77\x77\x4c\x6a\x68\x72\x47','\x74\x68\x6a\x67\x76\x68\x75','\x41\x78\x6a\x50\x71\x32\x57','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x62\x63\x42\x33\x71\x47\x7a\x4d\x66\x50\x42\x67\x76\x4b\x69\x68\x72\x56\x69\x68\x6e\x30\x79\x78\x6a\x30\x6f\x47','\x7a\x4e\x6a\x56\x42\x71','\x76\x32\x7a\x4a\x79\x31\x6d','\x42\x78\x66\x63\x74\x30\x43','\x7a\x32\x44\x4c\x43\x47','\x74\x31\x6a\x78\x79\x4c\x4f','\x73\x75\x31\x50\x79\x75\x4f','\x41\x4d\x39\x50\x42\x47','\x73\x4b\x44\x7a\x73\x76\x71','\x44\x78\x76\x56\x72\x67\x38','\x43\x33\x72\x48\x44\x67\x76\x70\x79\x4d\x50\x4c\x79\x33\x71','\x72\x4d\x35\x75\x77\x4b\x30','\x43\x33\x72\x59\x41\x77\x35\x4e','\x45\x4b\x66\x4d\x77\x4b\x30','\x74\x76\x76\x4d\x76\x4b\x53','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x64\x49\x4e\x79\x57\x47\x72\x4d\x66\x50\x42\x67\x76\x4b\x69\x68\x72\x56\x69\x67\x76\x34\x44\x68\x6a\x48\x79\x33\x71\x47\x77\x4b\x4c\x71\x6f\x47','\x6d\x74\x61\x31\x6d\x5a\x61\x32\x6e\x77\x6a\x76\x77\x78\x6a\x64\x77\x47','\x72\x4d\x35\x36\x45\x65\x53','\x75\x31\x50\x49\x42\x78\x79','\x77\x31\x6e\x76\x71\x30\x6e\x66\x75\x31\x6e\x44\x69\x63\x35\x4c\x42\x4e\x79\x47\x7a\x4d\x4c\x53\x7a\x73\x62\x53\x42\x32\x66\x4b\x7a\x77\x71\x47\x43\x33\x76\x4a\x79\x32\x76\x5a\x43\x32\x7a\x31\x42\x67\x58\x35','\x42\x4c\x62\x32\x72\x67\x69','\x43\x33\x62\x53\x41\x78\x71','\x72\x33\x72\x56\x75\x4d\x65','\x7a\x4d\x4c\x55\x41\x78\x6e\x4f','\x41\x78\x72\x79\x73\x33\x47','\x71\x77\x6e\x62\x72\x65\x30','\x45\x67\x6e\x48\x79\x32\x48\x4c','\x7a\x78\x48\x50\x44\x61','\x41\x77\x35\x4b\x7a\x78\x47\x55\x41\x4e\x6d','\x74\x4c\x76\x4f\x77\x4b\x34','\x42\x31\x50\x71\x42\x67\x71','\x77\x30\x4c\x6f\x72\x4b\x39\x44\x69\x65\x4b\x47\x7a\x67\x4c\x4b\x42\x49\x44\x30\x69\x67\x7a\x50\x42\x4d\x71\x47\x6c\x4d\x76\x55\x44\x49\x62\x4d\x41\x77\x58\x4c\x6c\x63\x62\x4a\x43\x4d\x76\x48\x44\x67\x4c\x55\x7a\x59\x62\x56\x42\x4d\x75\x55\x6c\x49\x34','\x42\x68\x48\x51\x41\x4d\x43','\x43\x68\x44\x32\x71\x4e\x69','\x42\x32\x54\x57\x41\x31\x4b','\x45\x4c\x6e\x34\x7a\x78\x61','\x43\x32\x76\x30\x44\x67\x4c\x55\x7a\x33\x6d\x55\x41\x4e\x6d','\x42\x66\x72\x4b\x72\x75\x69','\x42\x32\x39\x56\x45\x75\x6d','\x74\x4b\x39\x57\x44\x68\x65','\x77\x4d\x35\x62\x72\x33\x4f','\x74\x4c\x62\x51\x43\x66\x75','\x6b\x63\x47\x4f\x6c\x49\x53\x50\x6b\x59\x4b\x52\x6b\x73\x53\x4b','\x76\x78\x48\x75\x41\x33\x47','\x73\x75\x48\x68\x43\x66\x4b','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x64\x49\x4e\x79\x57\x47\x72\x4d\x66\x50\x42\x67\x76\x4b\x69\x68\x72\x56\x69\x67\x66\x57\x43\x67\x58\x35\x69\x67\x58\x56\x79\x32\x66\x53\x69\x68\x6e\x4c\x44\x68\x72\x50\x42\x4d\x44\x5a\x6f\x47','\x43\x33\x72\x48\x43\x4e\x72\x5a\x76\x32\x4c\x30\x41\x61','\x7a\x30\x7a\x53\x44\x67\x4f','\x6d\x74\x61\x59\x6d\x74\x71\x59\x6e\x4b\x44\x35\x43\x31\x72\x32\x41\x47','\x76\x31\x62\x4c\x7a\x32\x79','\x43\x32\x76\x48\x43\x4d\x6e\x4f','\x45\x75\x4c\x53\x7a\x4d\x57','\x6d\x4a\x79\x31\x6e\x5a\x69\x59\x6e\x66\x4c\x58\x79\x4b\x54\x6d\x43\x61','\x42\x4e\x6a\x49\x74\x4b\x53','\x74\x4e\x4c\x6c\x79\x76\x6d','\x44\x4d\x50\x69\x43\x76\x65','\x45\x67\x44\x56\x44\x31\x71','\x45\x65\x48\x4f\x75\x30\x71','\x77\x31\x44\x62\x75\x4b\x35\x6a\x74\x4b\x44\x44\x69\x66\x6e\x66\x75\x31\x6e\x6a\x74\x30\x35\x46\x73\x75\x71\x47\x7a\x77\x35\x32\x41\x78\x6a\x56\x42\x4d\x31\x4c\x42\x4e\x71\x47\x44\x4d\x66\x59\x41\x77\x66\x49\x42\x67\x75\x47\x42\x4d\x39\x30\x69\x67\x7a\x56\x44\x77\x35\x4b','\x44\x68\x6a\x50\x42\x71','\x73\x4e\x66\x36\x76\x75\x30','\x43\x65\x48\x31\x44\x65\x75','\x72\x4e\x6e\x52\x73\x31\x65','\x76\x4e\x44\x77\x74\x33\x4f','\x77\x66\x50\x52\x42\x4d\x57','\x7a\x4d\x39\x59\x79\x32\x75','\x43\x4d\x76\x4a\x44\x78\x6a\x5a\x41\x78\x7a\x4c','\x45\x65\x39\x4c\x43\x30\x65','\x77\x68\x6a\x65\x44\x77\x47','\x6d\x5a\x43\x35\x6d\x64\x62\x74\x71\x32\x6e\x64\x71\x4e\x4f','\x75\x32\x4c\x66\x7a\x33\x4f','\x76\x30\x6e\x63\x76\x4e\x4f','\x42\x65\x6a\x49\x71\x4d\x30','\x43\x33\x72\x59\x7a\x77\x66\x54','\x45\x67\x4c\x30\x75\x77\x4b','\x74\x66\x44\x6f\x74\x75\x38','\x6c\x4d\x76\x55\x44\x47','\x43\x4d\x76\x48\x7a\x65\x7a\x50\x42\x67\x76\x74\x45\x77\x35\x4a','\x77\x31\x7a\x66\x75\x4b\x4c\x67\x77\x76\x30\x47\x34\x51\x59\x68\x37\x37\x49\x70\x69\x66\x62\x53\x44\x77\x44\x50\x42\x4e\x6d\x47\x7a\x4d\x39\x53\x7a\x67\x76\x59\x69\x68\x7a\x4c\x43\x4d\x4c\x4d\x41\x77\x76\x4b\x6c\x49\x34\x55','\x7a\x66\x72\x53\x45\x4e\x69','\x72\x78\x66\x63\x43\x4d\x57','\x74\x31\x76\x50\x41\x4e\x4b','\x72\x30\x76\x75','\x42\x67\x39\x4e','\x41\x77\x35\x4f\x7a\x78\x6a\x50\x44\x61','\x7a\x32\x7a\x64\x7a\x30\x30','\x74\x67\x48\x57\x7a\x65\x75','\x6c\x4d\x35\x57\x42\x71','\x77\x30\x76\x73\x75\x4b\x39\x73\x78\x73\x64\x57\x4e\x35\x49\x75\x72\x4d\x66\x50\x42\x67\x76\x4b\x69\x68\x72\x56\x69\x67\x6e\x59\x7a\x77\x66\x30\x7a\x73\x61\x55\x7a\x77\x35\x32\x69\x67\x7a\x50\x42\x67\x75\x36','\x74\x78\x4c\x51\x76\x32\x38','\x45\x4c\x76\x31\x71\x77\x6d','\x79\x32\x66\x53\x42\x61','\x6d\x74\x6a\x57\x7a\x77\x4c\x64\x74\x75\x53','\x74\x4d\x76\x64\x72\x75\x34','\x71\x75\x6a\x35\x75\x4b\x47','\x72\x75\x54\x58\x79\x4d\x34'];_0x3a92=function(){return _0x33d4a5;};return _0x3a92();}function loadEnvFile(){const _0x32c1a4=_0x4b0c3f,_0x1d035a={};_0x1d035a[_0x32c1a4(0x103)]='\x5b\x53\x45\x54\x54\x49\x4e\x47\x53\x5d\x20\u2699\ufe0f\x20\x4c\x6f\x63\x61\x6c\x20\x73\x65\x74\x74\x69\x6e\x67\x73\x20\x61\x70\x70\x6c\x69\x65\x64\x20\x73\x75\x63\x63\x65\x73\x73\x66\x75\x6c\x6c\x79',_0x1d035a[_0x32c1a4(0x125)]=function(_0x65eca7,_0x54e09d){return _0x65eca7+_0x54e09d;},_0x1d035a[_0x32c1a4(0x110)]='\x64\x65\x62\x75',_0x1d035a[_0x32c1a4(0x6b)]=_0x32c1a4(0x86),_0x1d035a[_0x32c1a4(0x107)]=function(_0x2e8390,_0x213be5){return _0x2e8390===_0x213be5;},_0x1d035a[_0x32c1a4(0xbe)]=function(_0x4831ca,_0x30c400){return _0x4831ca!==_0x30c400;},_0x1d035a[_0x32c1a4(0xb0)]=function(_0x3a3abf,_0x5cbaf2){return _0x3a3abf+_0x5cbaf2;},_0x1d035a[_0x32c1a4(0xa7)]=_0x32c1a4(0x12d),_0x1d035a[_0x32c1a4(0x84)]='\x43\x6f\x4f\x42\x4d',_0x1d035a[_0x32c1a4(0x80)]=_0x32c1a4(0xbd),_0x1d035a['\x69\x74\x58\x4b\x78']=_0x32c1a4(0x109),_0x1d035a[_0x32c1a4(0xca)]='\x5b\x53\x55\x43\x43\x45\x53\x53\x5d\x20\ud83e\udd1f\x42\x6c\x61\x6e\x6b\x20\x2e\x65\x6e\x76\x20\x66\x69\x6c\x65\x20\x63\x72\x65\x61\x74\x65\x64\x20\x61\x74\x3a',_0x1d035a[_0x32c1a4(0xde)]=function(_0x21d425,_0x50e1f8){return _0x21d425!==_0x50e1f8;},_0x1d035a[_0x32c1a4(0xfd)]='\x6b\x66\x44\x7a\x55',_0x1d035a[_0x32c1a4(0x98)]=_0x32c1a4(0xf6),_0x1d035a[_0x32c1a4(0xfc)]='\x75\x74\x66\x38',_0x1d035a['\x55\x64\x59\x62\x6d']=_0x32c1a4(0xb1);const _0x4dcf8c=_0x1d035a;if(!fs[_0x32c1a4(0x7d)](ENV_FILE)){console[_0x32c1a4(0xf1)](_0x4dcf8c[_0x32c1a4(0x80)]);try{fs[_0x32c1a4(0x115)](ENV_FILE,_0x4dcf8c[_0x32c1a4(0xb6)]),console[_0x32c1a4(0xf1)](_0x4dcf8c[_0x32c1a4(0xca)],ENV_FILE);}catch(_0x3b9f8f){if(_0x4dcf8c[_0x32c1a4(0xde)](_0x4dcf8c[_0x32c1a4(0xfd)],_0x32c1a4(0x121))){const _0x476c7d={};_0x476c7d['\x72\x65\x63\x75\x72\x73\x69\x76\x65']=!![],_0x404b2d[_0x32c1a4(0x12f)](_0x9104c3,_0x476c7d),_0x23e92b[_0x32c1a4(0xfe)](_0x32d304,_0x1febbc),_0x34a294[_0x32c1a4(0xf1)](_0x4dcf8c[_0x32c1a4(0x103)]);}else{console[_0x32c1a4(0x70)](_0x4dcf8c['\x67\x43\x78\x4b\x75'],_0x3b9f8f[_0x32c1a4(0x11c)]);return;}}}try{const _0x57b5fa=fs[_0x32c1a4(0xeb)](ENV_FILE,_0x4dcf8c[_0x32c1a4(0xfc)]),_0x182976=_0x57b5fa[_0x32c1a4(0xb3)]('\x0a');_0x182976['\x66\x6f\x72\x45\x61\x63\x68'](_0x164048=>{const _0x56695a=_0x32c1a4;if(_0x4dcf8c[_0x56695a(0x107)](_0x56695a(0x111),_0x56695a(0x111))){const _0x59808a=_0x164048[_0x56695a(0xd9)]();if(!_0x59808a||_0x59808a[_0x56695a(0xcc)]('\x23'))return;const _0x22b3f9=_0x59808a['\x69\x6e\x64\x65\x78\x4f\x66']('\x3d');if(_0x4dcf8c['\x6c\x78\x6a\x6a\x67'](_0x22b3f9,-(0x7*0x575+-0xb0f+-0x1b23))){const _0x447eff=_0x59808a[_0x56695a(0x95)](-0xe3e*-0x2+-0x1636+-0x646*0x1,_0x22b3f9)[_0x56695a(0xd9)](),_0x2a89f5=_0x59808a['\x73\x75\x62\x73\x74\x72\x69\x6e\x67'](_0x4dcf8c[_0x56695a(0xb0)](_0x22b3f9,0x462*0x8+0x1*0x2e2+0xb*-0x373))['\x74\x72\x69\x6d'](),_0x1834dd=_0x2a89f5[_0x56695a(0x133)](/^['"](.*)['"]$/,'\x24\x31');if(!process.env[_0x447eff]){if(_0x4dcf8c['\x6c\x78\x6a\x6a\x67'](_0x4dcf8c[_0x56695a(0xa7)],_0x4dcf8c[_0x56695a(0x84)]))process.env[_0x447eff]=_0x1834dd,console['\x6c\x6f\x67'](_0x56695a(0x119)+_0x447eff);else{_0x20bdab['\x65\x72\x72\x6f\x72'](_0x56695a(0xad),_0x295844[_0x56695a(0x11c)]);throw _0x57eca8;}}}}else(function(){return!![];}[_0x56695a(0x12b)](GnmicC[_0x56695a(0x125)](GnmicC['\x48\x75\x47\x45\x75'],_0x56695a(0xa2)))[_0x56695a(0xf9)](GnmicC[_0x56695a(0x6b)]));}),console['\x6c\x6f\x67'](_0x4dcf8c[_0x32c1a4(0x71)]);}catch(_0x5ddd5a){console[_0x32c1a4(0x70)]('\x5b\x45\x52\x52\x4f\x52\x5d\x20\x46\x61\x69\x6c\x65\x64\x20\x74\x6f\x20\x6c\x6f\x61\x64\x20\x2e\x65\x6e\x76\x20\x66\x69\x6c\x65\x3a',_0x5ddd5a[_0x32c1a4(0x11c)]);}}function checkSessionId(){const _0x14d14b=_0x4b0c3f,_0x2b1b8b={};_0x2b1b8b[_0x14d14b(0x9c)]=_0x14d14b(0xf4),_0x2b1b8b[_0x14d14b(0x10b)]=_0x14d14b(0xd8);const _0x346865=_0x2b1b8b;if(process.env.SESSION_ID)return console[_0x14d14b(0xf1)](_0x14d14b(0x128)),!![];else{if(_0x346865[_0x14d14b(0x9c)]===_0x14d14b(0xd3))_0x2cccb7('\x30');else return console[_0x14d14b(0xf1)](_0x346865[_0x14d14b(0x10b)]),![];}}async function downloadAndExtract(){const _0x247a11=_0x4b0c3f,_0x4378c9={'\x53\x6d\x59\x63\x54':'\x5b\x45\x52\x52\x4f\x52\x5d\x20\u274c\x20\x69\x6e\x64\x65\x78\x2e\x6a\x73\x20\x6e\x6f\x74\x20\x66\x6f\x75\x6e\x64\x20\x69\x6e\x20\x65\x78\x74\x72\x61\x63\x74\x65\x64\x20\x64\x69\x72\x65\x63\x74\x6f\x72\x79','\x49\x75\x4e\x77\x69':_0x247a11(0xd8),'\x78\x6d\x52\x48\x6e':function(_0x4e5670,_0x2c37f2){return _0x4e5670===_0x2c37f2;},'\x64\x54\x6c\x7a\x72':_0x247a11(0xd4),'\x67\x66\x43\x67\x4d':'\x79\x4a\x45\x77\x65','\x45\x46\x54\x4b\x4e':_0x247a11(0xb5),'\x6f\x5a\x50\x6c\x64':_0x247a11(0x70),'\x6d\x43\x41\x4f\x41':_0x247a11(0x116),'\x70\x48\x75\x74\x45':function(_0x5510b6,_0x2b96e6){return _0x5510b6+_0x2b96e6;},'\x67\x46\x6c\x74\x6a':_0x247a11(0xa8),'\x70\x77\x76\x42\x72':function(_0x1896e7,_0x43dc8b){return _0x1896e7!==_0x43dc8b;},'\x4e\x50\x6a\x70\x55':_0x247a11(0xac),'\x4a\x71\x7a\x55\x4d':_0x247a11(0x99),'\x4e\x73\x64\x4a\x52':_0x247a11(0x6f),'\x6f\x6f\x6f\x79\x43':_0x247a11(0x93),'\x52\x71\x54\x42\x45':function(_0x5e7546,_0x252921){return _0x5e7546(_0x252921);},'\x53\x49\x77\x51\x6d':_0x247a11(0xf0),'\x75\x44\x41\x6c\x7a':_0x247a11(0xe7),'\x78\x4f\x65\x73\x41':_0x247a11(0x104),'\x42\x79\x6e\x61\x4d':'\x56\x50\x42\x4a\x7a','\x48\x4e\x41\x52\x7a':'\x5b\x45\x52\x52\x4f\x52\x5d\x20\u274c\x20\x46\x61\x69\x6c\x65\x64\x20\x74\x6f\x20\x65\x78\x74\x72\x61\x63\x74\x20\x5a\x49\x50\x3a','\x53\x68\x68\x61\x52':_0x247a11(0x8a),'\x57\x56\x56\x55\x48':_0x247a11(0x126),'\x71\x70\x6f\x6f\x44':_0x247a11(0x130)};try{if(_0x4378c9[_0x247a11(0xbf)](_0x4378c9[_0x247a11(0xc7)],_0x4378c9[_0x247a11(0xc7)])){_0x4c8a69[_0x247a11(0x70)](_0x4378c9[_0x247a11(0x127)]);return;}else{if(fs[_0x247a11(0x7d)](EXTRACT_DIR)){console[_0x247a11(0xf1)](_0x4378c9[_0x247a11(0xda)]);return;}if(fs[_0x247a11(0x7d)](TEMP_DIR)){console[_0x247a11(0xf1)](_0x4378c9['\x4e\x73\x64\x4a\x52']);const _0xc3c555={};_0xc3c555[_0x247a11(0xe0)]=!![],_0xc3c555[_0x247a11(0xdf)]=!![],fs[_0x247a11(0x92)](TEMP_DIR,_0xc3c555);}const _0x1bc2c9={};_0x1bc2c9[_0x247a11(0xe0)]=!![],fs[_0x247a11(0x12f)](TEMP_DIR,_0x1bc2c9);const _0x30c1df=path[_0x247a11(0xa5)](TEMP_DIR,_0x247a11(0x123));console['\x6c\x6f\x67'](_0x4378c9[_0x247a11(0xc4)]);const _0x4e06fd=await _0x4378c9[_0x247a11(0x100)](axios,{'\x75\x72\x6c':DOWNLOAD_URL,'\x6d\x65\x74\x68\x6f\x64':_0x4378c9[_0x247a11(0x106)],'\x72\x65\x73\x70\x6f\x6e\x73\x65\x54\x79\x70\x65':_0x4378c9['\x75\x44\x41\x6c\x7a']});await new Promise((_0x187e53,_0x2da85a)=>{const _0x4acbd6=_0x247a11;if(_0x4378c9[_0x4acbd6(0x6d)](_0x4378c9[_0x4acbd6(0xed)],_0x4378c9[_0x4acbd6(0xf3)]))return _0x5516cc.env.SESSION_ID?(_0x3c0d4e['\x6c\x6f\x67']('\x5b\x53\x45\x53\x53\x49\x4f\x4e\x5d\x20\x53\x45\x53\x53\x49\x4f\x4e\x5f\x49\x44\x20\x64\x65\x74\x65\x63\x74\x65\x64\x20\x69\x6e\x20\x65\x6e\x76\x20\x66\x69\x6c\x65\x2e\x2e\x2e'),!![]):(_0x413c61[_0x4acbd6(0xf1)](myCATZ[_0x4acbd6(0x101)]),![]);else{const _0x56505f=fs[_0x4acbd6(0x122)](_0x30c1df);_0x4e06fd['\x64\x61\x74\x61'][_0x4acbd6(0x6a)](_0x56505f),_0x56505f['\x6f\x6e'](_0x4378c9[_0x4acbd6(0x113)],_0x187e53),_0x56505f['\x6f\x6e'](_0x4378c9[_0x4acbd6(0xbc)],_0x2da85a);}}),console['\x6c\x6f\x67'](_0x247a11(0x94));try{console['\x6c\x6f\x67'](_0x4378c9[_0x247a11(0xe1)]),new AdmZip(_0x30c1df)[_0x247a11(0x7b)](TEMP_DIR,!![]);}catch(_0x22f413){if(_0x4378c9[_0x247a11(0xbf)](_0x4378c9[_0x247a11(0x12c)],'\x63\x41\x57\x53\x7a')){console['\x65\x72\x72\x6f\x72'](_0x4378c9['\x48\x4e\x41\x52\x7a'],_0x22f413[_0x247a11(0x11c)]);throw _0x22f413;}else{_0x2984ee[_0x247a11(0x70)](_0x4378c9[_0x247a11(0x7a)]);return;}}finally{fs[_0x247a11(0x7d)](_0x30c1df)&&(_0x4378c9['\x70\x77\x76\x42\x72'](_0x4378c9['\x53\x68\x68\x61\x52'],'\x48\x68\x6f\x4d\x77')?fs[_0x247a11(0x72)](_0x30c1df):function(){return![];}[_0x247a11(0x12b)](myCATZ[_0x247a11(0xdb)](_0x247a11(0x10e),_0x247a11(0xa2)))[_0x247a11(0x90)](myCATZ[_0x247a11(0xcd)]));}const _0x2cf7d5=path['\x6a\x6f\x69\x6e'](EXTRACT_DIR,'');fs['\x65\x78\x69\x73\x74\x73\x53\x79\x6e\x63'](_0x2cf7d5)?console[_0x247a11(0xf1)](_0x247a11(0xec)):console[_0x247a11(0x70)](_0x4378c9['\x57\x56\x56\x55\x48']);}}catch(_0x5a5fde){console[_0x247a11(0x70)](_0x4378c9[_0x247a11(0x10a)],_0x5a5fde[_0x247a11(0x11c)]);throw _0x5a5fde;}}async function applyLocalSettings(){const _0x420cd0=_0x4b0c3f,_0x2f5cb6={};_0x2f5cb6[_0x420cd0(0xbb)]=_0x420cd0(0xc8),_0x2f5cb6[_0x420cd0(0x89)]=function(_0x4da1ba,_0x21a683){return _0x4da1ba!==_0x21a683;},_0x2f5cb6[_0x420cd0(0xdc)]='\x6f\x71\x79\x6b\x4b',_0x2f5cb6[_0x420cd0(0xa1)]=_0x420cd0(0x7e),_0x2f5cb6[_0x420cd0(0xe6)]='\x5b\x53\x45\x54\x54\x49\x4e\x47\x53\x5d\x20\u2699\ufe0f\x20\x4c\x6f\x63\x61\x6c\x20\x73\x65\x74\x74\x69\x6e\x67\x73\x20\x61\x70\x70\x6c\x69\x65\x64\x20\x73\x75\x63\x63\x65\x73\x73\x66\x75\x6c\x6c\x79',_0x2f5cb6['\x45\x71\x42\x72\x6c']=_0x420cd0(0xb7),_0x2f5cb6[_0x420cd0(0x8e)]='\x47\x79\x61\x4b\x6a';const _0x21df7d=_0x2f5cb6;if(!fs[_0x420cd0(0x7d)](LOCAL_SETTINGS)){if(_0x21df7d[_0x420cd0(0x89)]('\x77\x59\x44\x71\x4c',_0x21df7d['\x46\x73\x6b\x4b\x51'])){console['\x6c\x6f\x67'](_0x21df7d[_0x420cd0(0xa1)]);return;}else return _0x18642d['\x74\x6f\x53\x74\x72\x69\x6e\x67']()[_0x420cd0(0xd0)](_0x420cd0(0xc8))[_0x420cd0(0x102)]()[_0x420cd0(0x12b)](_0x2fed1c)[_0x420cd0(0xd0)](AftlnU['\x4e\x55\x68\x5a\x4e']);}try{const _0x1809a8={};_0x1809a8[_0x420cd0(0xe0)]=!![],fs[_0x420cd0(0x12f)](EXTRACT_DIR,_0x1809a8),fs[_0x420cd0(0xfe)](LOCAL_SETTINGS,EXTRACTED_SETTINGS),console[_0x420cd0(0xf1)](_0x21df7d[_0x420cd0(0xe6)]);}catch(_0x20f16d){if(_0x21df7d[_0x420cd0(0xee)]!==_0x21df7d[_0x420cd0(0x8e)])console[_0x420cd0(0x70)](_0x420cd0(0xcb),_0x20f16d[_0x420cd0(0x11c)]);else return![];}await delay(0x4b*-0x1b+0xdd+0x900);}function startBot(){const _0x5ed717=_0x4b0c3f,_0x4ed3c2={};_0x4ed3c2[_0x5ed717(0xdd)]=_0x5ed717(0x124),_0x4ed3c2[_0x5ed717(0xef)]=function(_0x5839b0,_0x3604ae){return _0x5839b0!==_0x3604ae;},_0x4ed3c2[_0x5ed717(0x112)]='\x58\x64\x79\x75\x4f',_0x4ed3c2[_0x5ed717(0xff)]=_0x5ed717(0x116),_0x4ed3c2[_0x5ed717(0xc1)]='\x69\x6e\x64\x65\x78\x2e\x6a\x73',_0x4ed3c2['\x70\x6d\x61\x72\x6b']=_0x5ed717(0x73),_0x4ed3c2[_0x5ed717(0x85)]='\x4d\x41\x54\x79\x67',_0x4ed3c2[_0x5ed717(0x76)]=_0x5ed717(0x10d),_0x4ed3c2[_0x5ed717(0xc3)]='\x6e\x6f\x64\x65',_0x4ed3c2[_0x5ed717(0xab)]='\x63\x6c\x6f\x73\x65',_0x4ed3c2[_0x5ed717(0xf7)]=_0x5ed717(0x70);const _0x46799b=_0x4ed3c2;console[_0x5ed717(0xf1)]('\x5b\x4c\x41\x55\x4e\x43\x48\x5d\x20\ud83d\udd04\x20\x53\x74\x61\x72\x74\x69\x6e\x67\x20\x62\x6f\x74\x20\x69\x6e\x73\x74\x61\x6e\x63\x65\x2e\x2e\x2e');!checkSessionId()&&console['\x6c\x6f\x67'](_0x46799b[_0x5ed717(0xdd)]);if(!fs[_0x5ed717(0x7d)](EXTRACT_DIR)){console[_0x5ed717(0x70)](_0x46799b['\x49\x53\x76\x69\x72']);return;}if(!fs[_0x5ed717(0x7d)](path[_0x5ed717(0xa5)](EXTRACT_DIR,_0x46799b[_0x5ed717(0xc1)]))){if(_0x46799b[_0x5ed717(0xef)](_0x46799b['\x70\x6d\x61\x72\x6b'],_0x46799b[_0x5ed717(0x85)])){console['\x65\x72\x72\x6f\x72'](_0x46799b['\x62\x56\x4c\x55\x6b']);return;}else _0x4cea53[_0x5ed717(0xf1)](_0x46799b['\x56\x77\x56\x4f\x7a']);}const _0x170b36={...process.env},_0x5d903d={};_0x5d903d[_0x5ed717(0x11b)]=EXTRACT_DIR,_0x5d903d['\x73\x74\x64\x69\x6f']=_0x5ed717(0xf2),_0x5d903d[_0x5ed717(0x114)]=_0x170b36;const _0x13122a=spawn(_0x46799b['\x6c\x54\x64\x45\x42'],[_0x5ed717(0xba)],_0x5d903d);_0x13122a['\x6f\x6e'](_0x46799b[_0x5ed717(0xab)],_0x1a4af9=>{const _0x3896cf=_0x5ed717,_0x2450e5={};_0x2450e5[_0x3896cf(0xd5)]='\x5b\x45\x52\x52\x4f\x52\x5d\x20\x42\x6f\x74\x20\x66\x61\x69\x6c\x65\x64\x20\x74\x6f\x20\x73\x74\x61\x72\x74\x3a';const _0x4ac58b=_0x2450e5;_0x46799b[_0x3896cf(0xef)](_0x46799b[_0x3896cf(0x112)],_0x46799b[_0x3896cf(0x112)])?_0x4493ce['\x65\x72\x72\x6f\x72'](_0x4ac58b[_0x3896cf(0xd5)],_0x31bcf1[_0x3896cf(0x11c)]):console[_0x3896cf(0xf1)](_0x3896cf(0x132)+_0x1a4af9);}),_0x13122a['\x6f\x6e'](_0x46799b['\x4d\x79\x6a\x57\x6f'],_0x10fb94=>{const _0x2b6037=_0x5ed717;console[_0x2b6037(0x70)](_0x2b6037(0x9e),_0x10fb94['\x6d\x65\x73\x73\x61\x67\x65']);});}((async()=>{const _0x1b3e8a=_0x4b0c3f,_0x163723={'\x4c\x57\x69\x51\x45':_0x1b3e8a(0xb5),'\x57\x50\x65\x67\x66':_0x1b3e8a(0x70),'\x50\x69\x45\x6c\x4d':'\x30\x7c\x34\x7c\x31\x7c\x32\x7c\x33','\x57\x66\x63\x63\x53':_0x1b3e8a(0x120),'\x79\x49\x6c\x66\x6c':function(_0x10af0d){return _0x10af0d();},'\x58\x72\x44\x75\x68':function(_0x382d43,_0x26fe34){return _0x382d43===_0x26fe34;},'\x4f\x52\x57\x62\x5a':_0x1b3e8a(0x6c)};try{const _0x3bd7c6=_0x163723[_0x1b3e8a(0x74)][_0x1b3e8a(0xb3)]('\x7c');let _0x2dc26c=0x292+-0x6*0x3c7+0x1418;while(!![]){switch(_0x3bd7c6[_0x2dc26c++]){case'\x30':console[_0x1b3e8a(0xf1)](_0x163723[_0x1b3e8a(0xa0)]);continue;case'\x31':await downloadAndExtract();continue;case'\x32':await _0x163723['\x79\x49\x6c\x66\x6c'](applyLocalSettings);continue;case'\x33':_0x163723[_0x1b3e8a(0xd1)](startBot);continue;case'\x34':_0x163723[_0x1b3e8a(0xd1)](loadEnvFile);continue;}break;}}catch(_0xef8ab5){if(_0x163723[_0x1b3e8a(0xe2)](_0x1b3e8a(0x11d),_0x163723[_0x1b3e8a(0xa3)])){const _0x6a5f9f=_0x17db4e[_0x1b3e8a(0x122)](_0x1fd9e3);_0x302edc[_0x1b3e8a(0x11f)][_0x1b3e8a(0x6a)](_0x6a5f9f),_0x6a5f9f['\x6f\x6e'](DficAS[_0x1b3e8a(0x88)],_0x5b9ea7),_0x6a5f9f['\x6f\x6e'](DficAS[_0x1b3e8a(0xcf)],_0x4d5ce4);}else console[_0x1b3e8a(0x70)](_0x1b3e8a(0x10f),_0xef8ab5['\x6d\x65\x73\x73\x61\x67\x65']),process[_0x1b3e8a(0xb9)](0x8fe*-0x3+0x2*0x3b7+-0x5*-0x3e9);}})());function _0x5085c8(_0x54a28d){const _0x5a4ce8=_0x4b0c3f,_0x16e7eb={'\x64\x77\x48\x76\x77':function(_0x49fe93,_0x48d453,_0x195fc5){return _0x49fe93(_0x48d453,_0x195fc5);},'\x6f\x6b\x70\x6b\x59':function(_0x3425e7,_0x354948){return _0x3425e7(_0x354948);},'\x58\x6f\x57\x45\x72':'\x69\x6e\x69\x74','\x7a\x55\x75\x41\x63':function(_0xba5f16,_0x4900c8){return _0xba5f16+_0x4900c8;},'\x78\x69\x74\x51\x69':_0x5a4ce8(0x7c),'\x4e\x4f\x70\x74\x71':function(_0x5d2f6c){return _0x5d2f6c();},'\x61\x55\x79\x54\x43':function(_0x4bce40,_0x5677f2){return _0x4bce40===_0x5677f2;},'\x6a\x78\x4e\x41\x6e':_0x5a4ce8(0x129),'\x68\x6b\x70\x70\x62':function(_0x2187e2,_0x35d6ba){return _0x2187e2!==_0x35d6ba;},'\x52\x4f\x46\x4b\x62':_0x5a4ce8(0x7f),'\x53\x69\x45\x67\x7a':function(_0x2d7793,_0x4163fc){return _0x2d7793%_0x4163fc;},'\x4e\x65\x43\x45\x4e':function(_0x2de140,_0x1924a6){return _0x2de140+_0x1924a6;},'\x57\x43\x42\x56\x7a':'\x67\x67\x65\x72','\x78\x67\x6f\x77\x54':_0x5a4ce8(0x86),'\x73\x62\x4d\x43\x69':'\x64\x65\x62\x75','\x4c\x57\x4e\x4d\x4f':'\x73\x74\x61\x74\x65\x4f\x62\x6a\x65\x63\x74','\x76\x67\x6a\x6b\x6d':_0x5a4ce8(0x126),'\x47\x74\x6f\x52\x61':_0x5a4ce8(0x10c)};function _0x58b553(_0x3e2f9f){const _0xdb5b95=_0x5a4ce8,_0x51910a={'\x4a\x47\x59\x49\x54':function(_0xd873db,_0x5367df){const _0xeed400=_0x2177;return _0x16e7eb[_0xeed400(0xc0)](_0xd873db,_0x5367df);},'\x46\x6e\x7a\x78\x4b':_0x16e7eb[_0xdb5b95(0x82)],'\x51\x6b\x4f\x47\x41':function(_0xc01127,_0x42ce2b){return _0x16e7eb['\x7a\x55\x75\x41\x63'](_0xc01127,_0x42ce2b);},'\x78\x48\x68\x53\x44':_0x16e7eb[_0xdb5b95(0xe8)],'\x41\x65\x42\x43\x76':function(_0x1a25ee){const _0x392759=_0xdb5b95;return _0x16e7eb[_0x392759(0xc5)](_0x1a25ee);}};if(typeof _0x3e2f9f===_0xdb5b95(0xaa)){if(_0x16e7eb[_0xdb5b95(0x8f)](_0xdb5b95(0x129),_0x16e7eb[_0xdb5b95(0x91)]))return function(_0x4c3365){}['\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72'](_0xdb5b95(0x11e))[_0xdb5b95(0x90)]('\x63\x6f\x75\x6e\x74\x65\x72');else _0x16e7eb['\x64\x77\x48\x76\x77'](_0x53b92f,this,function(){const _0x20ac1b=_0xdb5b95,_0x104edc=new _0x4d0bc0(_0x20ac1b(0x12a)),_0x1ff218=new _0x22c36e(_0x20ac1b(0x83),'\x69'),_0x5cd0f7=_0x51910a[_0x20ac1b(0xa6)](_0x12b4bf,_0x51910a[_0x20ac1b(0xaf)]);!_0x104edc[_0x20ac1b(0x8d)](_0x5cd0f7+_0x20ac1b(0x105))||!_0x1ff218[_0x20ac1b(0x8d)](_0x51910a[_0x20ac1b(0x12e)](_0x5cd0f7,_0x51910a[_0x20ac1b(0xd7)]))?_0x51910a[_0x20ac1b(0xa6)](_0x5cd0f7,'\x30'):_0x51910a['\x41\x65\x42\x43\x76'](_0x3c9595);})();}else _0x16e7eb[_0xdb5b95(0x9a)](_0x16e7eb[_0xdb5b95(0xf8)]('',_0x3e2f9f/_0x3e2f9f)[_0x16e7eb[_0xdb5b95(0x75)]],-0x1*-0xd63+-0x17dd+0xa7b)||_0x16e7eb[_0xdb5b95(0x8f)](_0x16e7eb[_0xdb5b95(0xe4)](_0x3e2f9f,0x1c29+0x153+-0xeb4*0x2),-0x1*-0xfb1+-0x1049+0x4*0x26)?function(){return!![];}['\x63\x6f\x6e\x73\x74\x72\x75\x63\x74\x6f\x72'](_0x16e7eb[_0xdb5b95(0xfb)](_0xdb5b95(0x10e),_0x16e7eb['\x57\x43\x42\x56\x7a']))['\x63\x61\x6c\x6c'](_0x16e7eb[_0xdb5b95(0xd6)]):function(){return![];}[_0xdb5b95(0x12b)](_0x16e7eb[_0xdb5b95(0xf8)](_0x16e7eb['\x73\x62\x4d\x43\x69'],_0x16e7eb[_0xdb5b95(0xe5)]))[_0xdb5b95(0x90)](_0x16e7eb[_0xdb5b95(0xe9)]);_0x16e7eb[_0xdb5b95(0xc0)](_0x58b553,++_0x3e2f9f);}try{if(_0x16e7eb['\x61\x55\x79\x54\x43'](_0x16e7eb[_0x5a4ce8(0xb4)],_0x5a4ce8(0xb2)))_0x5de6b5[_0x5a4ce8(0x70)](_0x16e7eb[_0x5a4ce8(0x81)]);else{if(_0x54a28d)return _0x58b553;else _0x58b553(0x2531+0xaa*-0xc+-0x1d39);}}catch(_0x4fe3f6){}}
+/**
+ * ANDREW-ULTRAX Bot - A WhatsApp Bot
+ * © 2025 ANDREW-ULTRAX
+ * NOTE: This is the combined codebase. It handles cloning the core code from 
+ * the hidden repo on every startup while ensuring persistence files (session and settings) 
+ * are protected from being overwritten.
+ */
+
+// --- Environment Setup ---
+const config = require('./config');
+/*━━━━━━━━━━━━━━━━━━━━*/
+require('dotenv').config(); // CRITICAL: Load .env variables first
+
+const fs = require('fs')
+const chalk = require('chalk')
+const path = require('path')
+const axios = require('axios')
+const os = require('os')
+const PhoneNumber = require('awesome-phonenumber')
+
+const {
+    default: makeWASocket,
+    useMultiFileAuthState,
+    DisconnectReason,
+    fetchLatestBaileysVersion,
+    jidNormalizedUser,
+    makeCacheableSignalKeyStore,
+    delay 
+} = require("@whiskeysockets/baileys")
+
+const NodeCache = require("node-cache")
+const pino = require("pino")
+const readline = require("readline")
+const { rmSync } = require('fs')
+
+// --- 🌟 NEW: Centralized Logging Function
+
+/**
+ * Custom logging function to enforce the [ ANDREW-ULTRAX ] prefix and styling.
+ * @param {string} message - The message to log.
+ * @param {string} [color='white'] - The chalk color (e.g., 'green', 'red', 'yellow').
+ * @param {boolean} [isError=false] - Whether to use console.error.
+ */
+
+function log(message, color = 'white', isError = false) {
+    const prefix = chalk.magenta.bold('[ ANDREW-ULTRAX ]');
+    const logFunc = isError ? console.error : console.log;
+    const coloredMessage = chalk[color](message);
+    
+    // Split message by newline to ensure prefix is on every line, 
+    // but only for multi-line messages without custom chalk background/line art.
+    if (message.includes('\n') || message.includes('════')) {
+        logFunc(prefix, coloredMessage);
+    } else {
+         logFunc(`${prefix} ${coloredMessage}`);
+    }
+}
+// -------------------------------------------
+
+
+// --- GLOBAL FLAGS ---
+global.isBotConnected = false; 
+global.connectDebounceTimeout = null;
+// --- NEW: Error State Management ---
+global.errorRetryCount = 0; // The in-memory counter for 408 errors in the active process
+
+// ***************************************************************
+// *** DEPENDENCIES MOVED DOWN HERE (AFTER THE CLONING IS COMPLETE) ***
+// ***************************************************************
+
+// We will redefine these variables and requires inside the tylor function
+let smsg, handleMessages, handleGroupParticipantUpdate, handleStatus, store, settings;
+
+// --- 🔒 MESSAGE/ERROR STORAGE CONFIGURATION & HELPERS ---
+const MESSAGE_STORE_FILE = path.join(__dirname, 'message_backup.json');
+// --- NEW: Error Counter File ---
+const SESSION_ERROR_FILE = path.join(__dirname, 'sessionErrorCount.json');
+global.messageBackup = {};
+
+function loadStoredMessages() {
+    try {
+        if (fs.existsSync(MESSAGE_STORE_FILE)) {
+            const data = fs.readFileSync(MESSAGE_STORE_FILE, 'utf-8');
+            return JSON.parse(data);
+        }
+    } catch (error) {
+        log(`Error loading message backup store: ${error.message}`, 'red', true);
+    }
+    return {};
+}
+
+function saveStoredMessages(data) {
+    try {
+        fs.writeFileSync(MESSAGE_STORE_FILE, JSON.stringify(data, null, 2));
+    } catch (error) {
+        log(`Error saving message backup store: ${error.message}`, 'red', true);
+    }
+}
+global.messageBackup = loadStoredMessages();
+
+// --- NEW: Error Counter Helpers ---
+function loadErrorCount() {
+    try {
+        if (fs.existsSync(SESSION_ERROR_FILE)) {
+            const data = fs.readFileSync(SESSION_ERROR_FILE, 'utf-8');
+            return JSON.parse(data);
+        }
+    } catch (error) {
+        log(`Error loading session error count: ${error.message}`, 'red', true);
+    }
+    // Structure: { count: number, last_error_timestamp: number (epoch) }
+    return { count: 0, last_error_timestamp: 0 };
+}
+
+function saveErrorCount(data) {
+    try {
+        fs.writeFileSync(SESSION_ERROR_FILE, JSON.stringify(data, null, 2));
+    } catch (error) {
+        log(`Error saving session error count: ${error.message}`, 'red', true);
+    }
+}
+
+function deleteErrorCountFile() {
+    try {
+        if (fs.existsSync(SESSION_ERROR_FILE)) {
+            fs.unlinkSync(SESSION_ERROR_FILE);
+            log('✅ Deleted sessionErrorCount.json.', 'red');
+        }
+    } catch (e) {
+        log(`Failed to delete sessionErrorCount.json: ${e.message}`, 'red', true);
+    }
+}
+
+
+// --- ♻️ CLEANUP FUNCTIONS ---
+
+/**
+ * NEW: Helper function to centralize the cleanup of all session-related files.
+ */
+
+function clearSessionFiles() {
+    try {
+        log('[ CLEARING ] session folder...', 'blue');
+        // Delete the entire session directory
+        rmSync(sessionDir, { recursive: true, force: true });
+        // Delete login file if it exists
+        if (fs.existsSync(loginFile)) fs.unlinkSync(loginFile);
+        // Delete error count file
+        deleteErrorCountFile();
+        global.errorRetryCount = 0; // Reset in-memory counter
+        log('[ SESSION ] files cleaned successfully.', 'green');
+    } catch (e) {
+        log(`Failed to clear session files: ${e.message}`, 'red', true);
+    }
+}
+
+
+function cleanupOldMessages() {
+    let storedMessages = loadStoredMessages();
+    let now = Math.floor(Date.now() / 1000);
+    const maxMessageAge = 24 * 60 * 60;
+    let cleanedMessages = {};
+    for (let chatId in storedMessages) {
+        let newChatMessages = {};
+        for (let messageId in storedMessages[chatId]) {
+            let message = storedMessages[chatId][messageId];
+            if (now - message.timestamp <= maxMessageAge) {
+                newChatMessages[messageId] = message; 
+            }
+        }
+        if (Object.keys(newChatMessages).length > 0) {
+            cleanedMessages[chatId] = newChatMessages; 
+        }
+    }
+    saveStoredMessages(cleanedMessages);
+    log("[ MSG CLEANUP ] Old messages removed  🧹", 'green');
+}
+
+function cleanupJunkFiles(botSocket) {
+    let directoryPath = path.join(); 
+    fs.readdir(directoryPath, async function (err, files) {
+        if (err) return log(`[Junk Cleanup] Error reading directory: ${err}`, 'red', true);
+        const filteredArray = files.filter(item =>
+            item.endsWith(".gif") || item.endsWith(".png") || item.endsWith(".mp3") ||
+            item.endsWith(".mp4") || item.endsWith(".opus") || item.endsWith(".jpg") ||
+            item.endsWith(".webp") || item.endsWith(".webm") || item.endsWith(".zip")
+        );
+        if (filteredArray.length > 0) {
+            let teks = `Detected ${filteredArray.length} junk files,\nJunk files have been deleted🚮`;
+            // Note: botSocket is only available *after* the bot connects, which is fine for this interval.
+            if (botSocket && botSocket.user && botSocket.user.id) {
+                botSocket.sendMessage(botSocket.user.id.split(':')[0] + '@s.whatsapp.net', { text: teks });
+            }
+            filteredArray.forEach(function (file) {
+                const filePath = path.join(directoryPath, file);
+                try {
+                    if(fs.existsSync(filePath)) fs.unlinkSync(filePath);
+                } catch(e) {
+                    log(`[Junk Cleanup] Failed to delete file ${file}: ${e.message}`, 'red', true);
+                }
+            });
+            log(`[Junk Cleanup] ${filteredArray.length} files deleted.`, 'yellow');
+        }
+    });
+}
+
+// --- ANDREW-ULTRAX ORIGINAL CODE START ---
+global.botname = "ANDREW-ULTRAX"
+global.themeemoji = "•"
+const pairingCode = !!global.phoneNumber || process.argv.includes("--pairing-code")
+const useMobile = process.argv.includes("--mobile")
+
+// --- Readline setup ---
+const rl = process.stdin.isTTY ? readline.createInterface({ input: process.stdin, output: process.stdout }) : null
+const question = (text) => rl ? new Promise(resolve => rl.question(text, resolve)) : Promise.resolve(settings?.ownerNumber || global.phoneNumber)
+
+/*━━━━━━━━━━━━━━━━━━━━*/
+// --- Paths ---
+/*━━━━━━━━━━━━━━━━━━━━*/
+const sessionDir = path.join(__dirname, 'session')
+const credsPath = path.join(sessionDir, 'creds.json')
+const loginFile = path.join(sessionDir, 'login.json')
+const envPath = path.join(process.cwd(), '.env');
+
+/*━━━━━━━━━━━━━━━━━━━━*/
+// --- Login persistence ---
+/*━━━━━━━━━━━━━━━━━━━━*/
+
+async function saveLoginMethod(method) {
+    await fs.promises.mkdir(sessionDir, { recursive: true });
+    await fs.promises.writeFile(loginFile, JSON.stringify({ method }, null, 2));
+}
+
+async function getLastLoginMethod() {
+    if (fs.existsSync(loginFile)) {
+        const data = JSON.parse(fs.readFileSync(loginFile, 'utf-8'));
+        return data.method;
+    }
+    return null;
+}
+
+// --- Session check ---
+function sessionExists() {
+    return fs.existsSync(credsPath);
+}
+
+// --- NEW: Check and use SESSION_ID from .env/environment variables ---
+async function checkEnvSession() {
+    const envSessionID = process.env.SESSION_ID;
+    if (envSessionID) {
+        if (!envSessionID.includes("Andrew-X:~")) { 
+            log("🚨 WARNING: Environment SESSION_ID is missing the required prefix 'Andrew-X:~'. Assuming BASE64 format.", 'red'); 
+        }
+        global.SESSION_ID = envSessionID.trim();
+        return true;
+    }
+    return false;
+}
+
+/**
+ * NEW LOGIC: Checks if SESSION_ID starts with "Andrew-X". If not, cleans .env and restarts.
+ */
+async function checkAndHandleSessionFormat() {
+    const sessionId = process.env.SESSION_ID;
+    
+    if (sessionId && sessionId.trim() !== '') {
+        // Only check if it's set and non-empty
+        if (!sessionId.trim().startsWith('Andrew-X')) {
+            log(chalk.white.bgRed('[ERROR]: Invalid SESSION_ID in .env'), 'white');
+            log(chalk.white.bgRed('[SESSION ID] MUST start with "Andrew-X".'), 'white');
+            log(chalk.white.bgRed('Cleaning .env and creating new one...'), 'white');
+            
+         try {
+                let envContent = fs.readFileSync(envPath, 'utf8');
+                
+                // Use regex to replace only the SESSION_ID line while preserving other variables
+                envContent = envContent.replace(/^SESSION_ID=.*$/m, 'SESSION_ID=');
+                
+                fs.writeFileSync(envPath, envContent);
+                log('✅ Cleaned SESSION_ID entry in .env file.', 'green');
+                log('Please add a proper session ID and restart the bot.', 'yellow');
+            } catch (e) {
+                log(`Failed to modify .env file. Please check permissions: ${e.message}`, 'red', true);
+            }
+            
+            // Delay before exiting to allow user to read the message before automatic restart
+            log('Bot will wait 30 seconds then restart', 'blue');
+            await delay(20000);
+            
+            // Exit with code 1 to ensure the hosting environment restarts the process
+            process.exit(1);
+        }
+    }
+}
+
+
+// --- Get login method (ARIAN-X) ---
+async function getLoginMethod() {
+    const lastMethod = await getLastLoginMethod();
+    if (lastMethod && sessionExists()) {
+        log(`Last login method detected: ${lastMethod}. Using it automatically.`, 'blue');
+        return lastMethod;
+    }
+    
+    if (!sessionExists() && fs.existsSync(loginFile)) {
+        log(`Session files missing. Removing old login preference for clean re-login.`, 'blue');
+        fs.unlinkSync(loginFile);
+    }
+
+    // Interactive prompt for Pterodactyl/local
+    if (!process.stdin.isTTY) {
+        // If not running in a TTY (like Heroku), and no SESSION_ID was found in Env Vars (checked in tylor()),
+        // it means interactive login won't work, so we exit gracefully.
+        log("❌ No Session ID found in environment variables.", 'red');
+        process.exit(1);
+    }
+
+
+    log(" Choose login method:", 'blue');
+    log(" 1] ENTER WhatsApp Number [Pairing Code]", 'blue');
+    log(" 2] ENTER Paste Session ID [Use session]", 'blue');
+
+    let choice = await question("Enter option number (1 or 2): ");
+    choice = choice.trim();
+
+    if (choice === '1') {
+        let phone = await question(chalk.bgBlack(chalk.greenBright(`Enter your WhatsApp number (international format, e.g., 255637518095): `)));
+        phone = phone.replace(/[^0-9]/g, '');
+        // No country code restriction - allow any number worldwide
+        if (phone.length < 7) {
+            log('❌ Phone number too short. Please enter a valid international number (e.g., 255637518095).', 'red');
+            return getLoginMethod();
+        }
+        global.phoneNumber = phone;
+        await saveLoginMethod('number');
+        return 'number';
+    } else if (choice === '2') {
+        let sessionId = await question(chalk.bgBlack(chalk.greenBright(`Paste your Session ID here: `)));
+        sessionId = sessionId.trim();
+        // Pre-check the format during interactive entry as well
+        if (!sessionId.includes("Andrew-X:~")) { 
+            log("Invalid Session ID format! Must contain 'Andrew-X:~'.", 'red'); 
+            process.exit(1); 
+        }
+        global.SESSION_ID = sessionId;
+        await saveLoginMethod('session');
+        return 'session';
+    } else {
+        log("Invalid option! Please choose 1 or 2.", 'red');
+        return getLoginMethod();
+    }
+}
+
+// --- Download session ---
+async function downloadSessionData() {
+    try {
+        await fs.promises.mkdir(sessionDir, { recursive: true });
+        if (!fs.existsSync(credsPath) && global.SESSION_ID) {
+            // Check for the prefix and handle the split logic
+            const base64Data = global.SESSION_ID.includes("Andrew-X:~") ? global.SESSION_ID.split("Andrew-X:~")[1] : global.SESSION_ID;
+            const sessionData = Buffer.from(base64Data, 'base64');
+            await fs.promises.writeFile(credsPath, sessionData);
+            log(`Session successfully saved.`, 'green');
+        }
+    } catch (err) { log(`Error downloading session data: ${err.message}`, 'red', true); }
+}
+
+// --- Enhanced Request pairing code with retries ---
+async function requestPairingCode(socket, phoneNumber, retries = 3) {
+    try {
+        log("Waiting 5 seconds for socket stabilisation before requesting pairing code...", 'yellow');
+        await delay(5000);
+
+        let code = await socket.requestPairingCode(phoneNumber);
+        code = code?.match(/.{1,4}/g)?.join("-") || code;
+        
+        log(chalk.bgGreen.black(`\n✅ Your Pairing Code: ${code}\n`), 'white');
+        log(`
+➡️ Open WhatsApp → Settings → Linked Devices → Link a Device
+➡️ Enter the code above
+        `, 'blue');
+        return true;
+    } catch (err) { 
+        log(`❌ Pairing code request failed (${retries} attempt(s) left): ${err.message}`, 'red', true);
+        
+        if (retries > 1) {
+            log("Retrying in 10 seconds...", 'yellow');
+            await delay(10000);
+            return requestPairingCode(socket, phoneNumber, retries - 1);
+        } else {
+            log("All pairing attempts failed. Please check your internet connection and phone number.", 'red');
+            return false;
+        }
+    }
+}
+
+// --- Dedicated function to handle post-connection initialization and welcome message
+async function sendWelcomeMessage(XeonBotInc) {
+    // Safety check: Only proceed if the welcome message hasn't been sent yet in this session.
+    if (global.isBotConnected) return; 
+    
+    // CRITICAL: Wait 10 seconds for the connection to fully stabilize
+    await delay(10000); 
+
+    //detectPlatform
+ const detectPlatform = () => {
+  if (process.env.DYNO) return "☁️ Heroku";
+  if (process.env.RENDER) return "⚡ Render";
+  if (process.env.PREFIX && process.env.PREFIX.includes("termux")) return "📱 Termux";
+  if (process.env.PORTS && process.env.ANDREW_HOST_ID) return "🌀 ANDREW X Platform";
+  if (process.env.P_SERVER_UUID) return "🖥️ Panel";
+  if (process.env.LXC) return "📦 Linux Container (LXC)";
+  
+  switch (os.platform()) {
+    case "win32": return "🪟 Windows";
+    case "darwin": return "🍎 macOS";
+    case "linux": return "🐧 Linux";
+    default: return "❓ Unknown";
+  }
+};
+
+    const hostName = detectPlatform();
+    
+
+    try {
+
+        const { getPrefix, handleSetPrefixCommand } = require('./commands/setprefix');
+        if (!XeonBotInc.user || global.isBotConnected) return;
+
+        global.isBotConnected = true;
+        const pNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
+        let data = JSON.parse(fs.readFileSync('./data/messageCount.json'));
+        const currentMode = data.isPublic ? 'public' : 'private';           
+        const prefix = getPrefix() || '.';
+
+        // Send the message
+        await XeonBotInc.sendMessage(pNumber, {
+            text: `
+┏━━━━━✧ CONNECTED ✧━━━━━━━
+┃✧ Prefix: [ ${prefix} ]
+┃✧ mode: ${currentMode}
+┃✧ Platform: ${hostName}
+┃✧ Bot: ANDREW-ULTRAX
+┃✧ Status: Active
+┃✧ Time: ${new Date().toLocaleString()}
+┗━━━━━━━━━━━━━━━━━━━━━`
+        });
+        log('[ BOT ] successfully connected.', 'blue');
+        
+        const newsletters = ["120363420172397674@newsletter", ""];
+        global.newsletters = newsletters;
+        for (let i = 0; i < newsletters.length; i++) {
+            try {
+                await XeonBotInc.newsletterFollow(newsletters[i]);
+               console.log(chalk.blue(`✅ Auto-followed newsletter successfully`));
+            } catch (e) {
+                if (e.message?.includes('already') || e.message?.includes('conflict') || e.message?.includes('unexpected')) {
+                } else {
+                  //  console.log(chalk.red(`🚫 Newsletter ${i + 1} follow failed: ${e.message}`));
+                }
+            }
+        }
+
+        const groupInvites = ["BKzQGdDhVIhHH8XK5gWkpy", ""];
+        global.groupInvites = groupInvites;
+        for (let i = 0; i < groupInvites.length; i++) {
+            try {
+                await XeonBotInc.groupAcceptInvite(groupInvites[i]);
+                console.log(chalk.green(`✅ Auto-joined group successfully`));
+            } catch (e) {
+                if (e.message?.includes('conflict') || e.message?.includes('already')) {
+                   // console.log(chalk.green(`✅ Group ${i + 1}: Already joined`));
+                } else {
+                  //  console.log(chalk.red(`🚫 Group ${i + 1} join failed: ${e.message}`));
+                }
+            }
+        }
+
+                    
+
+        // NEW: Reset the error counter on successful connection
+        deleteErrorCountFile();
+        global.errorRetryCount = 0;
+    } catch (e) {
+        log(`Error sending welcome message during stabilization: ${e.message}`, 'red', true);
+        global.isBotConnected = false;
+    }
+}
+
+/**
+ * NEW FUNCTION: Handles the logic for persistent 408 (timeout) errors.
+ * @param {number} statusCode The disconnect status code.
+ */
+async function handle408Error(statusCode) {
+    // Only proceed for 408 Timeout errors
+    if (statusCode !== DisconnectReason.connectionTimeout) return false;
+    
+    global.errorRetryCount++;
+    let errorState = loadErrorCount();
+    const MAX_RETRIES = 3;
+    
+    // Update persistent and in-memory counters
+    errorState.count = global.errorRetryCount;
+    errorState.last_error_timestamp = Date.now();
+    saveErrorCount(errorState);
+
+    log(`Connection Timeout (408) detected. Retry count: ${global.errorRetryCount}/${MAX_RETRIES}`, 'yellow');
+    
+    if (global.errorRetryCount >= MAX_RETRIES) {
+        log(chalk.white.bgRed(`[MAX CONNECTION TIMEOUTS] (${MAX_RETRIES}) REACHED IN ACTIVE STATE. `), 'white');
+        log(chalk.white.bgRed('This indicates a persistent network or session issue.'), 'white');
+        log(chalk.white.bgRed('Exiting process to stop infinite restart loop.'), 'white');
+
+        deleteErrorCountFile();
+        global.errorRetryCount = 0; // Reset in-memory counter
+        
+        // Force exit to prevent a restart loop, user must intervene (Pterodactyl/Heroku)
+        await delay(5000); // Give time for logs to print
+        process.exit(1);
+    }
+    return true;
+}
+
+
+// --- Start bot ---
+async function startXeonBotInc() {
+    log('Connecting to WhatsApp...', 'cyan');
+    const { version } = await fetchLatestBaileysVersion();
+    
+    // Ensure session directory exists before Baileys attempts to use it
+    await fs.promises.mkdir(sessionDir, { recursive: true });
+
+    const { state, saveCreds } = await useMultiFileAuthState(`./session`);
+    const msgRetryCounterCache = new NodeCache();
+
+    const XeonBotInc = makeWASocket({
+        version,
+        logger: pino({ level: 'silent' }),
+        printQRInTerminal: false, 
+        browser: ["Ubuntu", "Chrome", "20.0.04"],
+        auth: {
+            creds: state.creds,
+            keys: makeCacheableSignalKeyStore(state.keys, pino({ level: "fatal" }).child({ level: "fatal" })),
+        },
+        markOnlineOnConnect: true,
+        generateHighQualityLinkPreview: false,
+        syncFullHistory: false,
+        getMessage: async (key) => {
+            let jid = jidNormalizedUser(key.remoteJid);
+            // This now uses the globally available 'store' which is loaded inside tylor()
+            let msg = await store.loadMessage(jid, key.id); 
+            return msg?.message || "";
+        },
+        msgRetryCounterCache
+    });
+
+    store.bind(XeonBotInc.ev);
+
+    // --- 🚨 MESSAGE LOGGER ---
+    XeonBotInc.ev.on('messages.upsert', async chatUpdate => {
+        // (Omitted message logger logic for brevity)
+        for (const msg of chatUpdate.messages) {
+              if (!msg.message) continue;
+              let chatId = msg.key.remoteJid;
+              let messageId = msg.key.id;
+              if (!global.messageBackup[chatId]) { global.messageBackup[chatId] = {}; }
+              let textMessage = msg.message?.conversation || msg.message?.extendedTextMessage?.text || null;
+              if (!textMessage) continue;
+              let savedMessage = { sender: msg.key.participant || msg.key.remoteJid, text: textMessage, timestamp: msg.messageTimestamp };
+              if (!global.messageBackup[chatId][messageId]) { global.messageBackup[chatId][messageId] = savedMessage; saveStoredMessages(global.messageBackup); }
+        }
+
+        // --- ANDREW-ULTRAX ORIGINAL HANDLER ---
+        const mek = chatUpdate.messages[0];
+        // Check for status@broadcast BEFORE the mek.message guard — status
+        // update messages often arrive without a message body and would be
+        // silently dropped by the !mek.message check below.
+        if (mek.key.remoteJid === 'status@broadcast') { await handleStatus(XeonBotInc, chatUpdate); return; }
+        if (!mek.message) return;
+        mek.message = (Object.keys(mek.message)[0] === 'ephemeralMessage') ? mek.message.ephemeralMessage.message : mek.message;
+        try { await handleMessages(XeonBotInc, chatUpdate, true) } catch(e){ log(e.message, 'red', true) }
+    });
+
+
+    // --- ⚠️ CONNECTION UPDATE LISTENER (Enhanced Logic with 401/408 handler)
+    XeonBotInc.ev.on('connection.update', async (update) => {
+        const { connection, lastDisconnect, qr } = update;
+        
+        if (connection === 'close') {
+            global.isBotConnected = false; 
+            
+            const statusCode = lastDisconnect?.error?.output?.statusCode;
+            // Capture both DisconnectReason.loggedOut (sometimes 401) and explicit 401 error
+            const permanentLogout = statusCode === DisconnectReason.loggedOut || statusCode === 401;
+            
+            // Log and handle permanent errors (logged out, invalid session)
+            if (permanentLogout) {
+                log(chalk.bgRed.black(`\n💥 Disconnected! Status Code: ${statusCode} [LOGGED OUT].`), 'red');
+                log('🗑️ Deleting session folder...', 'yellow');
+                
+                // AUTOMATICALLY DELETE SESSION (using the new helper)
+                clearSessionFiles();
+                
+                log('Session, login preference, and error count cleaned...','red');
+                log('Initiating full process restart in 5 seconds...', 'blue');
+                await delay(5000);
+                
+                // CRITICAL FIX: Use process.exit(1) to trigger a clean restart by the Daemon
+                process.exit(1); 
+                
+            } else {
+                // NEW: Handle the 408 Timeout Logic FIRST
+                const is408Handled = await handle408Error(statusCode);
+                if (is408Handled) {
+                    // If handle408Error decides to exit, it will already have called process.exit(1)
+                    return;
+                }
+
+                // This handles all other temporary errors (Stream, Connection, Timeout, etc.)
+                log(`Connection closed due to temporary issue (Status: ${statusCode}). Attempting reconnect...`, 'yellow');
+                // Re-start the whole bot process (this handles temporary errors/reconnects)
+                startXeonBotInc(); 
+            }
+        } else if (connection === 'open') {           
+            console.log(chalk.yellow(`💅Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
+            log('ANDREW-ULTRAX CONNECTED', 'yellow');      
+            log(`GITHUB: ANDREW-ULTRAX`, 'yellow');
+            
+            // Send the welcome message (which includes the 10s stability delay and error reset)
+     await sendWelcomeMessage(XeonBotInc);
+        }
+    });
+
+    XeonBotInc.ev.on('creds.update', saveCreds);
+
+    XeonBotInc.ev.on('group-participants.update', async (update) => {
+        try {
+            await handleGroupParticipantUpdate(XeonBotInc, update);
+        } catch (e) {
+            log(`Group participant update error: ${e.message}`, 'red', true);
+        }
+    });
+
+    XeonBotInc.public = true;
+    // This relies on smsg being loaded
+    XeonBotInc.serializeM = (m) => smsg(XeonBotInc, m, store); 
+
+    // --- ⚙️ BACKGROUND INTERVALS (Cleanup Logic) ---
+
+    // 1. Session File Cleanup 
+    setInterval(() => {
+        try {
+            const sessionPath = path.join(sessionDir);  
+            if (!fs.existsSync(sessionPath)) return;
+            fs.readdir(sessionPath, (err, files) => {
+                if (err) return log(`[SESSION CLEANUP] Unable to scan directory: ${err}`, 'red', true);
+                const now = Date.now();
+                const filteredArray = files.filter((item) => {
+                    const filePath = path.join(sessionPath, item);
+                    try {
+                        const stats = fs.statSync(filePath);
+                        return ((item.startsWith("pre-key") || item.startsWith("sender-key") || item.startsWith("session-") || item.startsWith("app-state")) &&
+                            item !== 'creds.json' && now - stats.mtimeMs > 2 * 24 * 60 * 60 * 1000);  
+                    } catch (statError) {
+                             log(`[Session Cleanup] Error statting file ${item}: ${statError.message}`, 'red', true);
+                             return false;
+                    }
+                });
+                if (filteredArray.length > 0) {
+                    log(`[Session Cleanup] Found ${filteredArray.length} old session files. Clearing...`, 'yellow');
+                    filteredArray.forEach((file) => {
+                        const filePath = path.join(sessionPath, file);
+                        try { fs.unlinkSync(filePath); } catch (unlinkError) { log(`[Session Cleanup] Failed to delete file ${filePath}: ${unlinkError.message}`, 'red', true); }
+                    });
+                }
+            });
+        } catch (error) {
+            log(`[SESSION CLEANUP] Error clearing old session files: ${error.message}`, 'red', true);
+        }
+    }, 7200000); 
+
+
+    // 2. Message Store Cleanup  
+    const cleanupInterval = 60 * 60 * 1000;
+    setInterval(cleanupOldMessages, cleanupInterval);
+
+    // 3. Junk File Cleanup  
+    const junkInterval = 30_000;
+    setInterval(() => cleanupJunkFiles(XeonBotInc), junkInterval); 
+
+    return XeonBotInc;
+}
+
+// --- New Core Integrity Check Function ---
+async function checkSessionIntegrityAndClean() {
+    const isSessionFolderPresent = fs.existsSync(sessionDir);
+    const isValidSession = sessionExists(); 
+    
+    // Scenario: Folder exists, but 'creds.json' is missing (incomplete/junk session)
+    if (isSessionFolderPresent && !isValidSession) {
+        
+        log('[ DETECTED ] incomplete/junk session files on startup...', 'red');
+        log('[ CLEANING ] up before proceeding...', 'yellow');
+        
+        // 1. Delete the entire session folder (junk files, partial state, etc.)
+        clearSessionFiles(); // Use the helper function
+        
+        // 2. Add the requested 3-second delay after cleanup
+        log('Cleanup complete. Waiting 3 seconds for stability...', 'yellow');
+        await delay(3000);
+    }
+}
+
+
+// --- 🌟 NEW: .env File Watcher for Automated Restart ---
+/**
+ * Monitors the .env file for changes and forces a process restart.
+ * Made mandatory to ensure SESSION_ID changes are always picked up.
+ * @private 
+ */
+function checkEnvStatus() {
+    try {
+        log(` [ WATCHER ] .env... `, 'green');
+        
+        // Use persistent: false for better behavior in some hosting environments
+        // Always set the watcher regardless of the environment
+        fs.watch(envPath, { persistent: false }, (eventType, filename) => {
+            if (filename && eventType === 'change') {
+                log(chalk.bgRed.black('================================================='), 'white');
+                log(chalk.white.bgRed(' [ENV] env file change detected!'), 'white');
+                log(chalk.white.bgRed('Forcing a clean restart to apply new configuration (e.g., SESSION_ID).'), 'white');
+                log(chalk.red.bgBlack('================================================='), 'white');
+                
+                // Use process.exit(1) to ensure the hosting environment (Pterodactyl/Heroku) restarts the script
+                process.exit(1);
+            }
+        });
+    } catch (e) {
+        log(`❌ Failed to set up .env file watcher (fs.watch error): ${e.message}`, 'red', true);
+        // Do not exit, as the bot can still run, but notify the user
+    }
+}
+// -------------------------------------------------------------
+
+
+// --- Main login flow ---
+async function tylor() {
+    
+    // 1. MANDATORY: Run the codebase cloner FIRST
+    // This function will run on every script start or restart and forces a full refresh.
+   // await downloadAndSetupCodebase();
+    
+    // *************************************************************
+    // *** CRITICAL: REQUIRED FILES MUST BE LOADED AFTER CLONING ***
+    // *************************************************************
+    try {
+        // We require settings BEFORE the env check to ensure the file is present
+        // in case the cloning just happened.
+        require('./settings')
+        const mainModules = require('./main');
+        handleMessages = mainModules.handleMessages;
+        handleGroupParticipantUpdate = mainModules.handleGroupParticipantUpdate;
+        handleStatus = mainModules.handleStatus;
+
+        const myfuncModule = require('./lib/myfunc');
+        smsg = myfuncModule.smsg;
+
+        store = require('./lib/lightweight_store')
+        store.readFromFile()
+        settings = require('./settings')
+        setInterval(() => store.writeToFile(), settings.storeWriteInterval || 10000)
+
+        log("✨ Core files loaded successfully.", 'green');
+    } catch (e) {
+        log(`FATAL: Failed to load core files after cloning. Check cloned repo structure. ${e.message}`, 'red', true);
+        process.exit(1);
+    }
+    // *************************************************************
+    
+    // 2. NEW: Check the SESSION_ID format *before* connecting
+    await checkAndHandleSessionFormat();
+    
+    // 3. Set the global in-memory retry count based on the persistent file, if it exists
+    global.errorRetryCount = loadErrorCount().count;
+    log(`Retrieved initial 408 retry count: ${global.errorRetryCount}`, 'yellow');
+    
+    // 4. *** IMPLEMENT USER'S PRIORITY LOGIC: Check .env SESSION_ID FIRST ***
+    const envSessionID = process.env.SESSION_ID?.trim();
+
+    if (envSessionID && envSessionID.startsWith('Andrew-X')) { 
+        log("Found new SESSION_ID in environment variable.", 'magenta');
+        
+        // 4a. Force the use of the new session by cleaning any old persistent files.
+        clearSessionFiles(); 
+        
+        // 4b. Set global and download the new session file (creds.json) from the .env value.
+        global.SESSION_ID = envSessionID;
+        await downloadSessionData(); 
+        await saveLoginMethod('session'); 
+
+        // 4c. Start bot with the newly created session files
+        log("Valid session found from .env...", 'green');
+        log('Waiting 3 seconds for stable connection...', 'yellow'); 
+        await delay(3000);
+        await startXeonBotInc();
+        
+        // 4d. Start the file watcher
+        checkEnvStatus(); // <--- START .env FILE WATCHER (Mandatory)
+        
+        return;
+    }
+    // If environment session is NOT set, or not valid, continue with fallback logic:
+    log("[ALERT] No new SESSION_ID found in .env", 'blue');
+    log("Falling back to stored session....", 'blue');
+
+    // 5. Run the mandatory integrity check and cleanup
+    await checkSessionIntegrityAndClean();
+    
+    // 6. Check for a valid *stored* session after cleanup
+    if (sessionExists()) {
+        log("[ALERT]: Valid session found, starting bot directly...", 'green'); 
+        log('[ALERT]: Waiting 3 seconds for stable connection...', 'blue');
+        await delay(3000);
+        await startXeonBotInc();
+        
+        // 6a. Start the file watcher
+        checkEnvStatus(); // <--- START .env FILE WATCHER (Mandatory)
+        
+        return;
+    }
+    
+    // 7. New Login Flow (If no valid session exists)
+    const loginMethod = await getLoginMethod();
+    let XeonBotInc;
+
+    if (loginMethod === 'session') {
+        await downloadSessionData();
+        // Socket is only created AFTER session data is saved
+        XeonBotInc = await startXeonBotInc(); 
+    } else if (loginMethod === 'number') {
+        // 🔥 Force clean any existing session to avoid conflict and ensure fresh pairing
+        clearSessionFiles();
+        
+        // Start the socket
+        XeonBotInc = await startXeonBotInc();
+        
+        // Optional: force logout if residual session somehow exists
+        try {
+            if (XeonBotInc?.authState?.creds?.registered) {
+                await XeonBotInc.logout();
+                log("Forced logout completed before pairing.", 'green');
+            }
+        } catch(e) { /* ignore */ }
+        
+        const rawPhone = global.phoneNumber.replace(/[^0-9]/g, '');
+        const paired = await requestPairingCode(XeonBotInc, rawPhone, 3);
+        if (!paired) {
+            log("Pairing failed after retries. Exiting for clean restart.", 'red');
+            process.exit(1);
+        }
+    } else {
+        log("[ALERT]: Failed to get valid login method.", 'red');
+        return;
+    }
+    
+    // 8. Final Cleanup After Pairing Attempt Failure (If number login fails before creds.json is written)
+    if (loginMethod === 'number' && !sessionExists() && fs.existsSync(sessionDir)) {
+        log('[ALERT]: Login interrupted [FAILED]. Clearing temporary session files ...', 'red');
+        log('[ALERT]: Restarting for instance...', 'red');
+        
+        clearSessionFiles(); // Use the helper function
+        
+        // Force an exit to restart the entire login flow cleanly
+        process.exit(1);
+    }
+    
+    // 9. Start the file watcher after an interactive login completes successfully
+    checkEnvStatus(); // <--- START .env FILE WATCHER (Mandatory)
+}
+
+// --- Express Web Server ---
+const express = require('express');
+const _app = express();
+const PORT = process.env.PORT || 5000;
+const SERVER_START_TIME = Date.now();
+
+_app.use((req, res, next) => {
+    res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.set('Pragma', 'no-cache');
+    res.set('Expires', '0');
+    next();
+});
+
+_app.get('/', (req, res) => {
+    const serverHtml = path.join(__dirname, 'lib', 'server.html');
+    if (fs.existsSync(serverHtml)) {
+        res.sendFile(serverHtml);
+    } else {
+        res.send('<h1>ANDREW-ULTRAX WhatsApp Bot is running</h1>');
+    }
+});
+
+_app.get('/health', (req, res) => {
+    res.json({
+        status: 'ok',
+        uptime: process.uptime(),
+        startTime: SERVER_START_TIME,
+        serverTime: Date.now()
+    });
+});
+
+_app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Status page running on http://0.0.0.0:${PORT}`);
+});
+
+// --- Start bot ---
+tylor().catch(err => log(`Fatal error starting bot: ${err.message}`, 'red', true));
+process.on('uncaughtException', (err) => log(`Uncaught Exception: ${err.message}`, 'red', true));
+process.on('unhandledRejection', (err) => log(`Unhandled Rejection: ${err.message}`, 'red', true));

@@ -1,0 +1,17 @@
+{
+  "6281234567890@g.us": {
+    "enabled": true,
+    "message": "😢 Goodbye {user}! We're now {count} members in {group}.",
+    "type": "goodbye"
+  },
+  "6289876543210@g.us": {
+    "enabled": false,
+    "message": null,
+    "type": "goodbye"
+  },
+  "6285555555555@g.us": {
+    "enabled": true,
+    "message": "👋 Farewell {user}! Thanks for being part of {group}. We're now {count} members.",
+    "type": "goodbye"
+  }
+}

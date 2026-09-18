@@ -1,0 +1,17 @@
+{
+  "6281234567890@g.us": {
+    "enabled": true,
+    "message": "✨ Welcome {user} to {group}! You are member #{count} 🎉",
+    "type": "welcome"
+  },
+  "6289876543210@g.us": {
+    "enabled": false,
+    "message": null,
+    "type": "welcome"
+  },
+  "6285555555555@g.us": {
+    "enabled": true,
+    "message": "🌟 Hello {user}! Welcome to our awesome group {group}! We now have {count} members.",
+    "type": "welcome"
+  }
+}

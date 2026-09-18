@@ -1,0 +1,13 @@
+{
+  "120363424143346950@g.us": {
+    "welcomeEnabled": true,
+    "welcomeMessage": "Welcome {user} to {group}! 🎉",
+    "goodbyeEnabled": true,
+    "goodbyeMessage": "Goodbye {user} 👋"
+  },
+  "120363405106532463@g.us": {
+    "welcomeEnabled": true,
+    "welcomeMessage": "Welcome {user} to {group}! 🎉",
+    "goodbyeEnabled": false
+  }
+}
