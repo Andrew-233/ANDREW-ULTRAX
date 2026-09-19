@@ -15,7 +15,7 @@
   },
   "env": {
     "SESSION_ID": {
-      "description": "Must begin with 'ANDEW-BOT:~'.",
+      "description": "Must begin with 'ANDREW-BOT:~'.",
       "value": "",
       "required": true
     }
