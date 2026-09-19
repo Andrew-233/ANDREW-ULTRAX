@@ -248,8 +248,8 @@ function sessionExists() {
 async function checkEnvSession() {
     const envSessionID = process.env.SESSION_ID;
     if (envSessionID) {
-        if (!envSessionID.includes("Andrew-X:~")) { 
-            log("🚨 WARNING: Environment SESSION_ID is missing the required prefix 'Andrew-X:~'. Assuming BASE64 format.", 'red'); 
+        if (!envSessionID.includes("ANDREW-BOT:~")) { 
+            log("🚨 WARNING: Environment SESSION_ID is missing the required prefix 'ANDREW-BOT:~'. Assuming BASE64 format.", 'red'); 
         }
         global.SESSION_ID = envSessionID.trim();
         return true;
