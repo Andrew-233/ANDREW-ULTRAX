@@ -41,6 +41,7 @@ const { isBanned } = require('./lib/isBanned');
 const yts = require('yt-search');
 const { fetchBuffer } = require('./lib/myfunc');
 const fs = require('fs');
+const { dataFile, DATA_DIR } = require('./lib/paths');
 const fetch = require('node-fetch');
 const ytdl = require('ytdl-core');
 const path = require('path');
@@ -91,7 +92,7 @@ function getCachedModeData() {
         return _cache.modeData;
     }
     try {
-        _cache.modeData = JSON.parse(fs.readFileSync('./data/messageCount.json'));
+        _cache.modeData = JSON.parse(fs.readFileSync(dataFile('messageCount.json')));
         _cache.modeDataTime = now;
     } catch (e) {
         _cache.modeData = { isPublic: true, mode: 'public' };
@@ -344,10 +345,10 @@ const saveStatusCommand = require('./commands/saveStatus');
 const toAudioCommand = require('./commands/toAudio');
 const gitcloneCommand = require('./commands/gitclone');
 const leaveGroupCommand = require('./commands/leave');
-const kickAllCommand = require('./commands/kickAll');
+const kickAllCommand = require('./commands/kickall');
 const ytsCommand = require('./commands/yts');
 const setGroupStatusCommand = require('./commands/setGroupStatus');
-const handleDevReact = require('./commands/devReact');
+const handleDevReact = require('./commands/devreact');
 const imageCommand = require('./commands/image');
 const gpt4Command = require('./commands/aiGpt4');
 const vcfCommand = require('./commands/vcf');
@@ -466,6 +467,31 @@ async function handleMessages(sock, messageUpdate, printLog) {
             sock._callListenerBound = true;
         }
 
+        // Antidelete: Baileys surfaces message deletions on `messages.update`
+        // (update.type === 'revoked'), not as a protocolMessage inside messages.upsert.
+        // There was no subscription for that event anywhere in the process, so the
+        // revocation branch below never fired for normal deletes.
+        if (!sock._revocationListenerBound) {
+            sock.ev.on('messages.update', async (updates) => {
+                for (const upd of updates || []) {
+                    try {
+                        const type = upd?.update?.type ?? upd?.update?.revokeStatus;
+                        if (type !== 'revoked' && type !== 0) continue;
+                        const key = upd?.key;
+                        if (!key?.id || key.fromMe) continue;
+                        // adapt to handleMessageRevocation's expected shape
+                        await handleMessageRevocation(sock, {
+                            key,
+                            message: { protocolMessage: { key: { id: key.id }, type: 0 } }
+                        });
+                    } catch (e) {
+                        console.error('[antidelete] messages.update error:', e.message);
+                    }
+                }
+            });
+            sock._revocationListenerBound = true;
+        }
+
         if (!sock._fontPatched) {
             const _origSend = sock.sendMessage.bind(sock);
             sock.sendMessage = async (jid, content, options) => {
@@ -480,15 +506,16 @@ async function handleMessages(sock, messageUpdate, printLog) {
             sock._fontPatched = true;
         }
 
-        // Store message for antidelete feature
-        if (message.message) {
-            storeMessage(sock, message);
-        }
-
-        // Handle message revocation
+        // Handle message revocation FIRST - storing it first recorded the revoke
+        // notification itself as if it were a deleted message.
         if (message.message?.protocolMessage?.type === 0) {
             await handleMessageRevocation(sock, message);
             return;
+        }
+
+        // Store message for antidelete feature
+        if (message.message) {
+            storeMessage(sock, message);
         }
 
         const chatId = message.key.remoteJid;
@@ -897,7 +924,8 @@ return;
 
                 
             case userMessage.startsWith(`${prefix}enc`):
-                await encryptCommand(sock, chatId, message);
+                // encrypt() gates a branch on `isOwner`, which was never passed -> unreachable.
+                await encryptCommand(sock, chatId, message, !!(message.key.fromMe || senderIsSudo));
                 break;
 
                 
@@ -1021,7 +1049,7 @@ return;
     // Read current data first
     let data;
     try {
-        data = JSON.parse(fs.readFileSync('./data/messageCount.json'));
+        data = JSON.parse(fs.readFileSync(dataFile('messageCount.json')));
     } catch (error) {
         console.error('Error reading access mode:', error);
         await sock.sendMessage(chatId, { text: 'Failed to read bot mode status' }, { quoted: fake });
@@ -1074,7 +1102,7 @@ return;
         data.isPublic = (action === 'public'); // backward compatibility
 
         // Save updated data
-        fs.writeFileSync('./data/messageCount.json', JSON.stringify(data, null, 2));
+        fs.writeFileSync(dataFile('messageCount.json'), JSON.stringify(data, null, 2));
 
         await sock.sendMessage(chatId, {
             text: `✅ *Mode updated successfully!*\n\n${modeDescriptions[action]}`
@@ -1381,7 +1409,10 @@ case userMessage === `${prefix}forfeit` ||
             /*━━━━━━━━━━━━━━━━━━━━*/
             case userMessage.startsWith(`${prefix}promote`):
                 const mentionedJidListPromote = message.message.extendedTextMessage?.contextInfo?.mentionedJid || [];
-                await promoteCommand(sock, chatId, mentionedJidListPromote, message);
+                // promote() has a 5th `args` param for the ".promote <number>" form;
+                // it was never passed, so promoting by number silently did nothing.
+                const promoteArgs = userMessage.slice((prefix + 'promote').length).trim().split(/\s+/).filter(Boolean);
+                await promoteCommand(sock, chatId, mentionedJidListPromote, message, promoteArgs);
                 break;
 
             case userMessage.startsWith(`${prefix}demote`):
@@ -1718,6 +1749,7 @@ case userMessage === `${prefix}forfeit` ||
 
                 
             case userMessage.startsWith(`${prefix}antistatusmention`) ||
+                 userMessage.startsWith(`${prefix}antimention`) ||
                  userMessage.startsWith(`${prefix}antistatus`) ||
                  userMessage.startsWith(`${prefix}antigroupmention`) ||
                  userMessage.startsWith(`${prefix}antistatusgroup`) ||
@@ -2484,15 +2516,19 @@ case userMessage === `${prefix}forfeit` ||
         
     } catch (error) {
         console.error('❌ Error in message handler:', error.stack || error.message);
-        // Only try to send error message if we have a valid chatId
-        if (chatId) {
-            try {
-                await sock.sendMessage(chatId, {
+        // `chatId` and `message` are declared INSIDE the try block above, so they are not
+        // in scope here - referencing them threw a second ReferenceError while reporting the
+        // first, which swallowed the original error and meant the user never saw a message.
+        // Derive the chat from the function parameter instead.
+        try {
+            const errChatId = messageUpdate?.messages?.[0]?.key?.remoteJid;
+            if (errChatId) {
+                await sock.sendMessage(errChatId, {
                     text: `❌ Error: ${error.message || 'Unknown error'}`,
                     ...channelInfo
                 });
-            } catch (_) {}
-        }
+            }
+        } catch (_) {}
     }
 }
 

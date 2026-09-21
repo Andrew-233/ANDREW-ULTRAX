@@ -28,7 +28,7 @@ async function convertStickerToImage(stickerBuffer, mimetype = 'image/webp') {
 // ================================================
 // Main command
 // ================================================
-async function setGroupStatusCommand(sock, chatId, msg) {
+async function setGroupStatusCommand(sock, chatId, msg, message) {
     try {
         // ✅ Group check
         const isGroup = chatId.endsWith('@g.us');

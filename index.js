@@ -12,6 +12,7 @@ const config = require('./config');
 require('dotenv').config(); // CRITICAL: Load .env variables first
 
 const fs = require('fs')
+const { dataFile, DATA_DIR } = require('./lib/paths');
 const chalk = require('chalk')
 const path = require('path')
 const axios = require('axios')
@@ -189,7 +190,7 @@ function cleanupJunkFiles(botSocket) {
             let teks = `Detected ${filteredArray.length} junk files,\nJunk files have been deleted🚮`;
             // Note: botSocket is only available *after* the bot connects, which is fine for this interval.
             if (botSocket && botSocket.user && botSocket.user.id) {
-                botSocket.sendMessage(botSocket.user.id.split(':')[0] + '@s.whatsapp.net', { text: teks });
+                botSocket.sendMessage(botSocket.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net', { text: teks });
             }
             filteredArray.forEach(function (file) {
                 const filePath = path.join(directoryPath, file);
@@ -248,8 +249,8 @@ function sessionExists() {
 async function checkEnvSession() {
     const envSessionID = process.env.SESSION_ID;
     if (envSessionID) {
-        if (!envSessionID.includes("ANDREW-BOT:~")) { 
-            log("🚨 WARNING: Environment SESSION_ID is missing the required prefix 'ANDREW-BOT:~'. Assuming BASE64 format.", 'red'); 
+        if (!envSessionID.includes("ANDREWULTRA-X:~")) { 
+            log("🚨 WARNING: Environment SESSION_ID is missing the required prefix 'Andrew-X:~'. Assuming BASE64 format.", 'red'); 
         }
         global.SESSION_ID = envSessionID.trim();
         return true;
@@ -357,7 +358,7 @@ async function downloadSessionData() {
         await fs.promises.mkdir(sessionDir, { recursive: true });
         if (!fs.existsSync(credsPath) && global.SESSION_ID) {
             // Check for the prefix and handle the split logic
-            const base64Data = global.SESSION_ID.includes("Andrew-X:~") ? global.SESSION_ID.split("Andrew-X:~")[1] : global.SESSION_ID;
+            const base64Data = global.SESSION_ID.includes("ANDREWULTRA-X:~") ? global.SESSION_ID.split("ANDREWULTRA-X:~")[1] : global.SESSION_ID;
             const sessionData = Buffer.from(base64Data, 'base64');
             await fs.promises.writeFile(credsPath, sessionData);
             log(`Session successfully saved.`, 'green');
@@ -428,8 +429,8 @@ async function sendWelcomeMessage(XeonBotInc) {
         if (!XeonBotInc.user || global.isBotConnected) return;
 
         global.isBotConnected = true;
-        const pNumber = XeonBotInc.user.id.split(':')[0] + '@s.whatsapp.net';
-        let data = JSON.parse(fs.readFileSync('./data/messageCount.json'));
+        const pNumber = XeonBotInc.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
+        let data = JSON.parse(fs.readFileSync(dataFile('messageCount.json')));
         const currentMode = data.isPublic ? 'public' : 'private';           
         const prefix = getPrefix() || '.';
 
@@ -491,9 +492,16 @@ async function sendWelcomeMessage(XeonBotInc) {
  * NEW FUNCTION: Handles the logic for persistent 408 (timeout) errors.
  * @param {number} statusCode The disconnect status code.
  */
+// Baileys renamed this disconnect reason across versions (timedOut / connectionTimout /
+// connectionTimeout). Comparing against one literal key silently disabled the whole
+// "stop infinite restart loop" guard, because a missing key is undefined and
+// 408 !== undefined is always true.
+const TIMEOUT_CODES = new Set([408, DisconnectReason.timedOut, DisconnectReason.connectionTimout,
+    DisconnectReason.connectionTimeout].filter(function (code) { return typeof code === 'number'}));
+
 async function handle408Error(statusCode) {
     // Only proceed for 408 Timeout errors
-    if (statusCode !== DisconnectReason.connectionTimeout) return false;
+    if (!TIMEOUT_CODES.has(statusCode)) return false;
     
     global.errorRetryCount++;
     let errorState = loadErrorCount();
@@ -518,7 +526,11 @@ async function handle408Error(statusCode) {
         await delay(5000); // Give time for logs to print
         process.exit(1);
     }
-    return true;
+    // Under the cap this must NOT short-circuit the caller: returning true here made the
+    // connection.update handler skip startXeonBotInc() entirely, so after one timeout the
+    // process just sat there with no live socket. Return false instead and let the caller
+    // reconnect on the capped backoff below.
+    return false;
 }
 
 
@@ -618,10 +630,19 @@ async function startXeonBotInc() {
 
                 // This handles all other temporary errors (Stream, Connection, Timeout, etc.)
                 log(`Connection closed due to temporary issue (Status: ${statusCode}). Attempting reconnect...`, 'yellow');
+                // startXeonBotInc() used to be called with no delay at all, so a socket that fails
+                // fast (no network, blocked WS, bad session) spun tens of times per second - pegging
+                // a CPU, flooding the log and inviting a WhatsApp rate limit. Capped exponential
+                // backoff instead: 2s, 4s, 8s, 16s, then 30s max.
+                global.reconnectAttempts = (global.reconnectAttempts || 0) + 1;
+                const backoffMs = Math.min(30000, 2000 * Math.pow(2, Math.min(global.reconnectAttempts - 1, 4)));
+                log('Reconnecting in ' + (backoffMs / 1000).toFixed(1) + 's (consecutive failure ' + global.reconnectAttempts + ')... ', 'yellow');
+                await delay(backoffMs);
                 // Re-start the whole bot process (this handles temporary errors/reconnects)
                 startXeonBotInc(); 
             }
         } else if (connection === 'open') {           
+                global.reconnectAttempts = 0;
             console.log(chalk.yellow(`💅Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
             log('ANDREW-ULTRAX CONNECTED', 'yellow');      
             log(`GITHUB: ANDREW-ULTRAX`, 'yellow');
@@ -787,7 +808,7 @@ async function tylor() {
     // 4. *** IMPLEMENT USER'S PRIORITY LOGIC: Check .env SESSION_ID FIRST ***
     const envSessionID = process.env.SESSION_ID?.trim();
 
-    if (envSessionID && envSessionID.startsWith('Andrew-X')) { 
+    if (envSessionID && envSessionID.startsWith('ANDREWULTRA-X')) { 
         log("Found new SESSION_ID in environment variable.", 'magenta');
         
         // 4a. Force the use of the new session by cleaning any old persistent files.

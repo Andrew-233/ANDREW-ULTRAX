@@ -57,7 +57,8 @@ async function handleLeaveEvent(sock, id, participants, message) {
                     .replace(/{user}/g, `@${displayName}`)
                     .replace(/{group}/g, groupName)
                     .replace(/{bot}/g, getBotName())
-                    .replace(/{members}/g, membersCount.toString());
+                    .replace(/{members}/g, membersCount.toString())
+                    .replace(/{count}/g, membersCount.toString());
             } else {
                 finalMessage = `Goodbye @${displayName} from ${groupName}! 👋\nWe now have ${membersCount} members.\n🤖 Powered by ${getBotName()}`;
             }
@@ -109,7 +110,8 @@ async function handleLeaveEvent(sock, id, participants, message) {
                     .replace(/{user}/g, `@${user}`)
                     .replace(/{group}/g, groupName)
                     .replace(/{bot}/g, getBotName())
-                    .replace(/{members}/g, membersCount.toString());
+                    .replace(/{members}/g, membersCount.toString())
+                    .replace(/{count}/g, membersCount.toString());
             } else {
                 fallbackMessage = `Goodbye @${user}! 👋 Powered by ${getBotName()}. We now have ${membersCount} members.`;
             }

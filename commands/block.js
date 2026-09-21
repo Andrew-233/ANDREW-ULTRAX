@@ -28,7 +28,7 @@ async function blockCommand(sock, chatId, message) {
         }
 
         // Prevent blocking the bot itself
-        const botId = sock.user.id.split(':')[0];
+        const botId = sock.user.id.split('@')[0].split(':')[0];
         if (userToBlock.includes(botId)) {
             return sock.sendMessage(chatId, { 
                 text: '❌ You cannot block the bot itself!',

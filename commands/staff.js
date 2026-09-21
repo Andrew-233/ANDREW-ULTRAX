@@ -1,5 +1,5 @@
 const { createFakeContact } = require('../lib/fakeContact');
-async function staffCommand(sock, chatId, msg) {
+async function staffCommand(sock, chatId, msg, message) {
     try {
         // Get group metadata
         const groupMetadata = await sock.groupMetadata(chatId);

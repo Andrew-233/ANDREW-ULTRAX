@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const { createFakeContact } = require('../lib/fakeContact');
-module.exports = async function (sock, chatId) {
+module.exports = async function (sock, chatId, message) {
     try {
         const apiKey = 'dcd720a6f1914e2d9dba9790c188c08c';  // Replace with your NewsAPI key
         const response = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`);

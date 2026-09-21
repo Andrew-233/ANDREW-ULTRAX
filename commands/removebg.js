@@ -32,8 +32,8 @@ module.exports = {
     category: 'general',
     desc: 'Remove background from images',
     async exec(sock, message, args) {
+        const chatId = message.key.remoteJid;
         try {
-            const chatId = message.key.remoteJid;
             let imageUrl = null;
             
             // Check if args contain a URL

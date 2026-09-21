@@ -56,7 +56,7 @@ async function demoteCommand(sock, chatId, mentionedJids, message) {
         }
 
         // Normalize bot JID (strip device suffix if present)
-        const botJid = sock.user.id.split(':')[0];
+        const botJid = sock.user.id.split('@')[0].split(':')[0];
 
         
         // Filter out the bot from the demotion list
@@ -117,14 +117,14 @@ async function demoteCommand(sock, chatId, mentionedJids, message) {
     }
 }
 
-async function handleDemotionEvent(sock, groupId, participants, author) {
+async function handleDemotionEvent(sock, groupId, participants, author, message) {
     try {
         if (!Array.isArray(participants) || participants.length === 0) {
             return;
         }
 
         // Normalize bot JID
-        const botJid = sock.user.id.split(':')[0];
+        const botJid = sock.user.id.split('@')[0].split(':')[0];
         
         // Filter out the bot from participants list to prevent self-demotion
         const filteredParticipants = participants.filter(jid => {

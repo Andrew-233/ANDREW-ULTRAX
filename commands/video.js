@@ -3,10 +3,10 @@ const axios = require('axios');
 const { createFakeContact } = require('../lib/fakeContact');
 
 async function videoCommand(sock, chatId, message) {
+       const fakekontak = createFakeContact(message);
     try {
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
         const searchQuery = text.split(' ').slice(1).join(' ').trim();
-        const fakekontak = createFakeContact(message);
         
         if (!searchQuery) {
             return await sock.sendMessage(chatId, { 

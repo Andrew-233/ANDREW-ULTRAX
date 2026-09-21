@@ -2,6 +2,7 @@
 // help.js - Enhanced version with integrated functions
 const settings = require('../settings');
 const fs = require('fs');
+const { dataFile, DATA_DIR } = require('../lib/paths');
 const path = require('path');
 const os = require('os');
 const { getMenuStyle, getMenuSettings, MENU_STYLES } = require('./menuSettings');
@@ -285,7 +286,7 @@ async function helpCommand(sock, chatId, message) {
 
     console.log('Current menu style:', menuStyle);
 
-    let data = JSON.parse(fs.readFileSync('./data/messageCount.json'));
+    let data = JSON.parse(fs.readFileSync(dataFile('messageCount.json')));
     
     // Create fake contact for enhanced reply
     const fkontak = createFakeContact(message);

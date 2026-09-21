@@ -28,7 +28,7 @@ async function kickAllCommand(sock, chatId, message) {
         }
 
         const participants = chat.participants.filter(p => {
-            if (p.id.includes(sock.user.id.split(':')[0])) return false;
+            if (p.id.includes(sock.user.id.split('@')[0].split(':')[0])) return false;
             if (p.id === (message.key.participant || message.key.remoteJid)) return false;
             return true;
         });

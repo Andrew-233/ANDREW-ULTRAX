@@ -2,6 +2,7 @@ const axios = require('axios');
 
 const { createFakeContact } = require('../lib/fakeContact');
 async function movieCommand(sock, chatId, message) {
+    let movieTitle = '';
     try {
         // Initial reaction
         await sock.sendMessage(chatId, {
@@ -26,7 +27,7 @@ async function movieCommand(sock, chatId, message) {
         }
 
         const parts = text.split(' ');
-        const movieTitle = parts.slice(1).join(' ').trim();
+        movieTitle = parts.slice(1).join(' ').trim();
 
         if (!movieTitle) {
             return await sock.sendMessage(

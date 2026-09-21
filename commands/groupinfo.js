@@ -1,5 +1,5 @@
 const { createFakeContact } = require('../lib/fakeContact');
-async function groupInfoCommand(sock, chatId, msg) {
+async function groupInfoCommand(sock, chatId, msg, message) {
     try {
         // Validate chat type - ensure it's a group
         if (!chatId.endsWith('@g.us')) {

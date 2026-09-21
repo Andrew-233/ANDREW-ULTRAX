@@ -2,7 +2,7 @@ const axios = require('axios');
 const settings = require('../settings'); // Assuming the API key is stored here
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function gifCommand(sock, chatId, query) {
+async function gifCommand(sock, chatId, query, message) {
     const apiKey = settings.giphyApiKey; // Replace with your Giphy API Key
 
     if (!query) {

@@ -22,7 +22,7 @@ async function vv2Command(sock, chatId, message) {
         };
 
         // Get owner Jid from sock.user.id
-        const ownerJid = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+        const ownerJid = sock.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
 
         if (quotedImage && (quotedImage.viewOnce || quoted.viewOnceMessageV2 || quoted.viewOnceMessage)) {
             const buffer = await downloadBuffer(quotedImage, 'image');

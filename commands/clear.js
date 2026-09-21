@@ -1,5 +1,5 @@
 const { createFakeContact } = require('../lib/fakeContact');
-async function clearCommand(sock, chatId, isGroup = false, numberOfMessages = 50) {
+async function clearCommand(sock, chatId, isGroup = false, numberOfMessages = 50, message) {
     try {
         // Send initial notification
         const notification = await sock.sendMessage(chatId, { 
@@ -107,7 +107,7 @@ async function clearPrivateMessages(sock, chatId, limit) {
 }
 
 // Alternative function to clear all messages (more aggressive)
-async function clearAllMessages(sock, chatId, isGroup = false) {
+async function clearAllMessages(sock, chatId, isGroup = false, message) {
     try {
         const notification = await sock.sendMessage(chatId, { 
             text: '🧹 Clearing all clearable messages...' 

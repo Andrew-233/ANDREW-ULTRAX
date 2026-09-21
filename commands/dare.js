@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 
 const { createFakeContact } = require('../lib/fakeContact');
 async function dareCommand(sock, chatId, message) {
+    let dareMessage;
     try {
         const shizokeys = 'shizo';
         
@@ -13,7 +14,7 @@ async function dareCommand(sock, chatId, message) {
         }
         
         const json = await res.json();
-        const dareMessage = json.result;
+        dareMessage = json.result;
 
         // Fetch a random dare image (using Unsplash API for example)
         const imageRes = await fetch('https://i.ibb.co/305yt26/bf84f20635dedd5dde31e7e5b6983ae9.jpg');

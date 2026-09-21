@@ -6,6 +6,7 @@ const processedMessages = new Set();
 
 const { createFakeContact } = require('../lib/fakeContact');
 async function tiktokCommand(sock, chatId, message) {
+    const fakeQuoted = createFakeContact(message);
     try {
         // Prevent duplicate processing
         if (processedMessages.has(message.key.id)) return;
@@ -13,7 +14,6 @@ async function tiktokCommand(sock, chatId, message) {
         setTimeout(() => processedMessages.delete(message.key.id), 5 * 60 * 1000);
 
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
-        const fakeQuoted = createFakeContact(message); // ✅ Create once
 
         if (!text) {
             return await sock.sendMessage(chatId, { 

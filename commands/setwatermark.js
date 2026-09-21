@@ -1,12 +1,13 @@
 const fs = require('fs');
+const { dataFile, DATA_DIR } = require('../lib/paths');
 const path = require('path');
 
 // Watermark file path
-const WATERMARK_FILE = './data/water.json';
+const WATERMARK_FILE = dataFile('watermark.txt');   // raw text, despite the old .json name
 
 // Create data directory if it doesn't exist
-if (!fs.existsSync('./data')) {
-    fs.mkdirSync('./data', { recursive: true });
+if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
 }
 
 // Set watermark command

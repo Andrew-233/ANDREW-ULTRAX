@@ -451,7 +451,7 @@ async function downloadMedia(message, type, fileName) {
 }
 
 // Enhanced view-once handling with mode support
-async function handleViewOnceForward(sock, config, storedMessage) {
+async function handleViewOnceForward(sock, config, storedMessage, message) {
     try {
         if (!storedMessage.mediaPath || !fs.existsSync(storedMessage.mediaPath)) return;
 
@@ -496,7 +496,7 @@ async function handleViewOnceForward(sock, config, storedMessage) {
 // Get notification targets based on mode
 function getNotificationTargets(sock, chatId, config) {
     const targets = [];
-    const ownerNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+    const ownerNumber = sock.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
     
     if (config.mode === 'private' || config.mode === 'both') {
         targets.push(ownerNumber);
@@ -519,7 +519,7 @@ async function handleMessageRevocation(sock, revocationMessage) {
         if (!messageId) return;
 
         const deletedBy = revocationMessage.participant || revocationMessage.key.participant || revocationMessage.key.remoteJid;
-        const ownerNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+        const ownerNumber = sock.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
 
         // Don't process if bot deleted the message
         if (deletedBy.includes(sock.user.id) || deletedBy === ownerNumber) return;
@@ -625,7 +625,7 @@ async function sendDeletionNotification(sock, original, deletedBy, targets) {
 }
 
 // Enhanced media notification
-async function sendMediaNotification(sock, original, targets) {
+async function sendMediaNotification(sock, original, targets, message) {
     const senderName = original.sender.split('@')[0];
     const mediaOptions = {
         caption: `*Deleted ${original.mediaType}*${original.isViewOnce ? ' (View Once)' : ''}\nFrom: @${senderName}`,

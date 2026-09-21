@@ -1,3 +1,5 @@
+const isAdmin = require('../lib/isAdmin');
+
 // Create fake contact for enhanced replies
 function createFakeContact(message) {
     return {

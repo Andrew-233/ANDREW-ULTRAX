@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { dataFile, DATA_DIR } = require('../lib/paths');
 const { channelInfo } = require('../lib/messageConfig');
 const isAdmin = require('../lib/isAdmin');
 const { isSudo } = require('../lib/index');
@@ -35,7 +36,7 @@ async function banCommand(sock, chatId, message) {
 
     // Prevent banning the bot itself
     try {
-        const botId = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+        const botId = sock.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
         if (userToBan === botId || userToBan === botId.replace('@s.whatsapp.net', '@lid')) {
             await sock.sendMessage(chatId, { text: 'You cannot ban the bot account.', ...channelInfo }, { quoted: createFakeContact(message) });
             return;
@@ -44,10 +45,10 @@ async function banCommand(sock, chatId, message) {
 
     try {
         // Add user to banned list
-        const bannedUsers = JSON.parse(fs.readFileSync('./data/banned.json'));
+        const bannedUsers = JSON.parse(fs.readFileSync(dataFile('banned.json')));
         if (!bannedUsers.includes(userToBan)) {
             bannedUsers.push(userToBan);
-            fs.writeFileSync('./data/banned.json', JSON.stringify(bannedUsers, null, 2));
+            fs.writeFileSync(dataFile('banned.json'), JSON.stringify(bannedUsers, null, 2));
             
             await sock.sendMessage(chatId, { 
                 text: `Successfully banned @${userToBan.split('@')[0]}!`,

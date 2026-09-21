@@ -9,23 +9,61 @@ const LINK_PATTERNS = [
     /t\.me\/[A-Za-z0-9_+]{2,}/i,                        // Telegram
     /https?:\/\/[^\s]{4,}/i,                             // Any http/https URL
     /(?<!\w)(www\.[a-z0-9-]+\.[a-z]{2,})[^\s]*/i,       // www.example.com
+    /\b(?:wa\.me|api\.whatsapp\.com|chat)\/[A-Za-z0-9._~+/=-]{4,}/i, // WhatsApp link with no scheme
+    /\bt\.me\/[A-Za-z0-9_+/=-]{3,}/i,                       // Telegram link with no scheme
 ];
 
+// A dot-separated token only counts as a link when its last label is a real TLD.
+// Without this filter plain sentences ("version 1.5", "john.doe") would be deleted.
+const FALSE_POSITIVE_RE = /\.(?:com|net|org|io|co|me|ly|be|gg|dev|app|xyz|top|site|online|live|link|shop|store|tech|info|biz|club|space|website|world|news|tv|fm|so|to|is|ai|id|us|uk|eu|in|ca|au|de|fr|jp|cn|br|ru|za|ng|ke|tz|ug|gh|zw|zm|ws|page|cloud|click|fun|icu|vip|win|bet|pro|life|media|digital|network|systems|solutions|services|exchange|trade|company|group|edu|gov|mil|int|jobs|mobi|name|travel)(?:[\/.?#]|$)/i
+
+// Token scanner for scheme-less links ("bit.ly/x", "go google.com now").
 function containsLink(text) {
     if (!text || typeof text !== 'string') return false;
-    return LINK_PATTERNS.some(pattern => pattern.test(text));
+    // "@name.tag" mentions render with dots and must never be read as domains.
+    if (text.includes('<@')) return false;
+    // LINK_PATTERNS are non-global; .test() on them is stateless and safe.
+    if (LINK_PATTERNS.some(pattern => pattern.test(text))) return true;
+    // Scheme-less links ("bit.ly/x", "go google.com now") match no pattern above, so scan
+    // token by token and require a real TLD to keep ordinary sentences safe.
+    for (const raw of text.split(/\s+/)) {
+        const tok = raw.replace(/^[`"'(<[{]+/, '').replace(/[)"'`,.!?;:\]}]+$/, '');
+        if (!tok || tok.length < 4) continue;
+        if (tok.startsWith('@') || /^\d/.test(tok)) continue;
+        if (/\.[0-9]+$/.test(tok)) continue; // 1.5 / v2.0
+        if (!/^[a-z0-9-]+(?:\.[a-z0-9-]+)+(?:[/?#]\S*)?$/i.test(tok)) continue;
+        if (FALSE_POSITIVE_RE.test(tok)) return true;
+    }
+    return false;
 }
 
 // Extract full text from any message type
 function getMessageText(message) {
-    return (
-        message.message?.conversation ||
-        message.message?.extendedTextMessage?.text ||
-        message.message?.imageMessage?.caption ||
-        message.message?.videoMessage?.caption ||
-        message.message?.documentMessage?.caption ||
-        ''
-    );
+    const m = message.message || {};
+    const parts = [
+        m.conversation,
+        m.extendedTextMessage?.text,
+        m.imageMessage?.caption,
+        m.videoMessage?.caption,
+        m.documentMessage?.caption,
+        // A bare link usually arrives as a preview-only message with no caption at all.
+        m.preview?.url,
+        m.preview?.matchedText?.canonicalUrl,
+        m.preview?.matchedText?.description,
+        // Interactive button/list taps carry text elsewhere.
+        m.buttonsResponseMessage?.selectedDisplayText,
+        m.listResponseMessage?.title,
+    ].filter(Boolean);
+
+    // An edited message nests the replacement payload one level down: without this an
+    // admin-cleaned message could be edited into a link that was never re-checked.
+    const edited = m.editedMessage?.message;
+    if (edited) {
+        const et = edited.conversation || edited.extendedTextMessage?.text || '';
+        if (et) parts.push(et);
+    }
+
+    return parts.join(' ').trim();
 }
 
 /**

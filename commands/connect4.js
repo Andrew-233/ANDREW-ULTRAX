@@ -4,7 +4,7 @@ const ConnectFour = require('../lib/connect4'); // You'll need to create this mo
 const connectFourGames = {};
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function connectFourCommand(sock, chatId, senderId, text) {
+async function connectFourCommand(sock, chatId, senderId, text, message) {
     try {
         // Check if player is already in a game
         const existingGame = Object.values(connectFourGames).find(room => 
@@ -111,7 +111,7 @@ ${board}
     }
 }
 
-async function handleConnectFourMove(sock, chatId, senderId, columnText) {
+async function handleConnectFourMove(sock, chatId, senderId, columnText, message) {
     try {
         // Find player's game
         const room = Object.values(connectFourGames).find(room => 

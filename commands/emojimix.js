@@ -4,7 +4,7 @@ const { exec } = require('child_process');
 const path = require('path');
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function emojimixCommand(sock, chatId, msg) {
+async function emojimixCommand(sock, chatId, msg, message) {
     try {
         // Get the text after command
         const text = msg.message?.conversation?.trim() || 

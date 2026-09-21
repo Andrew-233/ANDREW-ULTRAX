@@ -48,7 +48,7 @@ async function clearTmpDirectory() {
 }
 
 // Function to handle manual command
-async function clearTmpCommand(sock, chatId, msg) {
+async function clearTmpCommand(sock, chatId, msg, message) {
     try {
         const senderId = msg.key.participant || msg.key.remoteJid;
         const isOwner = msg.key.fromMe || await isSudo(senderId);

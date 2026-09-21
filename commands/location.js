@@ -2,6 +2,7 @@ const axios = require('axios');
 
 const { createFakeContact } = require('../lib/fakeContact');
 async function locationCommand(sock, chatId, message) {
+    let locationQuery = '';
     try {
         // Send initial reaction
         await sock.sendMessage(chatId, {
@@ -20,7 +21,7 @@ async function locationCommand(sock, chatId, message) {
         }
 
         const parts = text.split(' ');
-        const locationQuery = parts.slice(1).join(' ').trim();
+        locationQuery = parts.slice(1).join(' ').trim();
 
         if (!locationQuery) {
             return await sock.sendMessage(chatId, {

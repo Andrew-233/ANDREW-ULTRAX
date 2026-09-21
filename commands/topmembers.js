@@ -59,7 +59,7 @@ function incrementMessageCount(groupId, userId) {
     }
 }
 
-function topMembers(sock, chatId, isGroup, count = 5) {
+function topMembers(sock, chatId, isGroup, count = 5, message) {
     try {
         if (!isGroup) {
             sock.sendMessage(chatId, { text: 'This command is only available in group chats.' }, { quoted: createFakeContact(message) });
@@ -104,7 +104,7 @@ function topMembers(sock, chatId, isGroup, count = 5) {
 }
 
 // New function to get user's message count
-function getUserRank(sock, chatId, isGroup, userId) {
+function getUserRank(sock, chatId, isGroup, userId, message) {
     try {
         if (!isGroup) {
             sock.sendMessage(chatId, { text: 'This command is only available in group chats.' }, { quoted: createFakeContact(message) });
@@ -155,7 +155,7 @@ function resetMessageCounts(groupId) {
 }
 
 // New function to get group statistics
-function getGroupStats(sock, chatId, isGroup) {
+function getGroupStats(sock, chatId, isGroup, message) {
     try {
         if (!isGroup) {
             sock.sendMessage(chatId, { text: 'This command is only available in group chats.' }, { quoted: createFakeContact(message) });

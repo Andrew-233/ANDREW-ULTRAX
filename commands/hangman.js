@@ -71,7 +71,7 @@ const hangmanStages = [
 
 let hangmanGames = {};
 
-function startHangman(sock, chatId, category = null) {
+function startHangman(sock, chatId, category = null, message) {
     // Choose a random category if none specified
     const selectedCategory = category && wordCategories[category] 
         ? category 
@@ -156,7 +156,7 @@ function getHangmanDrawing(wrongGuesses) {
     return hangmanStages[wrongGuesses] || hangmanStages[0];
 }
 
-function guessLetter(sock, chatId, letter) {
+function guessLetter(sock, chatId, letter, message) {
     if (!hangmanGames[chatId]) {
         sock.sendMessage(chatId, { 
             text: 'No active game! Start a new one with: .hangman [category]\nCategories: ' + Object.keys(wordCategories).join(', ') 
@@ -244,7 +244,7 @@ function guessLetter(sock, chatId, letter) {
     }
 }
 
-function giveHint(sock, chatId) {
+function giveHint(sock, chatId, message) {
     if (!hangmanGames[chatId]) {
         sock.sendMessage(chatId, { text: 'No active game!' }, { quoted: createFakeContact(message) });
         return;
@@ -268,7 +268,7 @@ function giveHint(sock, chatId) {
     });
 }
 
-function showGameStatus(sock, chatId) {
+function showGameStatus(sock, chatId, message) {
     if (!hangmanGames[chatId]) {
         sock.sendMessage(chatId, { text: 'No active game!' }, { quoted: createFakeContact(message) });
         return;
@@ -290,7 +290,7 @@ function showGameStatus(sock, chatId) {
     sock.sendMessage(chatId, { text: status }, { quoted: createFakeContact(message) });
 }
 
-function showLeaderboard(sock, chatId) {
+function showLeaderboard(sock, chatId, message) {
     // In a real implementation, you'd store scores in a database
     // For now, we'll show a placeholder
     sock.sendMessage(chatId, { 

@@ -4,7 +4,7 @@ const TicTacToe = require('../lib/tictactoe');
 const games = {};
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function tictactoeCommand(sock, chatId, senderId, text) {
+async function tictactoeCommand(sock, chatId, senderId, text, message) {
     try {
         // Check if player is already in a game
         const existingGame = Object.values(games).find(room => 
@@ -125,7 +125,7 @@ ${arr.slice(6).join('')}
     }
 }
 
-async function handleTicTacToeMove(sock, chatId, senderId, text) {
+async function handleTicTacToeMove(sock, chatId, senderId, text, message) {
     try {
         // Find player's game
         const room = Object.values(games).find(room => 

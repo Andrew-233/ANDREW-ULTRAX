@@ -36,7 +36,7 @@ function buildStatusJidList(sock) {
 
     // Always include self
     if (sock?.user?.id) {
-        const selfJid = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+        const selfJid = sock.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
         list.add(selfJid);
     }
 

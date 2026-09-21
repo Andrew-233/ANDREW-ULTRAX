@@ -10,7 +10,7 @@ const eightBallResponses = [
 ];
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function eightBallCommand(sock, chatId, question) {
+async function eightBallCommand(sock, chatId, question, message) {
     if (!question) {
         await sock.sendMessage(chatId, { text: 'Please ask a question!' }, { quoted: createFakeContact(message) });
         return;

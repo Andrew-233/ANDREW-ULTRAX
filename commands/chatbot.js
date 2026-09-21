@@ -10,7 +10,9 @@ const { getBotName } = require('../lib/botConfig');
 // ==================== DATA MANAGEMENT ====================
 
 // Path to user group data file
-const DATA_FILE = path.join(__dirname, '../Database/userGroupData.json');
+// SHARED with lib/index.js (antilink, antibadword, warnings, welcome): read defensively,
+// merge on write, write atomically - a truncated file wipes those features.
+const DATA_FILE = path.join(__dirname, '../data/userGroupData.json');
 
 // Initialize default data structure
 const defaultData = {
@@ -30,16 +32,24 @@ function loadUserGroupData() {
             fs.mkdirSync(dbDir, { recursive: true });
         }
 
-        // Check if file exists
-        if (!fs.existsSync(DATA_FILE)) {
-            // Create file with default data
-            fs.writeFileSync(DATA_FILE, JSON.stringify(defaultData, null, 2));
+        // A missing file must NOT be "fixed" by writing defaults: another feature may be
+        // mid-write, and dropping a stale copy over it is how state was lost before.
+        if (!fs.existsSync(DATA_FILE)) return { ...defaultData };
+
+        const raw = fs.readFileSync(DATA_FILE, 'utf8').trim();
+        if (!raw) return { ...defaultData };
+
+        let fileData;
+        try {
+            fileData = JSON.parse(raw);
+        } catch (parseErr) {
+            const rescue = DATA_FILE + '.corrupt.' + Date.now();
+            try { fs.copyFileSync(DATA_FILE, rescue); console.error('[chatbot] unreadable store, kept a copy at', rescue); } catch {}
             return { ...defaultData };
         }
+        if (!fileData || typeof fileData !== 'object' || Array.isArray(fileData)) return { ...defaultData };
 
-        // Read and parse file
-        const data = fs.readFileSync(DATA_FILE, 'utf8');
-        return JSON.parse(data);
+        return { ...defaultData, ...fileData };
     } catch (error) {
         return { ...defaultData };
     }
@@ -54,8 +64,22 @@ function saveUserGroupData(data) {
             fs.mkdirSync(dbDir, { recursive: true });
         }
 
-        // Write data to file
-        fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
+        // Re-read and merge so a stale in-memory copy cannot wipe antilink/antibadword/
+        // warnings, then tmp + rename so a crash mid-write leaves the good file intact.
+        let merged = { ...defaultData };
+        try {
+            const rawDisk = fs.readFileSync(DATA_FILE, 'utf8').trim();
+            if (rawDisk) {
+                const disk = JSON.parse(rawDisk);
+                if (disk && typeof disk === 'object' && !Array.isArray(disk)) merged = { ...defaultData, ...disk };
+            }
+        } catch { /* unreadable: keep only what the caller handed us */ }
+
+        merged.chatbot = { ...(merged.chatbot || {}), ...((data && data.chatbot) || {}) };
+
+        const tmp = DATA_FILE + '.' + process.pid + '.tmp';
+        fs.writeFileSync(tmp, JSON.stringify(merged, null, 2));
+        fs.renameSync(tmp, DATA_FILE);
         return true;
     } catch (error) {
         return false;
@@ -114,7 +138,7 @@ function extractUserInfo(message) {
 // ==================== SETTINGS STORE ====================
 
 // Path to settings file
-const SETTINGS_FILE = path.join(__dirname, '../Database/groupSettings.json');
+const SETTINGS_FILE = path.join(__dirname, '../data/chatbotSettings.json');
 
 // Default settings structure
 const defaultSettings = {
@@ -461,15 +485,16 @@ async function handleChatbotCommand(sock, chatId, message, match) {
     if (!match) {
         await showTyping(sock, chatId);
         return sock.sendMessage(chatId, {
-            text: `*CHATBOT SETUP*\n\n*.chatbot on*\nEnable chatbot\n\n*.chatbot off*\nDisable chatbot in this group`,
+            text: `*CHATBOT SETUP*\n\n*.chatbot on*\nEnable chatbot\n\n*.chatbot off*\nDisable chatbot in this group\n\n*.chatbot all on*\nAnswer every message\n\n*.chatbot all off*\nAnswer only replies and @mentions`,
             quoted: message
         });
     }
 
     const data = loadUserGroupData();
-    
+    if (!data.chatbot || typeof data.chatbot !== 'object') data.chatbot = {};
+
     // Get bot's number
-    const botNumber = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+    const botNumber = sock.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
     
     // Get sender ID properly
     const senderId = getSenderId(message);
@@ -499,6 +524,17 @@ async function handleChatbotCommand(sock, chatId, message, match) {
     }
 
     // Handle commands
+    if (match === 'all on' || match === 'all off') {
+        const allOn = match === 'all on';
+        const ok = setGroupConfig(chatId, 'respondToAll', allOn);
+        return sock.sendMessage(chatId, {
+            text: ok
+                ? (allOn ? '*Chatbot will answer every message in this group.*' : '*Chatbot will only answer replies and @mentions.*')
+                : '*Could not save that setting.*',
+            quoted: message
+        });
+    }
+
     if (match === 'on') {
         await showTyping(sock, chatId);
         if (data.chatbot[chatId]) {
@@ -548,19 +584,29 @@ async function handleChatbotResponse(sock, chatId, message, userMessage, senderI
 
         // Check if chatbot is enabled for this group
         const data = loadUserGroupData();
-        const isChatbotEnabled = data.chatbot[chatId] || false;
+        const isChatbotEnabled = !!(data.chatbot && data.chatbot[chatId]);
         if (!isChatbotEnabled) return;
 
-        // Respond when someone replies to ANY message
+        // This used to be the only way in: a message that was not a reply to another
+        // message was dropped silently, so ordinary group chatter never got an answer and
+        // the feature looked dead. Now: replies, bot mentions, or any message when the
+        // group has respondToAll on (the default).
         const isReplied = isReplyToAnyMessage(message);
-        if (!isReplied) return;
+        const mentionedBot = isBotMentioned(message, sock.user && sock.user.id);
+        if (!isReplied && !mentionedBot) {
+            const cbSettings = loadSettings();
+            const cbGroup = (cbSettings.groups && cbSettings.groups[chatId]) || {};
+            if (cbGroup.respondToAll === false) return;
+        }
 
-        // Don't respond to own messages
-        const botId = sock.user.id;
-        const botNumber = botId.split(':')[0];
+        // Don't respond to own messages. key.fromMe is checked as well because senderId is
+        // derived from key.participant, which is absent on some self-sent messages - without
+        // it the bot could answer its own reply and loop forever.
+        const botId = (sock.user && sock.user.id) || '';
+        const botNumber = botId.split('@')[0].split(':')[0];
         const senderNum = (senderId || '').split('@')[0].split(':')[0];
-        
-        if (senderNum === botNumber) {
+
+        if (!botNumber || message.key?.fromMe || senderNum === botNumber) {
             return;
         }
 
@@ -899,10 +945,13 @@ Previous chat: ${recentMessages}`;
 
     // Try each API in sequence
     for (const api of apis) {
+        let timeout = null;
         try {
             let response;
             const controller = new AbortController();
-            const timeout = setTimeout(() => controller.abort(), 15000);
+            // Declared outside the try so the finally below can always clear it: an armed
+            // 15s timer left behind by a failed attempt keeps the process alive on restart.
+            timeout = setTimeout(() => controller.abort(), 15000);
 
             if (api.method === 'POST') {
                 response = await fetch(api.url, {
@@ -947,6 +996,8 @@ Previous chat: ${recentMessages}`;
 
         } catch (error) {
             continue;
+        } finally {
+            if (timeout) clearTimeout(timeout);
         }
     }
 

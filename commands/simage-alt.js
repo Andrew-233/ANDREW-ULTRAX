@@ -4,7 +4,7 @@ var fs = require('fs');
 const ffmpeg = require('ffmpeg-static');
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function simageCommand(sock, quotedMessage, chatId) {
+async function simageCommand(sock, quotedMessage, chatId, message) {
     try {
         if (!quotedMessage?.stickerMessage) {
             await sock.sendMessage(chatId, { text: 'Please reply to a sticker!' }, { quoted: createFakeContact(message) });

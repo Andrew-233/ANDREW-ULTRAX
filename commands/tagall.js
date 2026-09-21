@@ -1,7 +1,7 @@
 const isAdmin = require('../lib/isAdmin');
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function tagAllCommand(sock, chatId, senderId) {
+async function tagAllCommand(sock, chatId, senderId, message) {
     try {
         const { isSenderAdmin, isBotAdmin } = await isAdmin(sock, chatId, senderId);
         

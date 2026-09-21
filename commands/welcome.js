@@ -80,7 +80,8 @@ async function handleJoinEvent(sock, id, participants, message) {
                     .replace(/{group}/g, groupName)
                     .replace(/{description}/g, groupDesc)
                     .replace(/{bot}/g, getBotName())
-                    .replace(/{members}/g, membersCount.toString());
+                    .replace(/{members}/g, membersCount.toString())
+                    .replace(/{count}/g, membersCount.toString());
             } else {
                 const now = new Date();
                 const timeString = now.toLocaleString('en-US', {
@@ -160,7 +161,8 @@ ${groupDesc}
                     .replace(/{group}/g, groupName)
                     .replace(/{description}/g, groupDesc)
                     .replace(/{bot}/g, getBotName())
-                    .replace(/{members}/g, membersCount.toString());
+                    .replace(/{members}/g, membersCount.toString())
+                    .replace(/{count}/g, membersCount.toString());
             } else {
                 fallbackMessage = `Welcome @${user} to ${groupName}! 🎉 Powered by ${getBotName()}. We now have ${membersCount} members.`;
             }

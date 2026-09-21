@@ -1,5 +1,5 @@
 const { createFakeContact } = require('../lib/fakeContact');
-async function shipCommand(sock, chatId, msg, groupMetadata) {
+async function shipCommand(sock, chatId, msg, groupMetadata, message) {
     try {
         // Get all participants from the group
         const participants = await sock.groupMetadata(chatId);

@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function stupidCommand(sock, chatId, quotedMsg, mentionedJid, sender, args) {
+async function stupidCommand(sock, chatId, quotedMsg, mentionedJid, sender, args, message) {
     try {
         // Determine the target user
         let who = quotedMsg 

@@ -1,6 +1,12 @@
-const deployManager = require('../deployManager');
+// deployManager.js is not part of this repository. A top-level require of a missing
+// module used to crash the process (MODULE_NOT_FOUND) the moment either command was loaded.
+// Load it defensively so the rest of the bot survives, and report the feature as unavailable.
+let deployManager = null;
+try { deployManager = require('../deployManager'); } catch (_) { deployManager = null; }
+const UNAVAILABLE = '\u26a0\ufe0f Deployment manager is not installed on this bot (deployManager.js is missing).';
 
 async function listConnectedCommand(sock, chatId, senderId, message, prefix) {
+    if (!deployManager) return await sock.sendMessage(chatId, { text: UNAVAILABLE });
     try {
         const allDeployments = deployManager.listAllDeployments();
         

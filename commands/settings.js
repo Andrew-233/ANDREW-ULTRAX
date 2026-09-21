@@ -25,14 +25,14 @@ async function settingsCommand(sock, chatId, message) {
         }
 
         const isGroup = chatId.endsWith('@g.us');
-        const dataDir = './data';
+        const dataDir = require('path').join(__dirname, '..', 'data');
 
         const modeRaw      = readJsonSafe(`${dataDir}/botMode.json`,       { isPublic: true, mode: 'public' });
         const autoStatus   = readJsonSafe(`${dataDir}/autoStatus.json`,    { enabled: false, reactOn: false });
         const autoread     = readJsonSafe(`${dataDir}/autoread.json`,      { enabled: false });
         const autotyping   = readJsonSafe(`${dataDir}/autotyping.json`,    { enabled: false });
         const pmblocker    = readJsonSafe(`${dataDir}/pmblocker.json`,     { enabled: false });
-        const anticall     = readJsonSafe(`${dataDir}/anticall.json`,      { enabled: false });
+        const anticall     = readJsonSafe(`${dataDir}/anticall.json`,      { status: false, action: 'reject' });
         const antidelete   = readJsonSafe(`${dataDir}/antidelete.json`,    { enabled: false, mode: 'private' });
         const autorecord   = readJsonSafe(`${dataDir}/autorecording.json`, { enabled: false });
         const prefixCfg    = readJsonSafe(`${dataDir}/prefix.json`,        { prefix: '.' });
@@ -104,7 +104,7 @@ async function settingsCommand(sock, chatId, message) {
         lines.push('');
         lines.push('*🛡️ PROTECTION (Global)*');
         lines.push(`🔹 PM Blocker        : ${on(pmblocker.enabled)}`);
-        lines.push(`🔸 Anti Call         : ${on(anticall.enabled)}`);
+        lines.push(`🔸 Anti Call         : ${on(anticall.enabled ?? anticall.status)}`);
         lines.push(`🔹 Anti Delete       : ${on(antidelete.enabled)}${antidelete.enabled ? ` (${antidelete.mode || 'private'})` : ''}`);
         lines.push(`🔹 Anti Status Mention: ${on(antistatusm?.enabled || (Object.keys(antistatusm).length > 0 && antistatusm?.action))}`);
 

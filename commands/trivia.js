@@ -3,7 +3,7 @@ const axios = require('axios');
 let triviaGames = {};
 
 const { createFakeContact } = require('../lib/fakeContact');
-async function startTrivia(sock, chatId) {
+async function startTrivia(sock, chatId, message) {
     if (triviaGames[chatId]) {
         sock.sendMessage(chatId, { text: 'A trivia game is already in progress!' }, { quoted: createFakeContact(message) });
         return;
@@ -27,7 +27,7 @@ async function startTrivia(sock, chatId) {
     }
 }
 
-function answerTrivia(sock, chatId, answer) {
+function answerTrivia(sock, chatId, answer, message) {
     if (!triviaGames[chatId]) {
         sock.sendMessage(chatId, { text: 'No trivia game is in progress.' }, { quoted: createFakeContact(message) });
         return;

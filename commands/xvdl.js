@@ -26,7 +26,15 @@ async function xvdlCommand(sock, chatId, message) {
         }, { quoted: createFakeContact(message) });
 
 
-        const video = searchResult;
+        // `searchResult` was never defined anywhere in this module (ReferenceError on every use).
+        // The downstream API needs a URL, so accept a pasted link directly.
+        const isUrl = /^https?:\/\//i.test(query);
+        if (!isUrl) {
+            return await sock.sendMessage(chatId, {
+                text: '❌ Please paste a direct XVideos link with the command.\nExample:\n.xvdl https://www.xvideos.com/video123/name'
+            }, { quoted: createFakeContact(message) });
+        }
+        const video = { url: query };
         const apiUrl = `https://api.giftedtech.co.ke/api/download/xvideosdl?apikey=gifted&url=${encodeURIComponent(video.url)}`;
         const response = await axios.get(apiUrl);
         const apiData = response.data;

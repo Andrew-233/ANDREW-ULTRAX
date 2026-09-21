@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { dataFile, DATA_DIR } = require('../lib/paths');
 const path = require('path');
 const { channelInfo } = require('../lib/messageConfig');
 const { isSudo } = require('../lib/index');
@@ -48,11 +49,11 @@ async function unbanCommand(sock, chatId, message) {
     }
 
     try {
-        const bannedUsers = JSON.parse(fs.readFileSync('./data/banned.json'));
+        const bannedUsers = JSON.parse(fs.readFileSync(dataFile('banned.json')));
         const index = bannedUsers.indexOf(userToUnban);
         if (index > -1) {
             bannedUsers.splice(index, 1);
-            fs.writeFileSync('./data/banned.json', JSON.stringify(bannedUsers, null, 2));
+            fs.writeFileSync(dataFile('banned.json'), JSON.stringify(bannedUsers, null, 2));
             
             await sock.sendMessage(chatId, { 
                 text: `✅ Successfully unbanned ${userToUnban.split('@')[0]}!`,

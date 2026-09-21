@@ -14,6 +14,7 @@ function runtime(seconds) {
 }
 
 async function tutorialCommand(sock, chatId, message) {
+    let uptimeMessage = '';
     try {
         // ❤️ Reaction when command triggered
         await sock.sendMessage(chatId, {
@@ -29,7 +30,7 @@ async function tutorialCommand(sock, chatId, message) {
         const usedMemory = (process.memoryUsage().heapUsed / (1024 * 1024)).toFixed(2);
         const host = os.platform();
 
-        const uptimeMessage =
+        uptimeMessage =
             `👋 \`Hello ${userName}, here is the tutorial videos\` \n\n` +
             `*This ${settings.botName || "> *∆RY∆N-TECH"} Whatsapp Bot tutorials. This bot is easy to deploy*\n\n` +
             `*github workflows:* https://youtu.be/2HU2okH8HL4?si=l2JG1EbML0MhfLWg\n` +

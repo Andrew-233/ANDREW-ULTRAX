@@ -38,7 +38,7 @@ async function kickCommand(sock, chatId, senderId, mentionedJids, message) {
     }
 
     // Get bot's ID
-    const botId = sock.user.id.split(':')[0] + '@s.whatsapp.net';
+    const botId = sock.user.id.split('@')[0].split(':')[0] + '@s.whatsapp.net';
 
     // Check if any of the users to kick is the bot itself
     if (usersToKick.includes(botId)) {

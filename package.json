@@ -1,19 +1,20 @@
 {
   "name": "ANDREW-ULTRAX",
-  "version": "2.7.2",
+  "version": "2.7.6",
   "description": "WhatsApp Bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "start:optimized": "node --max-old-space-size=512 --optimize-for-size --gc-interval=100 index.js",
+    "start:optimized": "node --max-old-space-size=512 index.js",
     "cleanup": "node cleanup.js",
     "reset-session": "node reset-session.js",
     "start:clean": "npm run cleanup && npm run start:optimized",
-    "start:fresh": "npm run reset-session && npm start",
-    "install:panel": "npm install --legacy-peer-deps",
+    "start:fresh": "npm run reset-session -- --yes && npm start",
     "install:force": "npm install --force",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docker:build": "docker build -t docker run -e SESSION_ID=$SESSION_ID Andrew-X"
+    "docker:build": "docker build -t andrew-ultrax .",
+    "docker:run": "docker run --rm -e SESSION_ID=\"$SESSION_ID\" -e OWNER_NUMBER=\"$OWNER_NUMBER\" andrew-ultrax",
+    "install:panel": "npm install --legacy-peer-deps"
   },
   "keywords": [
     "whatsapp-bot"
@@ -22,19 +23,13 @@
   "license": "ISC",
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
-    "@ffmpeg/ffmpeg": "^0.12.15",
     "@hapi/boom": "^10.0.1",
-    "@types/node": "^20.0.0",
     "@whiskeysockets/baileys": "^v7.0.0-rc.9",
-    "adm-zip": "^0.5.16",
     "awesome-phonenumber": "^5.9.0",
     "axios": "^1.8.4",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
-    "cookie": "^0.5.0",
-    "crypto": "^1.0.1",
     "dotenv": "*",
-    "events": "^3.3.0",
     "express": "^4.19.2",
     "ffmpeg-static": "^5.3.0",
     "file-type": "^16.5.4",
@@ -46,10 +41,6 @@
     "human-readable": "^0.2.1",
     "jimp": "^1.6.0",
     "js-confuser": "^1.0.9",
-    "jsdom": "^22.1.0",
-    "libphonenumber-js": "^1.11.18",
-    "libsignal": "^2.0.1",
-    "link-preview-js": "^3.0.5",
     "lolcatjs": "^2.4.3",
     "moment-timezone": "^0.5.43",
     "mumaker": "^2.0.0",
@@ -58,36 +49,23 @@
     "node-id3": "^0.2.3",
     "node-webpmux": "^3.1.0",
     "node-youtube-music": "^0.8.3",
-    "performance-now": "^2.1.0",
-    "pg": "^8.11.3",
-    "pg-hstore": "^2.3.4",
-    "phin": "^3.7.1",
     "pino": "^8.21.0",
     "pm2": "^5.3.1",
     "qrcode": "^1.5.4",
-    "qrcode-reader": "^1.0.4",
     "qrcode-terminal": "^0.12.0",
-    "request": "^2.88.2",
     "ruhend-scraper": "^8.3.0",
-    "safe-stable-stringify": "^2.5.0",
-    "set-cookie": "^0.0.4",
     "sharp": "^0.34.5",
-    "stream": "^0.0.2",
-    "tough-cookie": "^5.0.0",
-    "translate-google-api": "^1.0.4",
     "webp-converter": "latest",
     "ws": "^8.17.1",
-    "yargs": "^17.6.0",
-    "yargs-parser": "^21.1.1",
     "youtube-yts": "^2.0.0",
     "youtubedl-core": "^4.11.7",
     "yt-search": "^2.12.1",
     "ytdl-core": "^4.11.5"
   },
-  "overrides": {
-    "jimp": "^1.6.0"
-  },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0"
   }
 }

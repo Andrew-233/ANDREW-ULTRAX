@@ -5,7 +5,7 @@ const { createFakeContact } = require('../lib/fakeContact');
  * @param {string} chatId - Group chat ID
  * @returns {Promise<object>} - Result object with status and message
  */
-async function unmuteCommand(sock, chatId) {
+async function unmuteCommand(sock, chatId, message) {
     try {
         // Update group settings to allow normal conversation
         await sock.groupSettingUpdate(chatId, 'not_announcement');

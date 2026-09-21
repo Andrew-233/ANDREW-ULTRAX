@@ -1,6 +1,7 @@
 const fs = require('fs');
+const { dataFile, DATA_DIR } = require('../lib/paths');
 
-const PMBLOCKER_PATH = './data/pmblocker.json';
+const PMBLOCKER_PATH = dataFile('pmblocker.json');
 
 const { createFakeContact } = require('../lib/fakeContact');
 
@@ -17,9 +18,17 @@ function readState() {
 
 function writeState(enabled) {
     try {
-        if (!fs.existsSync('./data')) fs.mkdirSync('./data', { recursive: true });
-        fs.writeFileSync(PMBLOCKER_PATH, JSON.stringify({ enabled: !!enabled }, null, 2));
-    } catch {}
+        if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true });
+        // was: writeFileSync inside `catch {}` - a failed save still reported
+        // "ENABLED" to the user and silently reverted after restart.
+        const tmp = PMBLOCKER_PATH + ".tmp";
+        fs.writeFileSync(tmp, JSON.stringify({ enabled: !!enabled }, null, 2));
+        fs.renameSync(tmp, PMBLOCKER_PATH);
+        return true;
+    } catch (e) {
+        console.error("[pmblocker] failed to persist setting:", e.message);
+        return false;
+    }
 }
 
 async function pmblockerCommand(sock, chatId, message, args) {

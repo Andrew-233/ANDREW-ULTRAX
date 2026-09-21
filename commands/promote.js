@@ -45,7 +45,7 @@ async function promoteCommand(sock, chatId, mentionedJids, message, args) {
     }
 }
 
-async function handlePromotionEvent(sock, groupId, participants, author) {
+async function handlePromotionEvent(sock, groupId, participants, author, message) {
     try {
         if (!Array.isArray(participants) || participants.length === 0) return;
 

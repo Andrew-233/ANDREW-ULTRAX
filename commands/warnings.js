@@ -12,7 +12,7 @@ function loadWarnings() {
     return JSON.parse(data);
 }
 
-async function warningsCommand(sock, chatId, mentionedJidList) {
+async function warningsCommand(sock, chatId, mentionedJidList, message) {
     const warnings = loadWarnings();
 
     if (mentionedJidList.length === 0) {
