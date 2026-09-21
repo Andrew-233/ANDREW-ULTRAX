@@ -3,7 +3,7 @@
 ‎</p>
 ‎
 ‎<p align="center">
-‎  <a href="https://pair-andrewultrax.onrender.com/">
+‎  <a href="https://andrewpair1.onrender.com/">
 ‎    <img src="https://img.shields.io/badge/Pair_Site-Get_Code-purple?style=for-the-badge&logo=whatsapp" alt="Pair Site" width="200">
 ‎  </a>
 ‎
