@@ -2,7 +2,7 @@ const { downloadMediaMessage } = require('@whiskeysockets/baileys');
 const { exec } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const settings = require('../settings');
+const { getBotName } = require('../lib/botConfig');
 const webp = require('node-webpmux');
 const crypto = require('crypto');
 
@@ -159,7 +159,7 @@ async function smemeCommand(sock, chatId, message) {
 
         const json = {
             'sticker-pack-id': crypto.randomBytes(32).toString('hex'),
-            'sticker-pack-name': settings.packname || 'June-x Meme',
+            'sticker-pack-name': getBotName(),
             'emojis': ['😂']
         };
 

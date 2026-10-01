@@ -77,7 +77,7 @@ const generateMenu = (pushname, currentMode, hostName, ping, uptimeFormatted, pr
     let newOwner = getOwnerName();
     const menuSettings = getMenuSettings();
     
-    let menu = `┏❐  *❴ JUNE - X BOT ❵* ❐\n`;
+    let menu = `┏❐  *❴ ${getBotName()} ❵* ❐\n`;
     menu += `┃➥ *User:* ${pushname}\n`;
     menu += `┃➥ *Owner:* ${newOwner}\n`;
     menu += `┃➥ *Mode:* ${currentMode}\n`;
@@ -307,11 +307,7 @@ async function helpCommand(sock, chatId, message) {
 
     // Random thumbnail selection from local files
     const thumbnailFiles = [
-        'menu1.jpg',
-        'menu2.jpg', 
-        'menu3.jpg',
-        'menu4.jpg',
-        'menu5.jpg'
+        'menu1.jpg'
     ];
     const randomThumbFile = thumbnailFiles[Math.floor(Math.random() * thumbnailFiles.length)];
     const thumbnailPath = path.join(__dirname, '../assets', randomThumbFile);

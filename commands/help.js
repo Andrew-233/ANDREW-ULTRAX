@@ -237,7 +237,7 @@ async function loadThumbnail(thumbnailPath) {
     }
 }
 
-// JUNE-X BOT menu style function (restored original branding)
+// bot-name menu style function (restored original branding)
 async function sendMenuWithStyle(sock, chatId, message, menulist, menustyle, thumbnailBuffer, pushname) {
     const fkontak = createFakeContact(message);
     const botname = getBotName();
@@ -386,11 +386,7 @@ async function helpCommand(sock, chatId, message) {
     } else {
         // Random thumbnail selection from local files
         const thumbnailFiles = [
-            'menu1.jpg',
-            'menu2.jpg', 
-            'menu3.jpg',
-            'menu4.jpg',
-            'menu5.jpg'
+            'menu1.jpg'
         ];
         const randomThumbFile = thumbnailFiles[Math.floor(Math.random() * thumbnailFiles.length)];
         thumbnailPath = path.join(__dirname, '../assets', randomThumbFile);
@@ -400,7 +396,7 @@ async function helpCommand(sock, chatId, message) {
         // Load thumbnail using helper function
         const thumbnailBuffer = await loadThumbnail(thumbnailPath);
 
-        // Send menu using JUNE-X BOT menu style function
+        // Send menu using bot-name menu style function
         await sendMenuWithStyle(sock, chatId, message, menulist, menuStyle, thumbnailBuffer, pushname);
 
     } catch (error) {

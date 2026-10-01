@@ -2,7 +2,8 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const os = require("os");
-const config = require("../config");
+const settings = require("../settings");
+const { getBotName } = require('../lib/botConfig');
 
 const { createFakeContact } = require('../lib/fakeContact');
 async function pinterestCommand(sock, chatId, message) {
@@ -18,7 +19,7 @@ async function pinterestCommand(sock, chatId, message) {
         const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
         if (!text) {
             return sock.sendMessage(chatId, {
-                text: `📌 *Pinterest Downloader*\n\nUsage:\n${config.prefix}pinterest <Pinterest URL>\n\nExample:\n${config.prefix}pinterest https://in.pinterest.com/pin/1109363320773690068/`
+                text: `📌 *Pinterest Downloader*\n\nUsage:\n${settings.prefix}pinterest <Pinterest URL>\n\nExample:\n${settings.prefix}pinterest https://in.pinterest.com/pin/1109363320773690068/`
             }, { quoted: createFakeContact(message) });
         }
 
@@ -67,7 +68,7 @@ async function pinterestCommand(sock, chatId, message) {
         // Build caption
         let caption = `📌 *${title}*\n`;
         if (author !== "Unknown") caption += `👤 Author: ${author}\n`;
-        caption += `\nDownloaded by ${config.botName}`;
+        caption += `\nDownloaded by ${getBotName()}`;
 
         // Handle video
         if (isVideo) {

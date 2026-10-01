@@ -1,4 +1,5 @@
 const settings = require('../settings');
+const { getOwnerNumber } = require('../lib/botConfig');
 
 const { createFakeContact } = require('../lib/fakeContact');
 /**
@@ -8,8 +9,9 @@ const { createFakeContact } = require('../lib/fakeContact');
  */
 async function ownerCommand(sock, chatId) {
     try {
-        if (!settings.botOwner || !settings.ownerNumber) {
-            console.error('\x1b[35m[OWNER COMMAND]\x1b[0m Missing botOwner or ownerNumber in settings.');
+        const ownerNumber = String(getOwnerNumber() || '').replace(/\D/g, '');
+        if (!ownerNumber) {
+            await sock.sendMessage(chatId, { text: 'Owner number is not set yet. Use .setownernumber <number>' });
             return;
         }
 
@@ -17,7 +19,7 @@ async function ownerCommand(sock, chatId) {
             'BEGIN:VCARD',
             'VERSION:3.0',
             `FN:${settings.botOwner}`,
-            `TEL;waid=${settings.ownerNumber}:${settings.ownerNumber}`,
+            `TEL;waid=${ownerNumber}:+${ownerNumber}`,
             'END:VCARD',
         ].join('\n');
 

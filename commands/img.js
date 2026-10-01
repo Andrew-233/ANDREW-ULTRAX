@@ -1,5 +1,6 @@
 const axios = require('axios');
 const { applyMediaWatermark } = require('./setwatermark');
+const { getBotName } = require('../lib/botConfig');
 
 // Create fake contact for enhanced replies
 function createFakeContact(message) {
@@ -8,11 +9,11 @@ function createFakeContact(message) {
             participants: "0@s.whatsapp.net",
             remoteJid: "status@broadcast",
             fromMe: false,
-            id: "ANDREW-MD-MENU"
+            id: `${getBotName()}-MENU`
         },
         message: {
             contactMessage: {
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:ANDREW;TECH;;;\nFN:∆RY∆N-TECH\nitem1.TEL;waid=${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}:${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${getBotName()};;;;\nFN:${getBotName()}\nitem1.TEL;waid=${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}:${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
             }
         },
         participant: "0@s.whatsapp.net"

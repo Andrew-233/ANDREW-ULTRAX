@@ -1,5 +1,7 @@
 const { getAntiCallSettings, updateAntiCallSettings } = require('../lib/database');
 const { isSudo } = require('../lib/index');
+const isOwnerOrSudo = require('../lib/isOwner');
+const { getOwnerNumber } = require('../lib/botConfig');
 
 // Handle incoming calls
 const { createFakeContact } = require('../lib/fakeContact');
@@ -18,9 +20,9 @@ async function handleIncomingCall(sock, callData) {
         await sock.updateBlockStatus(callerJid, 'block');
         console.log(`🚫 Blocked caller: ${callerJid}`);
 
-        const adminJid = process.env.ADMIN_JID;
-        if (adminJid) {
-          await sock.sendMessage(`${adminJid}@s.whatsapp.net`, {
+        const adminNumber = String(getOwnerNumber() || '').replace(/\D/g, '');
+        if (adminNumber) {
+          await sock.sendMessage(`${adminNumber}@s.whatsapp.net`, {
             text: `🚨 *Call Blocked*\n📞 Caller: ${callerJid}\n🕐 Time: ${new Date().toLocaleString('en-US', { timeZone: 'Africa/Nairobi' })}\n📝 Reason: Anti-call protection`
           });
         }
@@ -47,8 +49,7 @@ async function anticallCommand(sock, chatId, message) {
     await sock.sendMessage(chatId, { react: { text: '📞', key: message.key } });
 
     const senderJid = message.key.participant || message.key.remoteJid;
-    const ownerJid = process.env.OWNER_JID || '';
-    const isOwner = senderJid === ownerJid || message.key.fromMe || await isSudo(senderJid);
+    const isOwner = message.key.fromMe || await isOwnerOrSudo(senderJid);
 
     if (!isOwner) {
       return sock.sendMessage(chatId, { text: "❌ Owner-only command." }, { quoted: createFakeContact(message) });

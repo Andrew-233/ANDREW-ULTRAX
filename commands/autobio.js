@@ -1,5 +1,5 @@
 const os = require("os");
-const { getBotName } = require('../lib/configdb.js'); // Import getBotName function
+const { getBotName } = require('../lib/botConfig');
 
 const botStartTime = Date.now();
 const BIO_UPDATE_INTERVAL = 60000;
@@ -33,7 +33,7 @@ const formatUptime = (ms) => {
 
 async function updateBotBio(sock) {
   const uptime = formatUptime(Date.now() - botStartTime);
-  const botName = getBotName(); // Get bot name from configdb
+  const botName = getBotName(); // Get the configured bot name
   const bio = `⏰ Uptime: ${uptime} | ${detectPlatform()} | 🤖 ${botName}`;
   const finalBio = bio.length > 139 ? bio.slice(0, 136) + "..." : bio;
   await sock.updateProfileStatus(finalBio);
@@ -56,7 +56,7 @@ function stopAutoBio() {
 
 async function autoBioCommand(sock, chatId) {
   const uptime = formatUptime(Date.now() - botStartTime);
-  const botName = getBotName(); // Get bot name from configdb
+  const botName = getBotName(); // Get the configured bot name
   const status = bioUpdateInterval
     ? `✅ Auto-Bio ACTIVE\nBot Name: ${botName}\nLast: ${lastBioUpdate ? new Date(lastBioUpdate).toLocaleTimeString() : "Never"}\nInterval: ${BIO_UPDATE_INTERVAL/1000}s\nPlatform: ${detectPlatform()}\nUptime: ${uptime}`
     : `⏸️ Auto-Bio INACTIVE\nBot Name: ${botName}\nPlatform: ${detectPlatform()}\nUptime: ${uptime}`;

@@ -2,6 +2,7 @@ const moment = require('moment-timezone');
 const fetch = require('node-fetch');
 const fs = require('fs');
 const path = require('path');
+const settings = require('../settings');
 
 const { createFakeContact } = require('../lib/fakeContact');
 
@@ -13,7 +14,7 @@ async function githubCommand(sock, chatId, message) {
         const senderPhone = senderJid.split('@')[0];
         const pushname = message.pushName || 'User';
 
-        const res = await fetch('https://api.github.com/repos/andrewkingkilalu/ANDREW-MD');
+        const res = await fetch(settings.repositoryApiUrl);
         if (!res.ok) throw new Error('Error fetching repository data');
         const json = await res.json();
 
@@ -39,8 +40,8 @@ async function githubCommand(sock, chatId, message) {
                 forwardingScore: 1,
                 isForwarded: false,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '@newsletter',
-                    newsletterName: 'June Official',
+                    newsletterJid: settings.newsletterJid,
+                    newsletterName: settings.newsletterName,
                     serverMessageId: -1
                 }
             }

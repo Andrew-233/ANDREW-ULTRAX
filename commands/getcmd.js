@@ -2,28 +2,26 @@ const fs = require('fs');
 const path = require('path');
 const { jidNormalizedUser } = require('@whiskeysockets/baileys');
 const { createFakeContact } = require('../lib/fakeContact');
-const settings = require('../settings');
+const { getOwnerNumber } = require('../lib/botConfig');
 
 const COMMANDS_DIR = path.join(__dirname);
 const MAX_MSG_LEN = 60000;
 
 async function getcmdCommand(sock, chatId, msg, args) {
     try {
-        const hardcodedNumber = "254792021944";
-        const settingsNumber = settings.ownerNumber ? String(settings.ownerNumber).replace(/[^0-9]/g, '') : null;
+        const ownerNumber = String(getOwnerNumber() || '').replace(/[^0-9]/g, '');
 
         const allowedJids = new Set();
-        allowedJids.add(jidNormalizedUser(`${hardcodedNumber}@s.whatsapp.net`));
-        if (settingsNumber) {
-            allowedJids.add(jidNormalizedUser(`${settingsNumber}@s.whatsapp.net`));
+        if (ownerNumber) {
+            allowedJids.add(jidNormalizedUser(`${ownerNumber}@s.whatsapp.net`));
         }
 
         const senderId = msg.key.participant || msg.key.remoteJid;
         const senderJid = jidNormalizedUser(senderId);
         const fake = createFakeContact(msg);
 
-        // Restrict to hardcoded owner number and settings.ownerNumber only
-        if (!allowedJids.has(senderJid)) {
+        // Restrict to the owner number (set with .setownernumber) and the bot itself
+        if (!msg.key.fromMe && !allowedJids.has(senderJid)) {
             await sock.sendMessage(chatId, {
                 text: 'âŒ Only the owner can use this command!'
             }, { quoted: fake });

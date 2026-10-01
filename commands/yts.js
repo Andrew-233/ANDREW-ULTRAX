@@ -1,5 +1,6 @@
 const yts = require('yt-search');
 const { createFakeContact } = require('../lib/fakeContact');
+const { getBotName } = require('../lib/botConfig');
 
 async function ytsCommand(sock, chatId, senderId, message, userMessage) {
     try {
@@ -8,7 +9,7 @@ async function ytsCommand(sock, chatId, senderId, message, userMessage) {
 
         if (!query) {
             return await sock.sendMessage(chatId, {
-                text: '🔍 YouTube Search Command\n\nUsage:\n.yts <search_query>\n\nExample:\n.yts Godzilla\n.yts latest songs\n.yts tutorial for JUNE-X'
+                text: `🔍 YouTube Search Command\n\nUsage:\n.yts <search_query>\n\nExample:\n.yts Godzilla\n.yts latest songs\n.yts tutorial for ${getBotName()}`
             }, { quoted: createFakeContact(message) });
         }
 
@@ -34,7 +35,7 @@ async function ytsCommand(sock, chatId, senderId, message, userMessage) {
             }, { quoted: createFakeContact(message) });
         }
 
-        let resultMessage = `🄹 🅄 🄽 🄴  🅇  🄾 🄽: "${query}"\n\n`;
+        let resultMessage = `🤖 ${getBotName()} ON: "${query}"\n\n`;
 
         videos.forEach((video, index) => {
             const duration = video.timestamp || 'N/A';

@@ -39,52 +39,66 @@ async function ytdocplayCommand(sock, chatId, message) {
             }, { quoted: createFakeContact(message) });
         }
 
-        const searchResult = await (await yts(`${query} official`)).videos[0];
-        if (!searchResult) {
-            return sock.sendMessage(chatId, { 
-                text: "😕 Couldn't find that song. Try another one!" 
-            }, { quoted: createFakeContact(message) });
+        let downloadUrl;
+        let videoTitle = query;
+        let video;
+
+        // Supreme API is the primary audio downloader.
+        try {
+            const response = await axios.get(
+                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(query)}`,
+                { timeout: 60000 }
+            );
+            if (response.data?.status && response.data?.downloadUrl) {
+                downloadUrl = response.data.downloadUrl;
+                videoTitle = response.data.title || videoTitle;
+            }
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for ytdocplay command:', primaryError.message);
         }
 
-        const video = searchResult;
-        
-        let downloadUrl;
-        let videoTitle;
-        
-        const apis = [
-            `https://apiskeith.top/download/audio?url=${encodeURIComponent(video.url)}`,
-            `https://api.ryzendesu.vip/api/downloader/ytmp3?url=${encodeURIComponent(video.url)}`,
-            `https://api.giftedtech.co.ke/api/download/ytmp3?apikey=gifted&url=${encodeURIComponent(video.url)}`
-        ];
-        
-        for (const api of apis) {
-            try {
-                const response = await axios.get(api, { timeout: 30000 });
-                
-                if (api.includes("apiskeith")) {
-                    if (response.data?.status && response.data?.result) {
-                        downloadUrl = response.data.result;
+        if (!downloadUrl) {
+            const searchResult = await (await yts(`${query} official`)).videos[0];
+            if (!searchResult) {
+                return sock.sendMessage(chatId, {
+                    text: "😕 Couldn't find that song. Try another one!"
+                }, { quoted: createFakeContact(message) });
+            }
+
+            video = searchResult;
+            const apis = [
+                `https://apiskeith.top/download/audio?url=${encodeURIComponent(video.url)}`,
+                `https://api.ryzendesu.vip/api/downloader/ytmp3?url=${encodeURIComponent(video.url)}`,
+                `https://api.giftedtech.co.ke/api/download/ytmp3?apikey=gifted&url=${encodeURIComponent(video.url)}`
+            ];
+
+            for (const api of apis) {
+                try {
+                    const response = await axios.get(api, { timeout: 30000 });
+
+                    if (api.includes("apiskeith") && response.data?.status && response.data?.result) {
+                        downloadUrl = typeof response.data.result === 'string'
+                            ? response.data.result
+                            : response.data.result.url;
                         videoTitle = response.data.title || video.title;
                         break;
                     }
-                } else if (api.includes("ryzendesu")) {
-                    if (response.data?.status && response.data?.url) {
+                    if (api.includes("ryzendesu") && response.data?.status && response.data?.url) {
                         downloadUrl = response.data.url;
                         videoTitle = response.data.title || video.title;
                         break;
                     }
-                } else if (api.includes("gifted")) {
-                    if (response.data?.status && response.data?.result?.download_url) {
+                    if (api.includes("gifted") && response.data?.status && response.data?.result?.download_url) {
                         downloadUrl = response.data.result.download_url;
                         videoTitle = response.data.result.title || video.title;
                         break;
                     }
+                } catch {
+                    continue;
                 }
-            } catch {
-                continue; // try next API
             }
         }
-        
+
         if (!downloadUrl) throw new Error("All download APIs failed. Try again later.");
 
         const timestamp = Date.now();
@@ -118,7 +132,7 @@ async function ytdocplayCommand(sock, chatId, message) {
         await sock.sendMessage(chatId, { 
             document: { url: filePath }, 
             mimetype: "audio/mpeg", 
-            fileName: `${(videoTitle || video.title).substring(0, 100)}.mp3`
+            fileName: `${(videoTitle || video?.title || query).substring(0, 100)}.mp3`
         }, { quoted: createFakeContact(message) });
 
         // Cleanup

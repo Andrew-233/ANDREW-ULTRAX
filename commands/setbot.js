@@ -1,15 +1,12 @@
-const { setConfig, getConfig } = require('../lib/configdb.js');
-
-// Default bot name
-const DEFAULT_BOT_NAME = '∆RY∆N-TECH';
+const { getBotName: getConfiguredBotName, updateConfig } = require('../lib/botConfig');
+const { botName: DEFAULT_BOT_NAME } = require('../settings');
 
 /**
  * Get bot name EXACTLY as saved
  */
 function getBotName() {
     try {
-        const botName = getConfig('botName', DEFAULT_BOT_NAME);
-        return botName || DEFAULT_BOT_NAME;
+        return getConfiguredBotName() || DEFAULT_BOT_NAME;
     } catch (error) {
         console.error('Error reading bot name from configdb:', error);
         return DEFAULT_BOT_NAME;
@@ -23,7 +20,7 @@ function setBotName(newBotName) {
     try {
         if (!newBotName || newBotName.length > 20) return false;
 
-        setConfig('botName', newBotName);
+        updateConfig({ botName: newBotName });
         return true;
 
     } catch (error) {
@@ -37,7 +34,7 @@ function setBotName(newBotName) {
  */
 function resetBotName() {
     try {
-        setConfig('botName', DEFAULT_BOT_NAME);
+        updateConfig({ botName: DEFAULT_BOT_NAME });
         return true;
     } catch (error) {
         console.error('Error resetting bot name in configdb:', error);
@@ -112,7 +109,7 @@ async function handleSetBotCommand(sock, chatId, senderId, message, userMessage,
     // No new name
     if (!newBotName) {
         await sock.sendMessage(chatId, {
-            text: `Use: ${prefix}setbotname <name>\nExample: ${prefix}setbotname ∆RY∆N-TECH`
+            text: `Use: ${prefix}setbotname <name>\nExample: ${prefix}setbotname ${DEFAULT_BOT_NAME}`
         }, { quoted: fake });
         return;
     }

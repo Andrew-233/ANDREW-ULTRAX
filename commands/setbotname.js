@@ -2,6 +2,7 @@ const { isSudo } = require('../lib/index');
 const { getBotName, updateConfig } = require('../lib/botConfig');
 
 const { createFakeContact } = require('../lib/fakeContact');
+const settings = require('../settings');
 async function setBotNameCommand(sock, chatId, message, args) {
     try {
         await sock.sendMessage(chatId, { react: { text: "⚙️", key: message.key } });
@@ -20,14 +21,13 @@ async function setBotNameCommand(sock, chatId, message, args) {
         if (parts.length < 1 || parts.join(' ').trim() === '') {
             const currentName = getBotName();
             return sock.sendMessage(chatId, {
-                text: `📌 *Current bot name:* ${currentName}\n\nUsage: .setbotname <name>\nExample: .setbotname JUNE X\n\nTo reset: .setbotname reset`
+                text: `📌 *Current bot name:* ${currentName}\n\nUsage: .setbotname <name>\nExample: .setbotname ${settings.botName}\n\nTo reset: .setbotname reset`
             }, { quoted: createFakeContact(message) });
         }
 
         const newBotName = parts.join(' ').trim();
 
         if (newBotName.toLowerCase() === 'reset') {
-            const settings = require('../settings');
             updateConfig({ botName: settings.botName });
             return sock.sendMessage(chatId, {
                 text: `✅ Bot name reset to default: *${settings.botName}*`

@@ -1,4 +1,5 @@
 const isAdmin = require('../lib/isAdmin');
+const { getBotName: getConfiguredBotName } = require('../lib/botConfig');
 
 // Create fake contact for enhanced replies
 function createFakeContact(message) {
@@ -7,11 +8,11 @@ function createFakeContact(message) {
             participants: "0@s.whatsapp.net",
             remoteJid: "status@broadcast",
             fromMe: false,
-            id: "ANDREW-MD-MENU"
+            id: `${getConfiguredBotName()}-MENU`
         },
         message: {
             contactMessage: {
-                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:ANDREW;TECH;;;\nFN:∆RY∆N-TECH\nitem1.TEL;waid=${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}:${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+                vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${getConfiguredBotName()};;;;\nFN:${getConfiguredBotName()}\nitem1.TEL;waid=${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}:${message.key.participant?.split('@')[0] || message.key.remoteJid.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
             }
         },
         participant: "0@s.whatsapp.net"
@@ -449,10 +450,9 @@ function getPrefix() {
 // Helper function to get bot name
 function getBotName() {
     try {
-        const { getBotName } = require('./setbot');
-        return getBotName();
+        return getConfiguredBotName();
     } catch (error) {
-        return 'ANDREW-MD'; // fallback
+        return require('../settings').botName; // fallback
     }
 }
 

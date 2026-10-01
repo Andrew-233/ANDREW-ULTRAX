@@ -873,7 +873,7 @@ async function getAIResponse(userMessage, userContext) {
         userInfoStr = `User info: ${JSON.stringify(userInfo)}`;
     }
 
-    const systemPrompt = `You are ${getBotName()}, a smart and friendly assistant chatting on WhatsApp. Created by June.
+    const systemPrompt = `You are ${getBotName()}, a smart and friendly assistant chatting on WhatsApp. Created by Andrew Dev.
 
 CORE RULES:
 1. Always respond in clear English
@@ -892,7 +892,7 @@ CAPABILITIES:
 
 ABOUT YOU:
 - Name: ${getBotName()}
-- Creator: June
+- Creator: Andrew Dev
 - You're intelligent, helpful, and have a good sense of humor
 - You can help with questions, have conversations, and provide information
 

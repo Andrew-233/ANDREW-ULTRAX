@@ -2,31 +2,21 @@ const fs = require('fs');
 const path = require('path');
 
 // Developer data
+const settings = require('../settings');
+
 const developers = [
     {
-        name: "Courtney",
-        phone: "+263715024370"
-    },
-    {
-        name: "A..ZAID🇵🇰", 
-        phone: "+254743037984"
-    },
-    {
-        name: "TMS🇿🇦",
-        phone: "+263713731923"
-    },
-    {
-        name: "Goodchild Williams🇹🇿",
-        phone: "+255792375563"
-    },
-    {
-        name: "Dope🇳🇬",
-        phone: "+23473737383828"
+        name: settings.botOwner,
+        phone: settings.developerNumber ? '+' + String(settings.developerNumber).replace(/\D/g, '') : ''
     }
-];
+].filter(d => d.phone);
 
 async function developerCommand(sock, chatId, message) {
     try {
+        if (!developers.length) {
+            await sock.sendMessage(chatId, { text: '❌ Developer contact is not configured.' }, { quoted: message });
+            return;
+        }
         await sock.sendMessage(chatId, {
             text: '👨‍💻 Fetching developer contacts...'
         }, { quoted: message });

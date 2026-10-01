@@ -27,27 +27,52 @@ async function playCommand(sock, chatId, message) {
             }, { quoted: message });
         }
 
-        console.log('[PLAY] Searching YT for:', query);
-        const search = await yts(query);
-        const video = search.videos[0];
+        let audioUrl;
+        let title = query;
+        let thumbnail;
+        let video;
 
-        if (!video) {
-            return await sock.sendMessage(chatId, {
-                text: '*❌ No Results Found*\nNo songs found for your query. Please try different keywords.*'
-            }, { quoted: message });
+        // Supreme API is the primary audio downloader.
+        try {
+            const supremeResponse = await axios.get(
+                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(query)}`,
+                { timeout: 60000 }
+            );
+            if (supremeResponse.data?.status && supremeResponse.data?.downloadUrl) {
+                audioUrl = supremeResponse.data.downloadUrl;
+                title = supremeResponse.data.title || title;
+                thumbnail = supremeResponse.data.thumbnail;
+            }
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for pla command:', primaryError.message);
         }
 
-        const safeTitle = video.title.replace(/[\\/:*?"<>|]/g, '');
+        if (!audioUrl) {
+            console.log('[PLAY] Searching YT for:', query);
+            const search = await yts(query);
+            video = search.videos[0];
+            if (!video) {
+                return await sock.sendMessage(chatId, {
+                    text: '*❌ No Results Found*\nNo songs found for your query. Please try different keywords.*'
+                }, { quoted: message });
+            }
+            title = video.title;
+            thumbnail = video.thumbnail;
+            const apiURL = `${BASE_URL}/dipto/ytDl3?link=${encodeURIComponent(video.videoId)}&format=mp3`;
+            const response = await axios.get(apiURL, { timeout: 30000 });
+            audioUrl = response.data?.downloadLink;
+        }
+
+        const safeTitle = title.replace(/[\\/:*?"<>|]/g, '');
         const fileName = `${safeTitle}.mp3`;
-        const apiURL = `${BASE_URL}/dipto/ytDl3?link=${encodeURIComponent(video.videoId)}&format=mp3`;
 
         // Create single button for getting video
-        const buttonMessage = {
-            image: { url: video.thumbnail },
+        const buttonMessage = video ? {
+            image: { url: thumbnail },
             caption: `
 🎵 *NOW PLAYING* 🎵
 
-🎶 *Title:* ${video.title}
+🎶 *Title:* ${title}
 ⏱️ *Duration:* ${video.timestamp}
 👁️ *Views:* ${video.views}
 📅 *Uploaded:* ${video.ago}
@@ -60,22 +85,20 @@ async function playCommand(sock, chatId, message) {
             footer: 'CaseyRhodes Mini - Audio Player',
             buttons: [
                 {
-                    buttonId: '.video ' + video.title,
+                    buttonId: '.video ' + title,
                     buttonText: { displayText: '🎬 Get Video' },
                     type: 1
                 }
             ],
             headerType: 1
+        } : {
+            text: `🎵 *NOW PLAYING*\n\n🎶 *Title:* ${title}\n\n⬇️ *Downloading your audio...*`
         };
 
         // Send song description with thumbnail and single button
         await sock.sendMessage(chatId, buttonMessage, { quoted: message });
 
-        // Get download link
-        const response = await axios.get(apiURL, { timeout: 30000 });
-        const data = response.data;
-
-        if (!data.downloadLink) {
+        if (!audioUrl) {
             return await sock.sendMessage(chatId, {
                 text: '*❌ Download Failed*\nFailed to retrieve the MP3 download link. Please try again later.*'
             }, { quoted: message});
@@ -83,10 +106,10 @@ async function playCommand(sock, chatId, message) {
 
         // Send audio file
         await sock.sendMessage(chatId, {
-            audio: { url: data.downloadLink },
+            audio: { url: audioUrl },
             mimetype: 'audio/mpeg',
             fileName: fileName,
-            caption: `✅ *Download Complete!*\n🎵 ${video.title}`
+            caption: `✅ *Download Complete!*\n🎵 ${title}`
         });
 
     } catch (err) {

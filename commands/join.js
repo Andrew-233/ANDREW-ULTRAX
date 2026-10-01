@@ -1,6 +1,7 @@
 const axios = require("axios");
 
 const { createFakeContact } = require('../lib/fakeContact');
+const { getBotName } = require('../lib/botConfig');
 async function joinCommand(sock, chatId, message) {
     try {
         // Initial reaction
@@ -70,10 +71,10 @@ async function joinCommand(sock, chatId, message) {
 
         // Final success reaction
         await sock.sendMessage(chatId, { react: { text: "✅", key: message.key } });
-        console.log(`[JUNE-X] Successfully joined group: ${groupName}`);
+        console.log(`[${getBotName()}] Successfully joined group: ${groupName}`);
 
     } catch (error) {
-        console.error("[JUNE-X] Join command error:", error);
+        console.error(`[${getBotName()}] Join command error:`, error);
 
         let errorMessage = "❌ Failed to join group!";
         if (error.message.includes("Timeout")) errorMessage = "⏰ Request timeout. Please try again.";

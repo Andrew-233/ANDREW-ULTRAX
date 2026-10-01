@@ -1,4 +1,4 @@
-const settings = require('../settings');
+const { getOwnerNumber } = require('../lib/botConfig');
 const { addSudo, removeSudo, getSudoList } = require('../lib/index');
 const { compareJids, toUserJid, extractNumber } = require('../lib/jid');
 
@@ -22,7 +22,7 @@ function extractMentionedJid(message) {
 async function sudoCommand(sock, chatId, message) {
     try {
         const senderJid = message.key.participant || message.key.remoteJid;
-        const ownerJid = toUserJid(settings.ownerNumber);
+        const ownerJid = toUserJid(getOwnerNumber());
         const isOwner = message.key.fromMe || compareJids(senderJid, ownerJid);
 
         const rawText = message.message?.conversation || message.message?.extendedTextMessage?.text || '';

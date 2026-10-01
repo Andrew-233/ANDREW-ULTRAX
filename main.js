@@ -36,7 +36,7 @@ console.log = function (message, ...optionalParams) {
 // -----Core imports first-----
 /*━━━━━━━━━━━━━━━━━━━━*/
 const settings = require('./settings');
-require('./config.js');
+const { getBotName } = require('./lib/botConfig');
 const { isBanned } = require('./lib/isBanned');
 const yts = require('yt-search');
 const { fetchBuffer } = require('./lib/myfunc');
@@ -348,7 +348,7 @@ const leaveGroupCommand = require('./commands/leave');
 const kickAllCommand = require('./commands/kickall');
 const ytsCommand = require('./commands/yts');
 const setGroupStatusCommand = require('./commands/setGroupStatus');
-const handleDevReact = require('./commands/devreact');
+const { handleDevReact } = require('./commands/devreact');
 const imageCommand = require('./commands/image');
 const gpt4Command = require('./commands/aiGpt4');
 const vcfCommand = require('./commands/vcf');
@@ -418,9 +418,9 @@ const { createGroupCommand } = require('./commands/creategroup');
 /*━━━━━━━━━━━━━━━━━━━━*/
 // Global settings
 /*━━━━━━━━━━━━━━━━━━━━*/
-global.packname = settings?.packname || "ANDREW X";
-global.author = settings?.author || "Eddy";
-global.channelLink = "https://whatsapp.com/channel/0029VbBk9IKAjPXIih13Q33d";
+global.packname = getBotName();
+global.author = getBotName();
+global.channelLink = settings.channelLink;
 global.ytchanel = "";
 
 // Channel info for message context
@@ -429,8 +429,8 @@ const channelInfo = {
         forwardingScore: 1,
         isForwarded: true,
         forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363420172397674@newsletter',
-            newsletterName: 'Andrew Official',
+            newsletterJid: settings.newsletterJid,
+            newsletterName: settings.newsletterName,
             serverMessageId: -1
         }
     }
@@ -529,7 +529,7 @@ async function handleMessages(sock, messageUpdate, printLog) {
         const prefix = getPrefix();
         const isPrefixless = prefix === '';
         const isGroup = chatId.endsWith('@g.us');
-        // true for: bot's own messages, settings.ownerNumber, and any sudo user
+        // true for: bot's own messages, the owner number (.setownernumber), and any sudo user
         const senderIsSudo = message.key.fromMe || await isOwnerOrSudo(senderId);
 
         const userMessage = (
@@ -595,7 +595,7 @@ const fake = createFakeContact(message);
             const datez = moment(Date.now()).tz(timezones).format("DD/MM/YYYY");
 
             if (message.message) {
-                lolcatjs.fromString(`┏━━━━━━━━━━━━━『  ANDREW-ULTRAX 』━━━━━━━━━━━━━─`);
+                lolcatjs.fromString(`┏━━━━━━━━━━━━━『  ${getBotName()} 』━━━━━━━━━━━━━─`);
                 lolcatjs.fromString(`»  Sent Time: ${dayz}, ${timez}`);
                 lolcatjs.fromString(`»  Date: ${datez}`);
                 lolcatjs.fromString(`»  Message Type: ${mtype}`);

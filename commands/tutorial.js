@@ -1,4 +1,5 @@
 const settings = require("../settings");
+const { getBotName } = require('../lib/botConfig');
 const os = require("os");
 const path = require("path");
 const fs = require("fs");
@@ -32,15 +33,15 @@ async function tutorialCommand(sock, chatId, message) {
 
         uptimeMessage =
             `👋 \`Hello ${userName}, here is the tutorial videos\` \n\n` +
-            `*This ${settings.botName || "> *∆RY∆N-TECH"} Whatsapp Bot tutorials. This bot is easy to deploy*\n\n` +
+            `*This ${getBotName()} Whatsapp Bot tutorials. This bot is easy to deploy*\n\n` +
             `*github workflows:* https://youtu.be/2HU2okH8HL4?si=l2JG1EbML0MhfLWg\n` +
             `*katabump video:* https://youtu.be/uiTIc6yPZPc?si=CMk5G9OJY3WHW2A2\n` +
             `*cypherXHost video:* https://youtu.be/ilaDlfd39n0?si=63XKx8q4RHULXQBF\n` +
             `*bothosting video:* ~comming soon~\n` +
             `*heroku video:* ~coming soon~\n` +
-            `*${settings.botName || "∆RY∆N-TECH"} Online*\n\n` +
+            `*${getBotName()} Online*\n\n` +
             `*🧚Follow our channel:* https://whatsapp.com/channel/0029Vb9qprVJuyAJxcTO252t\n\n` +
-            `> ρσωєяє∂ ву ${settings.ownerName || "Xhyper Tech"}`;
+            `> ρσωєяє∂ ву ${settings.botOwner}`;
 
         // Resolve the local image path
         const imagePath = path.resolve(__dirname, "../assets/IMG-20250819-WA0001(1).jpg");

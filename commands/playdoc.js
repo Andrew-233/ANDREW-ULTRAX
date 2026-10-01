@@ -32,30 +32,45 @@ async function playdocCommand(sock, chatId, message) {
             }, { quoted: message });
         }
 
-        console.log('[PLAY] Searching YT for:', query);
-        const search = await yts(query);
-        const video = search.videos[0];
+        let audioDoc;
+        let title = query;
 
-        if (!video) {
-            return await sock.sendMessage(chatId, {
-                text: '*❌ No Results Found*\nNo songs found for your query. Please try different keywords.*'
-            }, { quoted: message });
+        // Supreme API is the primary audio downloader.
+        try {
+            const supremeResponse = await axios.get(
+                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(query)}`,
+                { timeout: 60000 }
+            );
+            if (supremeResponse.data?.status && supremeResponse.data?.downloadUrl) {
+                audioDoc = supremeResponse.data.downloadUrl;
+                title = supremeResponse.data.title || title;
+            }
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for playdoc command:', primaryError.message);
         }
 
-        const safeTitle = video.title.replace(/[\\/:*?"<>|]/g, '');
-        const fileName = `${safeTitle}.mp3`;
-        const apiURL = `${BASE_URL}/dipto/ytDl3?link=${encodeURIComponent(video.videoId)}&format=mp3`;
+        if (!audioDoc) {
+            console.log('[PLAY] Searching YT for:', query);
+            const search = await yts(query);
+            const video = search.videos[0];
+            if (!video) {
+                return await sock.sendMessage(chatId, {
+                    text: '*❌ No Results Found*\nNo songs found for your query. Please try different keywords.*'
+                }, { quoted: message });
+            }
+            title = video.title;
+            const apiURL = `${BASE_URL}/dipto/ytDl3?link=${encodeURIComponent(video.videoId)}&format=mp3`;
+            const response = await axios.get(apiURL, { timeout: 30000 });
+            audioDoc = response.data?.downloadLink;
+        }
 
-        // Get download link
-        const response = await axios.get(apiURL, { timeout: 30000 });
-        const data = response.data;
-        const audioDoc = data.downloadLink;
-
-        if (!data.downloadLink) {
+        if (!audioDoc) {
             return await sock.sendMessage(chatId, {
                 text: '*❌ Download Failed*\nFailed to retrieve the MP3 download link. Please try again later.*'
             }, { quoted: message});
         }
+
+        const fileName = `${title.replace(/[\\/:*?"<>|]/g, '')}.mp3`;
 
         // Send audio file
         await sock.sendMessage(chatId, {

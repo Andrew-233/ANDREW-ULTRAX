@@ -18,35 +18,52 @@ async function playCommand(sock, chatId, message) {
             react: { text: "🎼", key: message.key }
         });
 
-        // Search for the song
-        const { videos } = await yts(searchQuery);
-        if (!videos || videos.length === 0) {
-            return await sock.sendMessage(chatId, { 
-                text: "No songs found!"
-            }, { quoted: fakekontak });
+        let title = searchQuery;
+        let audioUrl;
+
+        // Supreme API is the primary audio downloader.
+        try {
+            const response = await axios.get(
+                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(searchQuery)}`,
+                { timeout: 60000 }
+            );
+            if (response.data?.status && response.data?.downloadUrl) {
+                audioUrl = response.data.downloadUrl;
+                title = response.data.title || title;
+            }
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for play command:', primaryError.message);
         }
 
-        // Get the first video result
-        const video = videos[0];
-        const urlYt = video.url;
-        const title = video.title; // ✅ Title from yt-search
+        let video;
+        if (!audioUrl) {
+            // Existing search/provider remains as the fallback.
+            const { videos } = await yts(searchQuery);
+            if (!videos || videos.length === 0) {
+                return await sock.sendMessage(chatId, {
+                    text: "No songs found!"
+                }, { quoted: fakekontak });
+            }
+            video = videos[0];
+            title = video.title;
+            const response = await axios.get(
+                `https://apiskeith.top/download/audio?url=${encodeURIComponent(video.url)}`,
+                { timeout: 60000 }
+            );
+            if (!response.data?.status || !response.data?.result) {
+                throw new Error('All audio download APIs failed');
+            }
+            audioUrl = typeof response.data.result === 'string'
+                ? response.data.result
+                : response.data.result.url;
+        }
 
         // Notify user about download
         await sock.sendMessage(chatId, { 
             text: `_Downloading 🎵_\n_${title} 🎶_`
         }, { quoted: fakekontak });
 
-        // Fetch audio data from API
-        const response = await axios.get(`https://apiskeith.top/download/audio?url=${urlYt}`);
-        const data = response.data;
-
-        if (!data || !data.status) {
-            return await sock.sendMessage(chatId, { 
-                text: "Failed to fetch audio from the API. Please try again later."
-            }, { quoted: fakekontak });
-        }
-
-        const audioUrl = data.result; // ✅ API returns only the download URL
+        if (!audioUrl) throw new Error('Download URL not found');
 
         // Send as document
         await sock.sendMessage(chatId, {

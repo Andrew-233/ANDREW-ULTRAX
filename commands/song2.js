@@ -22,34 +22,43 @@ async function song2Command(sock, chatId, message) {
             });
         }
 
-        // Search for the song
-        const { videos } = await yts(searchQuery);
-        if (!videos || videos.length === 0) {
-            return await sock.sendMessage(chatId, { 
-                text: "No songs found!"
-            });
+        let audioUrl;
+        let title = searchQuery;
+
+        // Supreme API is the primary audio downloader.
+        try {
+            const response = await axios.get(
+                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(searchQuery)}`,
+                { timeout: 60000 }
+            );
+            if (response.data?.status && response.data?.downloadUrl) {
+                audioUrl = response.data.downloadUrl;
+                title = response.data.title || title;
+            }
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for song2 command:', primaryError.message);
         }
 
-        
-
-        // Get the first video result
-        const video = videos[0];
-        const urlYt = video.url;
-
-        // Fetch audio data from API
-        const response = await axios.get(`https://api.goodnesstechhost.xyz/download/youtube/audio?url=${urlYt}`);
-        const data = response.data;
-
-        if (!data || !data.status || !data.result || !data.result.download_url) {
-            return await sock.sendMessage(chatId, { 
-                text: "Failed to fetch audio from the API. Please try again later."},{ quoted: message
-            });
+        if (!audioUrl) {
+            const { videos } = await yts(searchQuery);
+            if (!videos || videos.length === 0) {
+                return await sock.sendMessage(chatId, {
+                    text: "No songs found!"
+                });
+            }
+            const video = videos[0];
+            const response = await axios.get(
+                `https://api.goodnesstechhost.xyz/download/youtube/audio?url=${encodeURIComponent(video.url)}`,
+                { timeout: 60000 }
+            );
+            if (!response.data?.status || !response.data.result?.download_url) {
+                throw new Error('All audio download APIs failed');
+            }
+            audioUrl = response.data.result.download_url;
+            title = response.data.result.title || video.title;
         }
 
-        const audioUrl = data.result.download_url;
-        const title = data.result.title;
-
-        
+        if (!audioUrl) throw new Error('Download URL not found');
 
         // Send the audio
         await sock.sendMessage(chatId, {

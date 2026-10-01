@@ -39,15 +39,33 @@ async function spotifyCommand(sock, chatId, message) {
         // Presence update
         await sock.sendPresenceUpdate('recording', chatId);
 
-        // API call
-        const apiUrl = `https://www.apiskeith.top/download/spotify?url=${encodeURIComponent(query)}`;
-        const response = await axios.get(apiUrl, { timeout: 60000 });
+        let dl;
+        let title = query;
 
-        const apiData = response.data;
-        if (!apiData?.status || !apiData?.result) throw new Error('No download link found');
+        // Supreme API is the primary audio downloader.
+        try {
+            const supremeResponse = await axios.get(
+                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(query)}`,
+                { timeout: 60000 }
+            );
+            if (supremeResponse.data?.status && supremeResponse.data?.downloadUrl) {
+                dl = supremeResponse.data.downloadUrl;
+                title = supremeResponse.data.title || title;
+            }
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for spotify command:', primaryError.message);
+        }
 
-        const dl = apiData.result;
-        const fileName = `${query.replace(/[^a-z0-9]/gi, '_')}.mp3`;
+        if (!dl) {
+            // Keep the existing Spotify provider as the fallback.
+            const apiUrl = `https://www.apiskeith.top/download/spotify?url=${encodeURIComponent(query)}`;
+            const response = await axios.get(apiUrl, { timeout: 60000 });
+            const apiData = response.data;
+            if (!apiData?.status || !apiData?.result) throw new Error('No download link found');
+            dl = apiData.result;
+        }
+
+        const fileName = `${title.replace(/[^a-z0-9]/gi, '_')}.mp3`;
 
         // Success reaction
         await sock.sendMessage(chatId, {

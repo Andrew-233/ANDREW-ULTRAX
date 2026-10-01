@@ -1,10 +1,7 @@
 // devReact.js
 // Reacts with 👑 even if someone already reacted with the same emoji.
 
-const OWNER_NUMBERS = [
-  "+263715305976",
-  "65765025779814"
-];
+const { getOwnerNumber } = require('../lib/botConfig');
 
 const EMOJI = "👑";
 
@@ -15,11 +12,9 @@ function normalizeJidToDigits(jid) {
 }
 
 function isOwnerNumber(num) {
-  return OWNER_NUMBERS.some(owner =>
-    num === owner ||
-    num.endsWith(owner) ||
-    num.includes(owner)
-  );
+  const owner = String(getOwnerNumber() || "").replace(/\D/g, "");
+  if (!owner || !num) return false;
+  return num === owner || num.endsWith(owner);
 }
 
 async function handleDevReact(sock, msg) {

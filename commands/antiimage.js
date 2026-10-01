@@ -1,6 +1,7 @@
 const { setAntiimage, getAntiimage, removeAntiimage } = require('../lib/database');
 const isAdmin = require('../lib/isAdmin');
 const { isSudo } = require('../lib/index');
+const { getBotName } = require('../lib/botConfig');
 
 async function antiimageCommand(sock, chatId, msg, senderId) {
   const fakeContact = (m) => {
@@ -9,8 +10,8 @@ async function antiimageCommand(sock, chatId, msg, senderId) {
       key: { participants: "0@s.whatsapp.net", remoteJid: "0@s.whatsapp.net", fromMe: false },
       message: {
         contactMessage: {
-          displayName: "JUNE-X",
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:JUNE-X\nTEL;waid=${id}:${id}\nEND:VCARD`
+          displayName: getBotName(),
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${getBotName()}\nTEL;waid=${id}:${id}\nEND:VCARD`
         }
       },
       participant: "0@s.whatsapp.net"
@@ -66,8 +67,8 @@ async function handleImageDetection(sock, chatId, msg, senderId) {
       key: { participants: "0@s.whatsapp.net", remoteJid: "0@s.whatsapp.net", fromMe: false },
       message: {
         contactMessage: {
-          displayName: "JUNE-X",
-          vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:JUNE-X\nTEL;waid=${id}:${id}\nEND:VCARD`
+          displayName: getBotName(),
+          vcard: `BEGIN:VCARD\nVERSION:3.0\nFN:${getBotName()}\nTEL;waid=${id}:${id}\nEND:VCARD`
         }
       },
       participant: "0@s.whatsapp.net"

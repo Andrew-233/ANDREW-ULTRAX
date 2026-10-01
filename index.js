@@ -1,18 +1,25 @@
 /**
- * ANDREW-ULTRAX Bot - A WhatsApp Bot
- * © 2025 ANDREW-ULTRAX
+ * Andrew x Bot - A WhatsApp Bot
+ * © 2026 Andrew x Bot
  * NOTE: This is the combined codebase. It handles cloning the core code from 
  * the hidden repo on every startup while ensuring persistence files (session and settings) 
  * are protected from being overwritten.
  */
 
 // --- Environment Setup ---
-const config = require('./config');
+const { getBotName } = require('./lib/botConfig');
 /*━━━━━━━━━━━━━━━━━━━━*/
 require('dotenv').config(); // CRITICAL: Load .env variables first
 
 const fs = require('fs')
-const { dataFile, DATA_DIR } = require('./lib/paths');
+const {
+    dataFile,
+    DATA_DIR,
+    SESSION_DIR,
+    LOGIN_FILE,
+    MESSAGE_BACKUP_FILE,
+    SESSION_ERROR_FILE
+} = require('./lib/paths');
 const chalk = require('chalk')
 const path = require('path')
 const axios = require('axios')
@@ -34,17 +41,19 @@ const pino = require("pino")
 const readline = require("readline")
 const { rmSync } = require('fs')
 
+const SESSION_PREFIX = 'Andrew-X:~';
+
 // --- 🌟 NEW: Centralized Logging Function
 
 /**
- * Custom logging function to enforce the [ ANDREW-ULTRAX ] prefix and styling.
+ * Custom logging function to enforce the configured bot-name prefix and styling.
  * @param {string} message - The message to log.
  * @param {string} [color='white'] - The chalk color (e.g., 'green', 'red', 'yellow').
  * @param {boolean} [isError=false] - Whether to use console.error.
  */
 
 function log(message, color = 'white', isError = false) {
-    const prefix = chalk.magenta.bold('[ ANDREW-ULTRAX ]');
+    const prefix = chalk.magenta.bold(`[ ${getBotName()} ]`);
     const logFunc = isError ? console.error : console.log;
     const coloredMessage = chalk[color](message);
     
@@ -73,9 +82,9 @@ global.errorRetryCount = 0; // The in-memory counter for 408 errors in the activ
 let smsg, handleMessages, handleGroupParticipantUpdate, handleStatus, store, settings;
 
 // --- 🔒 MESSAGE/ERROR STORAGE CONFIGURATION & HELPERS ---
-const MESSAGE_STORE_FILE = path.join(__dirname, 'message_backup.json');
+const MESSAGE_STORE_FILE = MESSAGE_BACKUP_FILE;
 // --- NEW: Error Counter File ---
-const SESSION_ERROR_FILE = path.join(__dirname, 'sessionErrorCount.json');
+
 global.messageBackup = {};
 
 function loadStoredMessages() {
@@ -205,22 +214,22 @@ function cleanupJunkFiles(botSocket) {
     });
 }
 
-// --- ANDREW-ULTRAX ORIGINAL CODE START ---
-global.botname = "ANDREW-ULTRAX"
+// --- Bot startup code ---
+global.botname = getBotName()
 global.themeemoji = "•"
 const pairingCode = !!global.phoneNumber || process.argv.includes("--pairing-code")
 const useMobile = process.argv.includes("--mobile")
 
 // --- Readline setup ---
 const rl = process.stdin.isTTY ? readline.createInterface({ input: process.stdin, output: process.stdout }) : null
-const question = (text) => rl ? new Promise(resolve => rl.question(text, resolve)) : Promise.resolve(settings?.ownerNumber || global.phoneNumber)
+const question = (text) => rl ? new Promise(resolve => rl.question(text, resolve)) : Promise.resolve(global.phoneNumber)
 
 /*━━━━━━━━━━━━━━━━━━━━*/
 // --- Paths ---
 /*━━━━━━━━━━━━━━━━━━━━*/
-const sessionDir = path.join(__dirname, 'session')
+const sessionDir = SESSION_DIR
 const credsPath = path.join(sessionDir, 'creds.json')
-const loginFile = path.join(sessionDir, 'login.json')
+const loginFile = LOGIN_FILE
 const envPath = path.join(process.cwd(), '.env');
 
 /*━━━━━━━━━━━━━━━━━━━━*/
@@ -249,8 +258,8 @@ function sessionExists() {
 async function checkEnvSession() {
     const envSessionID = process.env.SESSION_ID;
     if (envSessionID) {
-        if (!envSessionID.includes("ANDREWULTRA-X:~")) { 
-            log("🚨 WARNING: Environment SESSION_ID is missing the required prefix 'Andrew-X:~'. Assuming BASE64 format.", 'red'); 
+        if (!envSessionID.startsWith(SESSION_PREFIX)) {
+            log("🚨 WARNING: Environment SESSION_ID is missing the required prefix 'Andrew-X:~'. Assuming BASE64 format.", 'red');
         }
         global.SESSION_ID = envSessionID.trim();
         return true;
@@ -259,16 +268,16 @@ async function checkEnvSession() {
 }
 
 /**
- * NEW LOGIC: Checks if SESSION_ID starts with "Andrew-X". If not, cleans .env and restarts.
+ * NEW LOGIC: Checks if SESSION_ID starts with "Andrew-X:~". If not, cleans .env and restarts.
  */
 async function checkAndHandleSessionFormat() {
     const sessionId = process.env.SESSION_ID;
     
     if (sessionId && sessionId.trim() !== '') {
         // Only check if it's set and non-empty
-        if (!sessionId.trim().startsWith('Andrew-X')) {
+        if (!sessionId.trim().startsWith(SESSION_PREFIX)) {
             log(chalk.white.bgRed('[ERROR]: Invalid SESSION_ID in .env'), 'white');
-            log(chalk.white.bgRed('[SESSION ID] MUST start with "Andrew-X".'), 'white');
+            log(chalk.white.bgRed('[SESSION ID] MUST start with "Andrew-X:~".'), 'white');
             log(chalk.white.bgRed('Cleaning .env and creating new one...'), 'white');
             
          try {
@@ -325,11 +334,11 @@ async function getLoginMethod() {
     choice = choice.trim();
 
     if (choice === '1') {
-        let phone = await question(chalk.bgBlack(chalk.greenBright(`Enter your WhatsApp number (international format, e.g., 255637518095): `)));
+        let phone = await question(chalk.bgBlack(chalk.greenBright(`Enter your WhatsApp number (international format, e.g., 255700000000): `)));
         phone = phone.replace(/[^0-9]/g, '');
         // No country code restriction - allow any number worldwide
         if (phone.length < 7) {
-            log('❌ Phone number too short. Please enter a valid international number (e.g., 255637518095).', 'red');
+            log('❌ Phone number too short. Please enter a valid international number (e.g., 255700000000).', 'red');
             return getLoginMethod();
         }
         global.phoneNumber = phone;
@@ -339,8 +348,8 @@ async function getLoginMethod() {
         let sessionId = await question(chalk.bgBlack(chalk.greenBright(`Paste your Session ID here: `)));
         sessionId = sessionId.trim();
         // Pre-check the format during interactive entry as well
-        if (!sessionId.includes("Andrew-X:~")) { 
-            log("Invalid Session ID format! Must contain 'Andrew-X:~'.", 'red'); 
+        if (!sessionId.startsWith(SESSION_PREFIX)) {
+            log("Invalid Session ID format! Must contain 'Andrew-X:~'.", 'red');
             process.exit(1); 
         }
         global.SESSION_ID = sessionId;
@@ -352,18 +361,100 @@ async function getLoginMethod() {
     }
 }
 
+/**
+ * Session generators can append metadata after the credentials object.
+ * Baileys only needs the first complete JSON object for creds.json.
+ */
+function parseSessionCredentials(sessionData) {
+    const text = sessionData.toString('utf8');
+    const start = text.search(/\S/);
+
+    if (start === -1 || text[start] !== '{') {
+        throw new Error('decoded session data does not start with a JSON object');
+    }
+
+    let depth = 0;
+    let inString = false;
+    let escaped = false;
+
+    for (let index = start; index < text.length; index += 1) {
+        const character = text[index];
+
+        if (inString) {
+            if (escaped) {
+                escaped = false;
+            } else if (character === '\\') {
+                escaped = true;
+            } else if (character === '"') {
+                inString = false;
+            }
+            continue;
+        }
+
+        if (character === '"') {
+            inString = true;
+        } else if (character === '{') {
+            depth += 1;
+        } else if (character === '}') {
+            depth -= 1;
+            if (depth === 0) {
+                const credentials = JSON.parse(text.slice(start, index + 1));
+                if (!credentials || typeof credentials !== 'object' || Array.isArray(credentials)) {
+                    throw new Error('decoded session data is not a credentials object');
+                }
+                return credentials;
+            }
+        }
+    }
+
+    throw new Error('decoded session data does not contain a complete credentials object');
+}
+
 // --- Download session ---
 async function downloadSessionData() {
     try {
         await fs.promises.mkdir(sessionDir, { recursive: true });
         if (!fs.existsSync(credsPath) && global.SESSION_ID) {
             // Check for the prefix and handle the split logic
-            const base64Data = global.SESSION_ID.includes("ANDREWULTRA-X:~") ? global.SESSION_ID.split("ANDREWULTRA-X:~")[1] : global.SESSION_ID;
+            const base64Data = (global.SESSION_ID.startsWith(SESSION_PREFIX)
+                ? global.SESSION_ID.slice(SESSION_PREFIX.length)
+                : global.SESSION_ID).replace(/\s+/g, '').replace(/^[^A-Za-z0-9]+/, ''); // drop any separator (e.g. ':~') after the prefix
             const sessionData = Buffer.from(base64Data, 'base64');
-            await fs.promises.writeFile(credsPath, sessionData);
+            // Older session strings encode buffers as `{ type: "Buffer", data: [] }`.
+            // Current Baileys expects the same wrapper with base64 string data.
+            // Normalize the legacy representation before handing it to
+            // useMultiFileAuthState, otherwise routingInfo remains a plain object
+            // and the Noise handshake fails with a NaN buffer size.
+            let credsData = sessionData;
+            try {
+                const parsed = parseSessionCredentials(sessionData);
+                const normalizeLegacyBuffers = (value) => {
+                    if (Array.isArray(value)) return value.map(normalizeLegacyBuffers);
+                    if (!value || typeof value !== 'object') return value;
+                    if (value.type === 'Buffer' && Array.isArray(value.data)) {
+                        return {
+                            type: 'Buffer',
+                            data: Buffer.from(value.data).toString('base64')
+                        };
+                    }
+                    return Object.fromEntries(
+                        Object.entries(value).map(([key, child]) => [
+                            key,
+                            normalizeLegacyBuffers(child)
+                        ])
+                    );
+                };
+                credsData = Buffer.from(JSON.stringify(normalizeLegacyBuffers(parsed)));
+            } catch (parseError) {
+                log(`SESSION_ID could not be decoded: ${parseError.message}. Bot is waiting for a valid session value.`, 'red', true);
+                return false;
+            }
+            await fs.promises.writeFile(credsPath, credsData);
             log(`Session successfully saved.`, 'green');
         }
+        return true;
     } catch (err) { log(`Error downloading session data: ${err.message}`, 'red', true); }
+    return false;
 }
 
 // --- Enhanced Request pairing code with retries ---
@@ -441,14 +532,14 @@ async function sendWelcomeMessage(XeonBotInc) {
 ┃✧ Prefix: [ ${prefix} ]
 ┃✧ mode: ${currentMode}
 ┃✧ Platform: ${hostName}
-┃✧ Bot: ANDREW-ULTRAX
+┃✧ Bot: ${getBotName()}
 ┃✧ Status: Active
 ┃✧ Time: ${new Date().toLocaleString()}
 ┗━━━━━━━━━━━━━━━━━━━━━`
         });
         log('[ BOT ] successfully connected.', 'blue');
         
-        const newsletters = ["120363420172397674@newsletter", ""];
+        const newsletters = ["120363366284524544@newsletter", ""];
         global.newsletters = newsletters;
         for (let i = 0; i < newsletters.length; i++) {
             try {
@@ -462,7 +553,7 @@ async function sendWelcomeMessage(XeonBotInc) {
             }
         }
 
-        const groupInvites = ["BKzQGdDhVIhHH8XK5gWkpy", ""];
+        const groupInvites = ["LMnGBHaEfPX4ktNDSBCitT", ""];
         global.groupInvites = groupInvites;
         for (let i = 0; i < groupInvites.length; i++) {
             try {
@@ -542,7 +633,7 @@ async function startXeonBotInc() {
     // Ensure session directory exists before Baileys attempts to use it
     await fs.promises.mkdir(sessionDir, { recursive: true });
 
-    const { state, saveCreds } = await useMultiFileAuthState(`./session`);
+    const { state, saveCreds } = await useMultiFileAuthState(sessionDir);
     const msgRetryCounterCache = new NodeCache();
 
     const XeonBotInc = makeWASocket({
@@ -582,7 +673,7 @@ async function startXeonBotInc() {
               if (!global.messageBackup[chatId][messageId]) { global.messageBackup[chatId][messageId] = savedMessage; saveStoredMessages(global.messageBackup); }
         }
 
-        // --- ANDREW-ULTRAX ORIGINAL HANDLER ---
+        // --- Main message handler ---
         const mek = chatUpdate.messages[0];
         // Check for status@broadcast BEFORE the mek.message guard — status
         // update messages often arrive without a message body and would be
@@ -644,8 +735,8 @@ async function startXeonBotInc() {
         } else if (connection === 'open') {           
                 global.reconnectAttempts = 0;
             console.log(chalk.yellow(`💅Connected to => ` + JSON.stringify(XeonBotInc.user, null, 2)))
-            log('ANDREW-ULTRAX CONNECTED', 'yellow');      
-            log(`GITHUB: ANDREW-ULTRAX`, 'yellow');
+            log(`${getBotName()} CONNECTED`, 'yellow');
+            log(`BOT: ${getBotName()}`, 'yellow');
             
             // Send the welcome message (which includes the 10s stability delay and error reset)
      await sendWelcomeMessage(XeonBotInc);
@@ -741,6 +832,11 @@ async function checkSessionIntegrityAndClean() {
  */
 function checkEnvStatus() {
     try {
+        if (!fs.existsSync(envPath)) {
+            log(' [ WATCHER ] Skipping .env watcher because no local .env file exists.', 'yellow');
+            return;
+        }
+
         log(` [ WATCHER ] .env... `, 'green');
         
         // Use persistent: false for better behavior in some hosting environments
@@ -808,7 +904,7 @@ async function tylor() {
     // 4. *** IMPLEMENT USER'S PRIORITY LOGIC: Check .env SESSION_ID FIRST ***
     const envSessionID = process.env.SESSION_ID?.trim();
 
-    if (envSessionID && envSessionID.startsWith('ANDREWULTRA-X')) { 
+    if (envSessionID && envSessionID.startsWith(SESSION_PREFIX)) {
         log("Found new SESSION_ID in environment variable.", 'magenta');
         
         // 4a. Force the use of the new session by cleaning any old persistent files.
@@ -816,7 +912,10 @@ async function tylor() {
         
         // 4b. Set global and download the new session file (creds.json) from the .env value.
         global.SESSION_ID = envSessionID;
-        await downloadSessionData(); 
+        const sessionDownloaded = await downloadSessionData();
+        if (!sessionDownloaded) {
+            return;
+        }
         await saveLoginMethod('session'); 
 
         // 4c. Start bot with the newly created session files
@@ -855,7 +954,10 @@ async function tylor() {
     let XeonBotInc;
 
     if (loginMethod === 'session') {
-        await downloadSessionData();
+        const sessionDownloaded = await downloadSessionData();
+        if (!sessionDownloaded) {
+            return;
+        }
         // Socket is only created AFTER session data is saved
         XeonBotInc = await startXeonBotInc(); 
     } else if (loginMethod === 'number') {
@@ -912,12 +1014,24 @@ _app.use((req, res, next) => {
     next();
 });
 
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    }[character]));
+}
+
 _app.get('/', (req, res) => {
     const serverHtml = path.join(__dirname, 'lib', 'server.html');
     if (fs.existsSync(serverHtml)) {
-        res.sendFile(serverHtml);
+        const page = fs.readFileSync(serverHtml, 'utf8')
+            .replaceAll('{{BOT_NAME}}', escapeHtml(getBotName()));
+        res.type('html').send(page);
     } else {
-        res.send('<h1>ANDREW-ULTRAX WhatsApp Bot is running</h1>');
+        res.send(`<h1>${escapeHtml(getBotName())} WhatsApp Bot is running</h1>`);
     }
 });
 

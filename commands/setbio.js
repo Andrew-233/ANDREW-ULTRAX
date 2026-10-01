@@ -3,6 +3,7 @@ const { proto } = require('@whiskeysockets/baileys');
 
 // Helper to format uptime (milliseconds → days, hours, minutes, seconds)
 const { createFakeContact } = require('../lib/fakeContact');
+const { getBotName } = require('../lib/botConfig');
 function formatUptime(ms) {
     const seconds = Math.floor(ms / 1000);
     const days = Math.floor(seconds / 86400);
@@ -45,7 +46,7 @@ async function setBioCommand(sock, chatId, message, args) {
             const input = parts.join(' ').trim();
             if (input.toLowerCase() === 'default') {
                 const uptime = Date.now() - global.botStartTime;
-                newBio = `JUNE MD running for ${formatUptime(uptime)}`;
+                newBio = `${getBotName()} running for ${formatUptime(uptime)}`;
             } else {
                 newBio = input;
             }

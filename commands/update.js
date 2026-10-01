@@ -51,10 +51,11 @@ async function updateViaGit(sock, chatId, message) {
     const oldRev = (await run('git rev-parse HEAD').catch(() => 'unknown')).trim();
     await updateProgress(sock, chatId, message, `📦 Current: ${oldRev.substring(0, 7)}`);
     
+    await run(`git remote set-url origin "${settings.repositoryUrl}.git"`);
     await run('git fetch --all --prune');
     await updateProgress(sock, chatId, message, '📦 Checking for updates...');
     
-    const newRev = (await run('git rev-parse origin/main')).trim();
+    const newRev = (await run(`git rev-parse origin/${settings.updateBranch}`)).trim();
     const alreadyUpToDate = oldRev === newRev;
     
     if (alreadyUpToDate) {
@@ -76,7 +77,6 @@ async function updateViaGit(sock, chatId, message) {
     return { oldRev, newRev, alreadyUpToDate, commits, files };
 }
 
-// MODIFIED: Added token support for private repos
 function downloadFile(url, dest, sock, chatId, message, visited = new Set()) {
     return new Promise((resolve, reject) => {
         try {
@@ -87,17 +87,10 @@ function downloadFile(url, dest, sock, chatId, message, visited = new Set()) {
 
             updateProgress(sock, chatId, message, '⬇️ Downloading update...');
 
-            // Read token from settings or environment
-            const token = settings.updateZipToken || process.env.UPDATE_ZIP_TOKEN;
-
             const headers = {
-                'User-Agent': 'June-xbot-Updater/1.0',
+                'User-Agent': 'Andrew-x-Bot-Updater/1.0',
                 'Accept': '*/*'
             };
-            if (token) {
-                // GitHub uses 'token' scheme; for other platforms (GitLab, Bitbucket) use 'Bearer'
-                headers['Authorization'] = `token ${token}`;
-            }
 
             const useHttps = url.startsWith('https://');
             const client = useHttps ? require('https') : require('http');
@@ -200,7 +193,7 @@ function copyRecursive(src, dest, ignore = [], relative = '', outList = []) {
 async function updateViaZip(sock, chatId, message, zipOverride) {
     await updateProgress(sock, chatId, message, '🗜️ Starting ZIP update...');
     
-    const zipUrl = (zipOverride || settings.updateZipUrl || process.env.UPDATE_ZIP_URL || '').trim();
+    const zipUrl = (zipOverride || settings.updateZipUrl || '').trim();
     if (!zipUrl) {
         throw new Error('No ZIP URL configured');
     }

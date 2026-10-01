@@ -1,5 +1,5 @@
 const os = require('os');
-const { getBotName } = require('../lib/botConfig');
+const { getBotName, getOwnerNumber } = require('../lib/botConfig');
 const settings = require('../settings');
 const { createFakeContact } = require('../lib/fakeContact');
 
@@ -47,7 +47,7 @@ async function botInfoCommand(sock, chatId, message) {
         const platform = detectPlatform();
         const botName = getBotName();
         const version = settings.version || 'N/A';
-        const ownerNumber = settings.ownerNumber || 'N/A';
+        const ownerNumber = getOwnerNumber() || 'N/A';
         const botOwner = settings.botOwner || 'N/A';
         const commandMode = settings.commandMode || 'N/A';
 

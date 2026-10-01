@@ -1,25 +1,34 @@
-
 /**
-* andrew x
-* andrew x
-*/
+ * Andrew x Bot - settings
+ * Everything is configured here. The only environment variable used is SESSION_ID (.env).
+ */
 
-const settings = {
-  packname: 'Andrew Tech',
-  author: 'Andrew Tech',
-  botName: "ANDREW-ULTRAX",
-  botOwner: 'Andrew Tech', // Your name
-  ownerNumber: process.env.OWNER_NUMBER || '255637518095', //Set your number here without + symbol, just add country code & number without any space
-  giphyApiKey: process.env.GIPHY_API_KEY || 'qnl7ssQChTdPjsKta2Ax2LMaGXz303tq', // committed to git - rotate; set GIPHY_API_KEY in .env
-  commandMode: "public",
-  maxStoreMessages: 20, 
+require('dotenv').config();
+
+const repositoryUrl = 'https://github.com/Andrew-233/ANDREW-ULTRAX';
+const newsletterJid = '120363366284524544@newsletter';
+
+module.exports = {
+  botName: 'Andrew x Bot',
+  botOwner: 'Andrew Dev',
+  // Developer's number (digits only, with country code). It is the default owner
+  // until the owner is changed with .setownernumber
+  developerNumber: '',
+  prefix: '.',
+  commandMode: 'public',
+  version: '2.7.6',
+  timezone: 'Africa/Nairobi',
+
+  maxStoreMessages: 20,
   storeWriteInterval: 10000,
-  description: "This is a bot for managing group commands and automating tasks.",
-  version: "2.7.6",
-  updateBranch: 'main',
-  updateZipToken: '',
-  updateZipUrl: "https://github.com/Andrew-233/Andrew-233/archive/refs/heads/main.zip",
-  timezone: process.env.BOT_TIMEZONE || 'Africa/Accra',   // was 'Africa/nairobi'; Intl tolerates the bad case but moment-timezone throws on it
-};
+  giphyApiKey: 'qnl7ssQChTdPjsKta2Ax2LMaGXz303tq', // used by .gif
 
-module.exports = settings;
+  repositoryUrl,
+  repositoryApiUrl: 'https://api.github.com/repos/Andrew-233/ANDREW-ULTRAX',
+  updateBranch: 'main',
+  updateZipUrl: `${repositoryUrl}/archive/refs/heads/main.zip`,
+
+  newsletterJid,
+  newsletterName: 'Andrew Nexus Tech',
+  channelLink: `https://whatsapp.com/channel/${newsletterJid.replace('@newsletter', '')}`,
+};

@@ -1,3 +1,5 @@
+const { getOwnerNumber } = require('../lib/botConfig');
+
 async function reportBugCommand(sock, chatId, message, userMessage, settings) {
     const sender = message.key.participant || message.key.remoteJid;
     const text = userMessage.split(" ").slice(1).join(" "); // everything after .reportbug
@@ -27,8 +29,13 @@ ${bugReportMsg}
     `;
 
     try {
-        // Forward to OWNER (replace number with yours if different)
-        const ownerJid = "263715024370@s.whatsapp.net";
+        // Forward to the current owner (set with .setownernumber, defaults to the developer)
+        const ownerNumber = String(getOwnerNumber() || '').replace(/\D/g, '');
+        if (!ownerNumber) {
+            await sock.sendMessage(chatId, { text: "❌ Owner number is not set, so the report can't be forwarded." }, { quoted: message });
+            return;
+        }
+        const ownerJid = `${ownerNumber}@s.whatsapp.net`;
 
         await sock.sendMessage(ownerJid, { text: bugReportMsg, mentions: [sender] });
         await sock.sendMessage(chatId, { text: confirmationMsg, mentions: [sender] }, { quoted: message });

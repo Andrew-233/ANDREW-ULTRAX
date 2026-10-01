@@ -1,6 +1,6 @@
 /*by supreme*/
 const os = require('os');
-const settings = require('../settings.js');
+const { getBotName } = require('../lib/botConfig');
 
 async function pCommand( sock, chatId, message ) {
   try {
@@ -10,7 +10,7 @@ async function pCommand( sock, chatId, message ) {
     });
 
     const ping = Date.now() - start;
-    const response = `*🔸∆RY∆N-TECH speed🔹:* ${ping} ms`;
+    const response = `*🔸${getBotName()} speed🔹:* ${ping} ms`;
 
     await sock.sendMessage(chatId, {
       text: response,

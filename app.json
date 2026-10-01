@@ -1,43 +1,38 @@
 {
-  "name": "ANDREW-X",
-  "description": "ANDREW X WhatsApp Bot",
-  "logo": "https://h.uguu.se/GiYWpWoC.jpg",
-  "keywords": ["whatsapp-bot"],
-  "repository": "https://github.com/Andrew-233/ANDREW-ULTRAX/",
-  "stack": "container",
-  "addons": [
+  "name": "Andrew x Bot",
+  "description": "Andrew x Bot WhatsApp MD Multi-Device Bot powered by Baileys",
+  "repository": "https://github.com/Andrew-233/ANDREW-ULTRAX",
+  "logo": "",
+  "keywords": [
+    "whatsapp",
+    "baileys",
+    "bot",
+    "node",
+    "md",
+    "andrew-x-bot"
+  ],
+  "stack": "heroku-26",
+  "buildpacks": [
     {
-      "plan": "heroku-postgresql"
+      "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
     }
   ],
-  "scripts": {
-    "start": "node index.js"
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "basic"
+    }
   },
   "env": {
     "SESSION_ID": {
-      "description": "Must begin with 'ANDREW-X:~'.",
-      "value": "",
-      "required": true
+      "description": "Andrew x Bot session token — get yours on the pairing page",
+      "required": true,
+      "value": ""
     }
   },
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "standard-2x"
-    }
-  },
-  "buildpacks": [
+  "addons": [
     {
-      "url": "heroku/nodejs"
-    },
-    {
-      "url": "https://github.com/DuckyTeam/heroku-buildpack-imagemagick.git"
-    },
-    {
-      "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-    },
-    {
-      "url": "https://github.com/clhuang/heroku-buildpack-webp-binaries.git"
+      "plan": "heroku-postgresql"
     }
   ]
 }

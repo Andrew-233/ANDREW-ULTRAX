@@ -64,33 +64,52 @@ async function ytsongCommand(sock, chatId, message) {
             return;
         }
 
-        let videoUrl, videoInfo;
-        if (/youtu\.?be|youtube\.com/.test(input)) {
-            videoUrl = input;
-            const { videos } = await yts({ videoId: input.split("v=")[1] });
-            videoInfo = videos[0];
-        } else {
-            const { videos } = await yts(input);
-            if (!videos.length) {
-                await sock.sendMessage(chatId, { text: "No song found!" }, { quoted: createFakeContact(message) });
-                return;
+        let downloadUrl;
+        let title = input;
+        let videoInfo;
+
+        // Supreme API is the primary audio downloader.
+        try {
+            const response = await axios.get(
+                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(input)}`,
+                { timeout: 60000 }
+            );
+            if (response.data?.status && response.data?.downloadUrl) {
+                downloadUrl = response.data.downloadUrl;
+                title = response.data.title || title;
             }
-            videoInfo = videos[0];
-            videoUrl = videoInfo.url;
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for ytsong command:', primaryError.message);
         }
 
-        const res = await axios.get(`https://api.zenzxz.my.id/download/youtube?q=${videoUrl}`);
-        const dl = res.data?.result.download;
-        if (!dl) {
-            await sock.sendMessage(chatId, { text: "Download failed." }, { quoted: createFakeContact(message) });
-            await sock.sendMessage(chatId, { react: { text: "❌", key: message.key } });
-            return;
+        if (!downloadUrl) {
+            let videoUrl;
+            if (/youtu\.?be|youtube\.com/.test(input)) {
+                videoUrl = input;
+                const { videos } = await yts({ videoId: input.split("v=")[1] });
+                videoInfo = videos[0];
+            } else {
+                const { videos } = await yts(input);
+                if (!videos.length) {
+                    await sock.sendMessage(chatId, { text: "No song found!" }, { quoted: createFakeContact(message) });
+                    return;
+                }
+                videoInfo = videos[0];
+                videoUrl = videoInfo.url;
+            }
+
+            const res = await axios.get(
+                `https://api.zenzxz.my.id/download/youtube?q=${encodeURIComponent(videoUrl)}`,
+                { timeout: 60000 }
+            );
+            downloadUrl = res.data?.result?.download;
+            title = videoInfo?.title || title;
         }
 
         await sock.sendMessage(chatId, {
-            audio: { url: dl },
+            audio: { url: downloadUrl },
             mimetype: "audio/mpeg",
-            fileName: `${videoInfo.title}.mp3`
+            fileName: `${title}.mp3`
         }, { quoted: createFakeContact(message) });
 
         // Success reaction ✅

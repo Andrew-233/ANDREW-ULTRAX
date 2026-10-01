@@ -64,6 +64,21 @@ async function getKeithDownload(youtubeUrl) {
     throw new Error('Keith API returned unknown format');
 }
 
+async function getSupremeDownload(query) {
+    const apiUrl = `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(query)}`;
+    const res = await tryRequest(() => axios.get(apiUrl, AXIOS_DEFAULTS));
+    if (!res?.data?.status || !res.data.downloadUrl) {
+        throw new Error('Supreme API did not return a download URL');
+    }
+    return {
+        download: res.data.downloadUrl,
+        title: res.data.title || query,
+        thumbnail: res.data.thumbnail || 'https://img.youtube.com/vi/default/hqdefault.jpg',
+        duration: res.data.duration || '0:00',
+        source: res.data.source || query
+    };
+}
+
 /* =========================
    SONG COMMAND
 ========================= */
@@ -82,41 +97,48 @@ async function songCommand(sock, chatId, message) {
             );
         }
 
-        let video;
+        let video = {
+            url: text,
+            title: text,
+            thumbnail: 'https://img.youtube.com/vi/default/hqdefault.jpg',
+            timestamp: '0:00'
+        };
+        let audio;
 
-        // If user pasted YouTube link
-        if (text.includes('youtube.com') || text.includes('youtu.be')) {
-            const search = await yts(text);
-            video = search?.videos?.[0] || {
-                url: text,
-                title: 'YouTube Audio',
-                thumbnail: 'https://img.youtube.com/vi/default/hqdefault.jpg',
-                timestamp: '0:00'
-            };
-        } else {
-            // Search by name
-            const search = await yts(text);
-            if (!search?.videos?.length) {
-                return sock.sendMessage(
-                    chatId,
-                    { text: '❌ No results found.' },
-                    { quoted: message }
-                );
+        // Supreme API is the primary audio downloader.
+        try {
+            audio = await getSupremeDownload(text);
+        } catch (primaryError) {
+            console.warn('Supreme audio API failed for music command:', primaryError.message);
+        }
+
+        if (!audio) {
+            // Existing search/provider remains as the fallback.
+            if (text.includes('youtube.com') || text.includes('youtu.be')) {
+                const search = await yts(text);
+                video = search?.videos?.[0] || video;
+            } else {
+                const search = await yts(text);
+                if (!search?.videos?.length) {
+                    return sock.sendMessage(
+                        chatId,
+                        { text: '❌ No results found.' },
+                        { quoted: message }
+                    );
+                }
+                video = search.videos[0];
             }
-            video = search.videos[0];
+            audio = await getKeithDownload(video.url);
         }
 
         // Send downloading message
         await sock.sendMessage(
             chatId,
             {
-                text: `🎵 *Downloading Audio...*\n\n*Title:* ${video.title}\n*Duration:* ${video.timestamp || '0:00'}`
+                text: `🎵 *Downloading Audio...*\n\n*Title:* ${audio.title || video.title}\n*Duration:* ${audio.duration || video.timestamp || '0:00'}`
             },
             { quoted: message }
         );
-
-        // Get download link from Keith API
-        const audio = await getKeithDownload(video.url);
 
         if (!audio?.download) {
             throw new Error('Download URL not found');
@@ -128,15 +150,15 @@ async function songCommand(sock, chatId, message) {
     {
         document: { url: audio.download },
         mimetype: "audio/mpeg",
-        fileName: `${video.title.substring(0, 100)}.mp3`,
+        fileName: `${(audio.title || video.title).substring(0, 100)}.mp3`,
         contextInfo: {
             externalAdReply: {
-                title: video.title,
+                title: audio.title || video.title,
                 body: 'YouTube Audio Download',
                 mediaType: 2,
                 thumbnailUrl: video.thumbnail,
-                mediaUrl: video.url,
-                sourceUrl: video.url,
+                mediaUrl: audio.source || video.url,
+                sourceUrl: audio.source || video.url,
                 showAdAttribution: true
             }
         }
