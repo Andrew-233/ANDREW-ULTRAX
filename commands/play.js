@@ -47,7 +47,7 @@ async function playCommand(sock, chatId, message) {
             video = videos[0];
             title = video.title;
             const response = await axios.get(
-                `https://apiskeith.top/download/audio?url=${encodeURIComponent(video.url)}`,
+                `https://apis.keithsite.lol/download/audio?url=${encodeURIComponent(video.url)}`,
                 { timeout: 60000 }
             );
             if (!response.data?.status || !response.data?.result) {
