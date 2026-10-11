@@ -1,91 +1,49 @@
-const yts = require('yt-search');
-const axios = require('axios');
 const { createFakeContact } = require('../lib/fakeContact');
+const { downloadYouTubeAudio, cleanupAudio } = require('../lib/audioDownloader');
 
 async function songCommand(sock, chatId, message) {
-       const fakekontak = createFakeContact(message);
+    const quoted = createFakeContact(message);
+    let audio;
+
     try {
-        const text = message.message?.conversation || message.message?.extendedTextMessage?.text;
-        const searchQuery = text.split(' ').slice(1).join(' ').trim();
-        
-        if (!searchQuery) {
-            return await sock.sendMessage(chatId, { 
-                text: "What song do you want to download?"
-            }, { quoted: fakekontak });
+        const text = message.message?.conversation || message.message?.extendedTextMessage?.text || '';
+        const query = text.trim().split(/\s+/).slice(1).join(' ').trim();
+        if (!query) {
+            return await sock.sendMessage(chatId, {
+                text: 'What song do you want to download?'
+            }, { quoted });
         }
-        //react 
-                await sock.sendMessage(chatId, {
-            react: { text: "🎶", key: message.key }
+
+        await sock.sendMessage(chatId, {
+            react: { text: '🎶', key: message.key }
         });
 
-        let title = searchQuery;
-        let audioUrl;
-
-        // Supreme API is the primary audio downloader.
-        try {
-            const response = await axios.get(
-                `https://apissupreme.vercel.app/media/play?apikey=supreme&query=${encodeURIComponent(searchQuery)}`,
-                { timeout: 60000 }
-            );
-            if (response.data?.status && response.data?.downloadUrl) {
-                audioUrl = response.data.downloadUrl;
-                title = response.data.title || title;
-            }
-        } catch (primaryError) {
-            console.warn('Supreme audio API failed for song command:', primaryError.message);
-        }
-
-        let video;
-        if (!audioUrl) {
-            // Existing search/provider remains as the fallback.
-            const { videos } = await yts(searchQuery);
-            if (!videos || videos.length === 0) {
-                return await sock.sendMessage(chatId, {
-                    text: "No songs found!"
-                }, { quoted: fakekontak });
-            }
-            video = videos[0];
-            title = video.title;
-            const response = await axios.get(
-                `https://apiskeith.top/download/audio?url=${encodeURIComponent(video.url)}`,
-                { timeout: 60000 }
-            );
-            if (!response.data?.status || !response.data?.result) {
-                throw new Error('All audio download APIs failed');
-            }
-            audioUrl = typeof response.data.result === 'string'
-                ? response.data.result
-                : response.data.result.url;
-        }
-
-        // Notify user about download
-        await sock.sendMessage(chatId, { 
-            text: `_Playing 🎵_\n_${title} 🎶_`
-        }, { quoted: fakekontak });
-
-        if (!audioUrl) throw new Error('Download URL not found');
-
-        // Send as audio (playable in chat)
+        audio = await downloadYouTubeAudio(query);
+        const safeTitle = audio.title.replace(/[\\/:*?"<>|]/g, '').slice(0, 100) || 'YouTube Audio';
         await sock.sendMessage(chatId, {
-            audio: { url: audioUrl },
-            mimetype: "audio/mpeg",
-            fileName: `${title}.mp3`,
-            caption: `🎵 *${title}*`
-        }, { quoted: fakekontak });
+            text: `_Playing 🎵_\n_${audio.title} 🎶_`
+        }, { quoted });
 
-        // Send also as document (downloadable file)
         await sock.sendMessage(chatId, {
-            document: { url: audioUrl },
-            mimetype: "audio/mpeg",
-            fileName: `${title}.mp3`,
-            caption: `🎵 *${title}*`
-        }, { quoted: fakekontak });
+            audio: { url: audio.download },
+            mimetype: 'audio/mpeg',
+            fileName: `${safeTitle}.mp3`,
+            caption: `🎵 *${audio.title}*`
+        }, { quoted });
 
+        await sock.sendMessage(chatId, {
+            document: { url: audio.download },
+            mimetype: 'audio/mpeg',
+            fileName: `${safeTitle}.mp3`,
+            caption: `🎵 *${audio.title}*`
+        }, { quoted });
     } catch (error) {
         console.error('Error in songCommand:', error);
-        await sock.sendMessage(chatId, { 
-            text: "Download failed. Please try again later."
-        }, { quoted: fakekontak });
+        await sock.sendMessage(chatId, {
+            text: `Download failed: ${error.message || 'Please try again later.'}`
+        }, { quoted });
+    } finally {
+        await cleanupAudio(audio);
     }
 }
 
