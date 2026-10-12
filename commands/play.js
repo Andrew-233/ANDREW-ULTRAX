@@ -1,5 +1,4 @@
-const { downloadYouTubeAudio, cleanupAudio } = require('../lib/audioDownloader');
-
+const { createFakeContact } = require('../lib/fakeContact');`
 async function playCommand(sock, chatId, message) {
     const quoted = createFakeContact(message);
     let audio;
