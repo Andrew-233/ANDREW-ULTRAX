@@ -14,9 +14,8 @@ RUN npm install --omit=dev --legacy-peer-deps --no-audit --no-fund
 
 COPY . .
 
-# Session and mutable state must live outside the image layer
+# Session and mutable state must live outside the image layer (use a Railway Volume mounted at /app/session)
 ENV NODE_ENV=production
-VOLUME ["/app/session", "/app/data"]
 
 # index.js reads SESSION_ID from the environment; without it the bot expects a TTY for QR.
 CMD ["node", "index.js"]
